@@ -1,0 +1,27 @@
+<!-- MAIN CONTENT-->
+<div class="main-content">
+	<div class="section-content section-content-p30">
+		<div class="container-fluid">
+			<div class="row">
+
+				<div *ngFor="let product of products" class="col-md-3">
+					<div class="product-box">
+						<a [routerLink]="['/product',product.sku]" routerLinkActive="router-link-active">
+							<img [src]="product.imageUrl" class="img-responsive">
+						</a>
+						<a [routerLink]="['/product',product.sku]">
+							<h1>{{product.name}}</h1>
+						</a>
+						<h2>{{product.description}} </h2>
+						<div class="price">{{product.unitPrice | currency :'USD'}}</div>
+						<a href="#" class="primary-btn">Add to cart</a>
+					</div>
+				</div>
+
+			</div>
+			<app-main-content-footer></app-main-content-footer>
+		</div>
+	</div>
+</div>
+
+<!-- END MAIN CONTENT-->

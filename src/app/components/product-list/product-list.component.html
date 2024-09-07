@@ -1,0 +1,22 @@
+<p class="h1">Products</p>
+<table class="table table-striped caption-top">
+    <thead class="table-dark align-middle">
+        <tr>
+            <th></th>
+            <!-- <th scope="col" *ngFor="let product of myProducts[0] | keyvalue : sortTable" >
+                {{product.key | uppercase}}</th> -->
+            <th>Name</th>
+            <th>Price</th>
+            <th>Units in Stock</th>
+        </tr>
+    </thead>
+    <tbody class="align-middle">
+        <tr *ngFor="let product of myProducts">
+            <td><img [src]="product.imageUrl" height="50" alt="Product Image"></td>
+            <td>{{product.name}}</td>
+            <td>{{product.unitPrice}}</td>
+            <td>{{product.unitsInStock}}</td>
+            <!-- <td *ngFor="let keyval of product | keyvalue : sortTable">{{keyval.value}}</td> -->
+        </tr>
+    </tbody>
+</table>
