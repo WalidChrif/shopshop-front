@@ -8,32 +8,28 @@ import { Page } from '../common/page';
 })
 export class ProductService {
 
-  url : string = 'http://localhost:8000/api/v1/products';
+  baseUrl : string = 'http://localhost:8000/api/v1/products';
   orderBy = "unitPrice";
 
   constructor(private http : HttpClient) { }
 
   getProducts() {
-    return this.http.get<Product[]>(`${this.url}`);
+    return this.http.get<Product[]>(`${this.baseUrl}`);
   }
   getProductsPages(page : number, size : number) {
-    return this.http.get<Page<Product>>(`${this.url}/pages?page=${page}&size=${size}&orderBy=${this.orderBy}`);
-  }
-  getProductById(id : number) {
-    return this.http.get<Product>(`${this.url}/id/${id}`);
+    return this.http.get<Page<Product>>(`${this.baseUrl}?page=${page}&size=${size}&orderBy=${this.orderBy}`);
   }
   getProductBySku(sku : string) {
-    return this.http.get<Product>(`${this.url}/sku/${sku}`);
+    return this.http.get<Product>(`${this.baseUrl}/sku/${sku}`);
   }
-  getProductBySkuOrId(param : string | number) {
-    const path = typeof param === 'string' ? 'sku' : 'id'; 
-    return this.http.get<Product>(`${this.url}/${path}/${param}`);
+  getProductsByCategory(categoryId: number) {
+    return this.http.get<Page<Product>>(`${this.baseUrl}/category/${categoryId}`);
   }
   addProduct(product : any) {
-    return this.http.post<Product>(this.url, product);
+    return this.http.post<Product>(this.baseUrl, product);
   }
   deleteProduct(id : number) {
-    return this.http.delete<Product>(`${this.url}/${id}`);
+    return this.http.delete<Product>(`${this.baseUrl}/${id}`);
   }
 
 }

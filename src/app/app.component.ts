@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { MenuSidebarComponent } from './components/menu-sidebar/menu-sidebar.component';
+import { CategoryMenuComponent } from './components/category-menu/category-menu.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HeaderDesktopComponent } from './components/header-desktop/header-desktop.component';
+import { SearchNavbarComponent } from './components/search-navbar/search-navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +11,9 @@ import { HeaderDesktopComponent } from './components/header-desktop/header-deskt
   imports: [
     RouterOutlet,
     MainContentComponent,
-    HeaderDesktopComponent,
-    MenuSidebarComponent,
+    SearchNavbarComponent,
+    CategoryMenuComponent,
     FooterComponent,
-    ProductListComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

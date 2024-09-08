@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MenuSidebarComponent } from '../menu-sidebar/menu-sidebar.component';
-import { HeaderDesktopComponent } from '../header-desktop/header-desktop.component';
+import { CategoryMenuComponent } from '../category-menu/category-menu.component';
+import { SearchNavbarComponent } from '../search-navbar/search-navbar.component';
 import { Product } from '../../common/product';
 import { CurrencyPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
@@ -12,8 +12,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   imports: [
     RouterLink,
     CurrencyPipe,
-    MenuSidebarComponent,
-    HeaderDesktopComponent,
+    CategoryMenuComponent,
+    SearchNavbarComponent,
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
