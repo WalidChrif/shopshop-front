@@ -1,16 +1,21 @@
 <!-- MAIN CONTENT-->
 <div class="main-content">
-    <div class="section-content section-content-p30">
-        <div class="container-fluid">
-            <div class="row">
-
+	<div class="section-content section-content-p30">
+		<div class="container-fluid">
+			<div class="row">
+				<div *ngIf="products?.length == 0 && !loading" class="alert alert-danger" role="alert">
+					No products found. Please select a product category.
+				</div>
+				<div *ngIf="products?.length == 0 && loading" class="alert alert-info" role="alert">
+					loading products.
+				</div>
 				<div *ngFor="let product of products" class="col-md-3">
 					<div class="product-box">
-						<a [routerLink]="['/product',product.sku]">
+						<a [routerLink]="['/product-detail',product.sku]">
 							<img [src]="product.imageUrl" class="img-responsive">
 						</a>
-						<a style="display: block;" [routerLink]="['/product',product.sku]">
-							<h1 >{{product.name}}</h1>
+						<a style="display: block;" [routerLink]="['/product-detail',product.sku]">
+							<h1>{{product.name}}</h1>
 						</a>
 						<!-- <h2>{{product.description}} </h2> -->
 						<div class="price">{{product.unitPrice | currency :'USD'}}</div>
@@ -19,7 +24,21 @@
 				</div>
 
 			</div>
-			<app-main-content-footer></app-main-content-footer>
+			<div class="footer-pagination">
+				<div class="row">
+					<div class="col-md-6"></div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-9" style="padding-left:30%">
+								<ngb-pagination [(page)]="pageNumber" [collectionSize]="totalElements"
+									[pageSize]="pageSize" (pageChange)="updatePage()">
+								</ngb-pagination>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <app-main-content-footer></app-main-content-footer> -->
 		</div>
 	</div>
 </div>

@@ -1,9 +1,7 @@
 export interface Page<T> {
-    content: T[];
-    pageable: {
-      pageNumber: number;
-      pageSize: number;
-    };
-    totalPages: number;
-    totalElements: number;
-  }
+  content: T[];
+  number: any;
+  size: any;
+  totalPages: number;
+  totalElements: number;
+}

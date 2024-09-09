@@ -27,13 +27,16 @@ export class ProductDetailComponent {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {   
     this.route.paramMap.subscribe((params) => {
+      console.log("inside product detail");
+      
+      if (params.has('sku')) {
       this.param = params.get('sku');
       this.productService.getProductBySku(this.param!).subscribe((product) => {
         this.product = product;
       });
-    });
+    }});
     return;
   }
 }

@@ -13,23 +13,14 @@ export class ProductService {
 
   constructor(private http : HttpClient) { }
 
-  getProducts() {
-    return this.http.get<Product[]>(`${this.baseUrl}`);
+  getProductsByCategory(categoryId: number, page : number, size : number) {
+    return this.http.get<Page<Product>>(`${this.baseUrl}/category/${categoryId}?page=${page}&size=${size}&orderBy=${this.orderBy}`);
   }
-  getProductsPages(page : number, size : number) {
-    return this.http.get<Page<Product>>(`${this.baseUrl}?page=${page}&size=${size}&orderBy=${this.orderBy}`);
+  getProductsByName(name : string, page : number, size : number) {
+    return this.http.get<Page<Product>>(`${this.baseUrl}/search/${name}?page=${page}&size=${size}&orderBy=${this.orderBy}`);
   }
   getProductBySku(sku : string) {
     return this.http.get<Product>(`${this.baseUrl}/sku/${sku}`);
-  }
-  getProductsByCategory(categoryId: number) {
-    return this.http.get<Page<Product>>(`${this.baseUrl}/category/${categoryId}`);
-  }
-  addProduct(product : any) {
-    return this.http.post<Product>(this.baseUrl, product);
-  }
-  deleteProduct(id : number) {
-    return this.http.delete<Product>(`${this.baseUrl}/${id}`);
   }
 
 }

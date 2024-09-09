@@ -13,11 +13,5 @@ export class CategoryService {
   getCategories() {
     return this.http.get<Category[]>(`${this.baseUrl}`);
   }
-  getCategoryById(id : number) {
-    return this.http.get<Category>(`${this.baseUrl}/id/${id}`);
-  }
-  getCategoryByName(name : string) {
-    return this.http.get<Category>(`${this.baseUrl}/name/${name}`);
-  }
 
 }

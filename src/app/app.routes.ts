@@ -5,10 +5,11 @@ import { CheckoutPageComponent } from './components/checkout-page/checkout-page.
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-    {path: 'home', component: MainContentComponent, title: 'ShopSHop'},
+    {path: 'home', component: MainContentComponent, title: 'ShopShop'},
     {path: '',redirectTo: 'home', pathMatch: 'full'},
-    {path: 'product/:sku', component: ProductDetailComponent, title: 'Product Detail'},
-    {path: 'checkout', component: CheckoutPageComponent, title: 'Checkout'},
-    {path: 'category/:id', component: MainContentComponent, title: 'ShopShop'},
+    {path: 'products/category/:id', component: MainContentComponent, title: 'ShopShop'},
+    {path: 'products/search/:name', component: MainContentComponent, title: 'ShopShop'},
+    {path: 'product-detail/:sku', component: ProductDetailComponent, title: 'Product Detail'},
+    {path: 'products/:sku/checkout', component: CheckoutPageComponent, title: 'Checkout'},
     {path: '**', component: PageNotFoundComponent, title: 'Page Not Found'},
 ];
