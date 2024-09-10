@@ -3,10 +3,11 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-    {path: 'home', component: MainContentComponent, title: 'ShopShop'},
-    {path: '',redirectTo: 'home', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent, title: 'ShopShop'},
+    {path: '',redirectTo: '/home', pathMatch: 'full'},
     {path: 'products/category/:id', component: MainContentComponent, title: 'ShopShop'},
     {path: 'products/search/:name', component: MainContentComponent, title: 'ShopShop'},
     {path: 'product-detail/:sku', component: ProductDetailComponent, title: 'Product Detail'},

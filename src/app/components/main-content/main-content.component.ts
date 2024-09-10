@@ -6,11 +6,13 @@ import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { Page } from '../../common/page';
+import { FormsModule, NgModel } from '@angular/forms';
 @Component({
   selector: 'app-main-content',
   standalone: true,
   imports: [
     RouterLink,
+    FormsModule,
     NgFor,
     NgIf,
     CurrencyPipe,
@@ -31,6 +33,7 @@ export class MainContentComponent {
   totalPages!: number;
   loading: boolean = false;
   searchMode = false;
+  homePage = false
 
   constructor(
     private productService: ProductService,
@@ -38,6 +41,7 @@ export class MainContentComponent {
   ) {}
 
   ngOnInit(): void {
+    
     this.initializeProducts();
     this.route.paramMap.subscribe((params) => {
       this.params = params;

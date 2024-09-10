@@ -26,19 +26,34 @@
 			</div>
 			<div class="footer-pagination">
 				<div class="row">
-					<div class="col-md-6"></div>
+					<div class="col-md-6">
+
+					</div>
 					<div class="col-md-6">
 						<div class="row">
-							<div class="col-md-9" style="padding-left:30%">
+
+							<div class="col-md-6" style="padding-left:25%">
 								<ngb-pagination [(page)]="pageNumber" [collectionSize]="totalElements"
 									[pageSize]="pageSize" (pageChange)="updatePage()">
 								</ngb-pagination>
+							</div>
+							<div class="col-md-6" style="padding-left:5%">
+								<div class="items">
+									<label>Item per page</label>
+									<select (click)="updatePage()" name="pageSize" [(ngModel)]="pageSize">
+										<option value="10">10</option>
+										<option value="20">20</option>
+										<option value="30">30</option>
+										<option value="40">40</option>
+									</select>
+								</div>
+								<!-- this component can take css styles from child below -->
+								<!-- <app-main-content-footer></app-main-content-footer> -->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- <app-main-content-footer></app-main-content-footer> -->
 		</div>
 	</div>
 </div>

@@ -1,0 +1,12 @@
+.carou{
+    height: 87vh;
+    padding-top: 80px;
+}
+
+.carou img{
+    height: 650px;
+    padding-left: 320px;
+}
+.carousel-caption h3{
+    margin-top: 100px;
+}

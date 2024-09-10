@@ -23,4 +23,7 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/sku/${sku}`);
   }
 
+  findOneProductPerCategory() {
+    return this.http.get<Product[]>(`${this.baseUrl}`);
+  }
 }
