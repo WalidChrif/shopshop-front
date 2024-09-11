@@ -51,7 +51,6 @@ export class MainContentComponent {
   }
 
   handleCategoryProducts(params: ParamMap) {
-    console.log('handleCategoryProducts');
     this.searchMode = false;
     this.categoryId = +params.get('id')!;
     if (this.previousCategoryId !== this.categoryId) {
@@ -69,7 +68,6 @@ export class MainContentComponent {
       });
   }
   handleSearchProducts(params: ParamMap) {
-    console.log('handleSearchProducts');
     const searchParam = params.get('name')?.trim();
     if (!searchParam) {
       return;
