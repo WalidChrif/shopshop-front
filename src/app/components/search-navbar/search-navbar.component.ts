@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { CartStatusComponent } from '../cart-status/cart-status.component';
 
 @Component({
   selector: 'app-header-desktop',
   standalone: true,
-  imports: [],
+  imports: [CartStatusComponent],
   templateUrl: './search-navbar.component.html',
   styleUrl: './search-navbar.component.css',
 })

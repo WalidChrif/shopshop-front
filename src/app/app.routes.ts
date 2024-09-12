@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent, title: 'ShopShop'},
@@ -11,6 +12,7 @@ export const routes: Routes = [
     {path: 'products/category/:id', component: MainContentComponent, title: 'ShopShop'},
     {path: 'products/search/:name', component: MainContentComponent, title: 'ShopShop'},
     {path: 'product-detail/:sku', component: ProductDetailComponent, title: 'Product Detail'},
-    {path: 'products/:sku/checkout', component: CheckoutPageComponent, title: 'Checkout'},
+    {path: 'shopping-cart', component: ShoppingCartComponent, title: 'Shopping cart'},
+    {path: 'checkout', component: CheckoutComponent, title: 'Checkout'},
     {path: '**', component: PageNotFoundComponent, title: 'Page Not Found'},
 ];

@@ -5,6 +5,8 @@ import { Product } from '../../common/product';
 import { CurrencyPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../common/cart-item';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,12 +21,14 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrl: './product-detail.component.css',
 })
 export class ProductDetailComponent {
+
   product!: Product | null;
   param!: string | null;
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {   
@@ -39,4 +43,8 @@ export class ProductDetailComponent {
     }});
     return;
   }
+  addToCart(product: Product) {
+    const cartItem = new CartItem(product);
+    this.cartService.addToCart(cartItem)
+    }
 }

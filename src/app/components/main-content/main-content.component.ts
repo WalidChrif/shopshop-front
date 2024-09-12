@@ -7,6 +7,8 @@ import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { Page } from '../../common/page';
 import { FormsModule, NgModel } from '@angular/forms';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../common/cart-item';
 @Component({
   selector: 'app-main-content',
   standalone: true,
@@ -23,6 +25,7 @@ import { FormsModule, NgModel } from '@angular/forms';
   styleUrl: './main-content.component.css',
 })
 export class MainContentComponent {
+
   products: Product[] = [];
   categoryId = 1;
   previousCategoryId = 1;
@@ -37,7 +40,8 @@ export class MainContentComponent {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService : CartService
   ) {}
 
   ngOnInit(): void {
@@ -92,6 +96,10 @@ export class MainContentComponent {
     if (!this.searchMode) this.handleCategoryProducts(this.params);
     else this.handleSearchProducts(this.params);
   }
+  addToCart(product: Product) {
+  const cartItem = new CartItem(product);
+    this.cartService.addToCart(cartItem);
+    }
 
   initializeProducts() {
     this.productService

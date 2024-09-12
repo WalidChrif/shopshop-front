@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-8 cart">
+                        <div class="title">
+                            <div class="row">
+                                <div class="col">
+                                    <h4><b>Shopping Cart</b></h4>
+                                </div>
+                                <div class="col align-self-center text-right text-muted">{{itemsInCart}} items</div>
+                            </div>
+                        </div>
+                        <div class="row border-top border-bottom" *ngIf="cartItems.length > 0">
+                            <div class="row main align-items-center" *ngFor="let cartItem of cartItems">
+                                <div class="col-2"><img class="img-fluid" [src]="cartItem.imageUrl"></div>
+                                <div class="col">
+                                    <div class="row text-muted">{{cartItem.name}}</div>
+                                    <div class="row">{{cartItem.unitsInStock}} units in stock</div>
+                                </div>
+                                <div class="col">
+                                    <button class="border px-2" [disabled]="cartItem.quantity == 0"
+                                        (click)="removeFromCart(cartItem)">-</button><span
+                                        class="border p-2 ">{{cartItem.quantity}}</span>
+                                    <button class="border px-2" [disabled]="cartItem.unitsInStock <= 0"
+                                        (click)="addToCart(cartItem)">+</button>
+                                </div>
+                                <div class="col"><span class="close border p-2"> &#10005;</span>&nbsp;{{cartItem.unitPrice}}</div>
+                            </div>
+                        </div>
+                        <div *ngIf="cartItems.length <= 0">
+                            <div class="alert alert-info" role="alert">
+                                No items in cart.
+                            </div>
+                        </div>
+                        <div class="back-to-shop"><a [routerLink]="['/home']"
+                                routerLinkActive="router-link-active">&leftarrow; &nbsp;<span class="text-muted">Back to
+                                    shop</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 summary">
+                        <div>
+                            <h5><b>Summary</b></h5>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col" style="padding-left:0;">ITEMS {{itemsInCart}}</div>
+                            <div class="col text-right">{{totalPrice | currency : 'USD'}}</div>
+                        </div>
+                        <form>
+                            <p>SHIPPING</p>
+                            <select>
+                                <option class="text-muted">Standard-Delivery- {{5 | currency :'USD'}}</option>
+                            </select>
+                            <p>GIVE CODE</p>
+                            <input id="code" placeholder="Enter your code">
+                        </form>
+                        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                            <div class="col">TOTAL PRICE</div>
+                            <div class="col text-right">{{totalPrice | currency : 'USD'}}</div>
+                        </div>
+                        <button routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
