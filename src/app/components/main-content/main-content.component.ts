@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MainContentFooterComponent } from './main-content-footer/main-content-footer.component';
 import { Product } from '../../common/product';
 import { ProductService } from '../../services/product.service';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
@@ -19,7 +18,6 @@ import { CartItem } from '../../common/cart-item';
     NgIf,
     CurrencyPipe,
     NgbPagination,
-    MainContentFooterComponent,
   ],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.css',
