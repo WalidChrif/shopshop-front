@@ -1,0 +1,14 @@
+input.ng-invalid.ng-touched{
+    border: 1px solid rgb(243, 144, 142);
+    /* background-color: #f2dede; */
+}
+.help-block{
+    color: rgb(247, 76, 76);
+    font-size: 0.9rem;
+    margin-top: 0.5vh;
+}
+
+div.ng-invalid.ng-touched{
+    border-color: rgb(243, 144, 142);
+    /* background-color: #f2dede; */
+}

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../common/product';
 import { Page } from '../common/page';
+import { Category } from '../common/category';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class ProductService {
   orderBy = "unitPrice";
 
   constructor(private http : HttpClient) { }
+
+  getCategories() {
+    return this.http.get<Category[]>(`${this.baseUrl}/categories`);
+  }
 
   getProductsByCategory(categoryId: number, page : number, size : number) {
     return this.http.get<Page<Product>>(`${this.baseUrl}/category/${categoryId}?page=${page}&size=${size}&orderBy=${this.orderBy}`);

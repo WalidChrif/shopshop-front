@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Category } from '../../common/category';
-import { CategoryService } from '../../services/category.service';
 import { NgFor } from '@angular/common';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-category-menu',
@@ -15,11 +15,10 @@ export class CategoryMenuComponent {
 
   categories : Category[] = [];
 
-  constructor(private categoryService : CategoryService) {}
+  constructor(private productService : ProductService) {}
 
   ngOnInit() {
-    
-    this.categoryService.getCategories().subscribe((response) => {
+    this.productService.getCategories().subscribe((response) => {      
       this.categories = response;
     });
   }
