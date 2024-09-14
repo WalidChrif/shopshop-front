@@ -2,41 +2,26 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { State } from '../common/state';
 import { Country } from '../common/country';
+import { of } from 'rxjs';
+import { start } from '@popperjs/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormService {
-  baseUrl = 'http://localhost:8000/api/v1/countries';
+  baseUrl = 'http://localhost:8000/api/v1/states';
   constructor(private http: HttpClient) {}
 
   getStates(countryId: number) {
-    return this.http.get<State[]>(`${this.baseUrl}/${countryId}/states}`);
+    return this.http.get<State[]>(`${this.baseUrl}/country/${countryId}`);
   }
   getCountries() {
-    return this.http.get<Country[]>(`${this.baseUrl}`);
-  }
-  getCountryById(id: number) {
-    this.http.get<Country>(`${this.baseUrl}/${id}`);
-  }
-  getCreditCardTypes() {
-    return [
-      'Visa',
-      'MasterCard',
-      'American Express',
-      'Discover',
-      'JCB',
-      'Diners Club',
-      'UnionPay',
-    ];
+    return this.http.get<Country[]>(`${this.baseUrl}/countries`);
   }
 
-  setDates() {
+  getYears() {
     const currentYear = new Date().getFullYear();
-    const years = Array.from({ length: 20 }, (_, index) => currentYear + index);
-    const months = Array.from({ length: 12 }, (_, i) =>
-      new Date(0, i).toLocaleString('default', { month: 'long' })
-    );
-    return { years, months };
+    const years = Array.from({ length: 10 }, (_, index) => currentYear + index);
+    return years;
   }
 }

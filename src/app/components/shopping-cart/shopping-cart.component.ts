@@ -26,7 +26,6 @@ export class ShoppingCartComponent {
     this.cartService.itemsInCart.subscribe((itemsInCart) => {
       this.itemsInCart = itemsInCart;
     });
-    this.cartService.updateCartTotals();
   }
   addToCart(cartItem: CartItem) {
     this.cartService.addToCart(cartItem);

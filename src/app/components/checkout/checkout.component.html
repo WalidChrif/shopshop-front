@@ -44,6 +44,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-space">
+                                <select formControlName="country" (change)="refreshStates('shippingAddress')">
+                                    <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-space">
                                 <input formControlName="street" type="text" placeholder="Street">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('shippingAddress.street')?.invalid && theForm.get('shippingAddress.street')?.touched">
@@ -64,14 +71,7 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option *ngFor="let state of states">{{state.name}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12" *ngIf="selectedState">
-                            <div class="input-space">
-                                <select formControlName="province">
-                                    <option *ngFor="let province of selectedState.provinces">{{province}}</option>
+                                    <option *ngFor="let state of shippingStates" [ngValue]="state.name">{{state.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -88,14 +88,23 @@
                 </div>
                 <div class="input-space">
                     <label class="au-checkbox">
-                        <input  type="checkbox" (change)="copyAddress($event)">
+                        <input type="checkbox" (change)="copyAddress($event)">
                         <span class="au-checkmark"></span> Bill Address same as Shipping Adress
                     </label>
                 </div>
                 <!--Biiling Address Address-->
-                <div class="form-area" formGroupName="billingAddress" *ngIf="!sameAddress">
+                <!-- <div class="form-area" formGroupName="billingAddress" *ngIf="!sameAddress"> -->
+                <div class="form-area" formGroupName="billingAddress">
                     <h3>Billing Address</h3>
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-space">
+                                <select formControlName="country" (change)="refreshStates('billingAddress')">
+                                    <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                                </select>
+                                
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="input-space">
                                 <input formControlName="street" type="text" placeholder="Street">
@@ -118,14 +127,7 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option *ngFor="let state of states">{{state.name}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12" *ngIf="selectedState">
-                            <div class="input-space">
-                                <select formControlName="province">
-                                    <option *ngFor="let province of selectedState.provinces">{{province}}</option>
+                                    <option *ngFor="let state of billingStates">{{state.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -147,8 +149,13 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="creditCardType">
-                                    <option *ngFor="let creditCardType of creditCardTypes">
-                                        {{creditCardType}}</option>
+                                    <option value="Visa" selected>Visa</option>
+                                    <option value="MasterCard">MasterCard</option>
+                                    <option value="American Express">American Express</option>
+                                    <option value="Discover">Discover</option>
+                                    <option value="JCB">JCB</option>
+                                    <option value="Diners Club">Diners Club</option>
+                                    <option value="UnionPay">UnionPay</option>
                                 </select>
                             </div>
                         </div>
@@ -192,7 +199,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="input-space">
-                                <select formControlName="creditCardExpYear">
+                                <select formControlName="creditCardExpYear" (change)="refreshMonths()">
                                     <option *ngFor="let year of years">{{year}}</option>
                                 </select>
                             </div>
