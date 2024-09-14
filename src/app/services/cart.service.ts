@@ -10,7 +10,7 @@ export class CartService {
 
   cartProducts: CartItem[] = [];
   totalPrice = new BehaviorSubject<number>(0);
-  itemsInCart = new BehaviorSubject<number>(0);
+  totalQuantity = new BehaviorSubject<number>(0);
 
   constructor() {}
 
@@ -42,7 +42,7 @@ export class CartService {
     );
     let totalItemsValue = this.cartProducts.reduce((accumulator, product) => accumulator + product.quantity, 0);
     this.totalPrice.next(totalPriceValue);
-    this.itemsInCart.next(totalItemsValue);
+    this.totalQuantity.next(totalItemsValue);
   }
 
 }

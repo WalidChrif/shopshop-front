@@ -32,15 +32,13 @@ export class ProductDetailComponent {
   ) {}
 
   ngOnInit() {   
-    this.route.paramMap.subscribe((params) => {
-      console.log("inside product detail");
-      
+    this.route.paramMap.subscribe((params) => {      
       if (params.has('sku')) {
       this.param = params.get('sku');
       this.productService.getProductBySku(this.param!).subscribe((product) => {
         this.product = product;
       });
-    }});
+    }});  
     return;
   }
   addToCart(product: Product) {

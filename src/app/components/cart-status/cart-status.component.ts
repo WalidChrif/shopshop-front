@@ -13,13 +13,13 @@ import { RouterLink } from '@angular/router';
 export class CartStatusComponent {
 
   totalPrice = 0.0;
-  itemsInCart = 0;
+  totalQuantity = 0;
 
   constructor(private cartService : CartService) { }
 
   ngOnInit() {
     this.cartService.totalPrice.subscribe(totalPrice => this.totalPrice = totalPrice);
-    this.cartService.itemsInCart.subscribe(itemsInCart => this.itemsInCart = itemsInCart);
+    this.cartService.totalQuantity.subscribe(totalQuantity => this.totalQuantity = totalQuantity);
 
   }
 

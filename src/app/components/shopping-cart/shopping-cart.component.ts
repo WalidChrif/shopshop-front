@@ -14,7 +14,7 @@ import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 export class ShoppingCartComponent {
   cartItems: CartItem[] = [];
   totalPrice = 0.0;
-  itemsInCart: number = 0;
+  totalQuantity: number = 0;
 
   constructor(private cartService: CartService) {}
 
@@ -23,8 +23,8 @@ export class ShoppingCartComponent {
     this.cartService.totalPrice.subscribe((totalPrice) => {
       this.totalPrice = totalPrice;
     });
-    this.cartService.itemsInCart.subscribe((itemsInCart) => {
-      this.itemsInCart = itemsInCart;
+    this.cartService.totalQuantity.subscribe((totalQuantity) => {
+      this.totalQuantity = totalQuantity;
     });
   }
   addToCart(cartItem: CartItem) {

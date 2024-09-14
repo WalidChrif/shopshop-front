@@ -9,7 +9,7 @@
                                 <div class="col">
                                     <h4><b>Shopping Cart</b></h4>
                                 </div>
-                                <div class="col align-self-center text-right text-muted">{{itemsInCart}} items</div>
+                                <div class="col align-self-center text-right text-muted">{{totalQuantity}} items</div>
                             </div>
                         </div>
                         <div class="row border-top border-bottom" *ngIf="cartItems.length > 0">
@@ -46,7 +46,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col" style="padding-left:0;">ITEMS {{itemsInCart}}</div>
+                            <div class="col" style="padding-left:0;">ITEMS {{totalQuantity}}</div>
                             <div class="col text-right">{{totalPrice | currency : 'USD'}}</div>
                         </div>
                         <form>

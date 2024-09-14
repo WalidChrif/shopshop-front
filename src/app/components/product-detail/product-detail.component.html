@@ -2,17 +2,21 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
-            <img [src]="product?.imageUrl" class="detail-img" width="450px">
-            <div class="">
-                <h3>{{product?.name}}</h3>
-                <div class="price">{{product?.unitPrice | currency : 'USD'}}</div>
-                <button type="button" (click)="addToCart(product!)" class="btn btn-info me-2">Add to cart </button>
-                <a routerLink="/shopping-cart" class="primary-btn">Proceed To Checkout</a>
-                <hr>
-                <h4>Product Description</h4>
-                <p>{{product?.description}}</p>
-                <a [routerLink]="['/home']" class="primary-btn mt-3" routerLinkActive="router-link-active">Back to
-                    Product List</a>
+            <div class="row pt-5">
+                <div class="col-md-6">
+                    <img [src]="product?.imageUrl" class="detail-img ps-20" width="800px">
+                </div>
+                <div class="col-md-6 pt-20">
+                    <h3>{{product?.name}}</h3>
+                    <div class="price">{{product?.unitPrice | currency : 'USD'}}</div>
+                    <button type="button" (click)="addToCart(product!)" class="btn btn-info me-2">Add to cart </button>
+                    <a routerLink="/shopping-cart" class="primary-btn">Proceed To Checkout</a>
+                    <hr>
+                    <h4>Product Description</h4>
+                    <p>{{product?.description}}</p>
+                    <a [routerLink]="['/home']" class="primary-btn mt-3" routerLinkActive="router-link-active">Back to
+                        Product List</a>
+                </div>
             </div>
         </div>
     </div>

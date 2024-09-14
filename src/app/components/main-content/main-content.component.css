@@ -23,6 +23,10 @@ a {
     color: #0da8e4;
 }
 
+.box{
+    padding: 0 70px 40px 0;
+}
+
 .items * {
     color: #0da8e4;
 }

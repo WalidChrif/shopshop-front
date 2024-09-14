@@ -24,30 +24,27 @@
 				</div>
 
 			</div>
-			<div class="footer-pagination">
+			<div class="footer-pagination" style="padding-bottom: 30px;">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-7">
 
 					</div>
-					<div class="col-md-6">
-						<div class="row">
+					<div class="col-md-5 box items">
+						<div class="row ">
 
-							<div class="col-md-9 pt-2" style="padding-left:35%">
+							<div class="col-md-8" style="padding-left:35%">
 								<ngb-pagination [(page)]="pageNumber" [collectionSize]="totalElements"
-									[pageSize]="pageSize" (pageChange)="updatePage()"
-									[maxSize]="5">
+									[pageSize]="pageSize" (pageChange)="updatePage()" [maxSize]="5">
 								</ngb-pagination>
 							</div>
-							<div class="col-md-3 mt-2 mr-5 blueit items" style="text-align:right">
-									<span class="mr-2">Page size</span>
-									<select (click)="updatePage()" name="pageSize" [(ngModel)]="pageSize">
-										<option value="5" selected="true">5</option>
-										<option value="10" >10</option>
-										<option >20</option>
-										<option>50</option>
-									</select>
-								<!-- parent component can take css styles from child below -->
-								<!-- <app-main-content-footer></app-main-content-footer> -->
+							<div class="col-md-4  ">
+								<span class="mr-2">Page size</span>
+								<select (click)="updatePage()" name="pageSize" [(ngModel)]="pageSize">
+									<option value="5" selected="true">5</option>
+									<option value="10">10</option>
+									<option>20</option>
+									<option>50</option>
+								</select>
 							</div>
 						</div>
 					</div>

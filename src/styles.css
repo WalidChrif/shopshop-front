@@ -129,9 +129,9 @@ a:hover {
 }
 
 .page-wrapper {
-    overflow: hidden;
+    overflow: auto;
     background: #e5e5e5;
-    padding-bottom: 8vh
+    /* padding-bottom: 8vh */
 }
 
 .page-container {
@@ -932,7 +932,7 @@ footer ul li {
 
     .page-wrapper {
         background: #e5e5e5;
-        padding-bottom: 12vh
+        /* padding-bottom: 12vh */
     }
 
     .main-content {

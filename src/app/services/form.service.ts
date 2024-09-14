@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { State } from '../common/state';
 import { Country } from '../common/country';
-import { of } from 'rxjs';
-import { start } from '@popperjs/core';
 
 @Injectable({
   providedIn: 'root',

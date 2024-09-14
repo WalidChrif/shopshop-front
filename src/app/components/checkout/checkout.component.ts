@@ -1,3 +1,6 @@
+import { Order } from './../../common/order';
+import { Purchase } from '../../common/purchase';
+import { CheckoutService } from './../../services/checkout.service';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -22,17 +25,20 @@ import { FormService } from '../../services/form.service';
 export class CheckoutComponent {
   theForm!: FormGroup;
   totalPrice!: number;
-  itemsInCart!: number;
+  totalQuantity!: number;
   sameAddress = false;
   years: number[] = [];
   months: string[] = [];
   countries: Country[] = [];
   shippingStates: State[] = [];
   billingStates: State[] = [];
+  purchase!: Purchase;
+  trackingNumber!: string;
 
   constructor(
     private formService: FormService,
-    private cartService: CartService
+    private cartService: CartService,
+    private checkoutService: CheckoutService
   ) {}
 
   ngOnInit() {
@@ -43,7 +49,16 @@ export class CheckoutComponent {
     this.updateTotals();
   }
   onSubmit() {
-    console.log(this.theForm.value);
+    this.purchase = {
+      order: {totalPrice: this.totalPrice, totalQuantity: this.totalQuantity},
+      customer : this.theForm.value.customer,
+      orderItems : this.cartService.cartProducts,
+      shippingAddress: this.theForm.value.shippingAddress,
+      billingAddress: this.theForm.value.billingAddress
+    };
+    this.checkoutService.placeOrder(this.purchase).subscribe(trackingNumber => {
+      this.trackingNumber = trackingNumber ;
+    });
   }
 
   createForm() {
@@ -112,9 +127,7 @@ export class CheckoutComponent {
 
   copyAddress(event: Event) {
     const checkbox = event.target as HTMLInputElement;
-    if (checkbox.checked) {
-      console.log(this.theForm.get('shippingAddress')?.value);
-      
+    if (checkbox.checked) {      
       this.theForm
         .get('billingAddress')
         ?.setValue(this.theForm.get('shippingAddress')?.value);
@@ -124,7 +137,6 @@ export class CheckoutComponent {
       this.sameAddress = false;
       this.theForm.get('billingAddress')?.reset();
     }
-    console.log(this.theForm.get('billingAddress')?.value);
  
   }
 
@@ -162,8 +174,8 @@ export class CheckoutComponent {
     this.cartService.totalPrice.subscribe((totalPrice) => {
       this.totalPrice = totalPrice;
     });
-    this.cartService.itemsInCart.subscribe((itemsInCart) => {
-      this.itemsInCart = itemsInCart;
+    this.cartService.totalQuantity.subscribe((totalQuantity) => {
+      this.totalQuantity = totalQuantity;
     });
   }
 }
