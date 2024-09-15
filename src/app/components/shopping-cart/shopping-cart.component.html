@@ -61,7 +61,7 @@
                             <div class="col">TOTAL PRICE</div>
                             <div class="col text-right">{{totalPrice | currency : 'USD'}}</div>
                         </div>
-                        <button routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button>
+                        <button [disabled]="this.cartItems.length <= 0"  routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button>
                     </div>
                 </div>
 

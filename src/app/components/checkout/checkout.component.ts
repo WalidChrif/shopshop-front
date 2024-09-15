@@ -45,20 +45,22 @@ export class CheckoutComponent {
     this.createForm();
     this.getCountries();
     this.getYears();
-    this.refreshMonths(); 
+    this.refreshMonths();
     this.updateTotals();
   }
   onSubmit() {
-    this.purchase = {
-      order: {totalPrice: this.totalPrice, totalQuantity: this.totalQuantity},
-      customer : this.theForm.value.customer,
-      orderItems : this.cartService.cartProducts,
-      shippingAddress: this.theForm.value.shippingAddress,
-      billingAddress: this.theForm.value.billingAddress
-    };
-    this.checkoutService.placeOrder(this.purchase).subscribe(trackingNumber => {
-      this.trackingNumber = trackingNumber ;
-    });
+    this.purchase = new Purchase(
+      this.theForm.value.customer,
+      { totalPrice: this.totalPrice, totalQuantity: this.totalQuantity },
+      this.theForm.value.shippingAddress,
+      this.theForm.value.billingAddress,
+      this.cartService.cartProducts
+    );
+    this.checkoutService
+      .placeOrder(this.purchase)
+      .subscribe((trackingNumber) => {
+        this.trackingNumber = trackingNumber;
+      });
   }
 
   createForm() {
@@ -127,7 +129,7 @@ export class CheckoutComponent {
 
   copyAddress(event: Event) {
     const checkbox = event.target as HTMLInputElement;
-    if (checkbox.checked) {      
+    if (checkbox.checked) {
       this.theForm
         .get('billingAddress')
         ?.setValue(this.theForm.get('shippingAddress')?.value);
@@ -137,7 +139,6 @@ export class CheckoutComponent {
       this.sameAddress = false;
       this.theForm.get('billingAddress')?.reset();
     }
- 
   }
 
   refreshStates(address: string) {
@@ -157,12 +158,13 @@ export class CheckoutComponent {
     this.years = this.formService.getYears();
   }
 
-  refreshMonths() {    
+  refreshMonths() {
     const months: string[] = [];
-    const theYear = this.theForm.get('creditCard')?.value.creditCardExpYear;    
+    const theYear = this.theForm.get('creditCard')?.value.creditCardExpYear;
     const currentYear = new Date().getFullYear();
     let startMonth = 0;
-    if (currentYear == theYear || theYear == '') startMonth = new Date().getMonth();
+    if (currentYear == theYear || theYear == '')
+      startMonth = new Date().getMonth();
     for (startMonth; startMonth < 12; startMonth++) {
       months.push(
         new Date(0, startMonth).toLocaleString('default', { month: 'long' })

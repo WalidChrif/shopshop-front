@@ -10,8 +10,8 @@ export class FormService {
   baseUrl = 'http://localhost:8000/api/v1/states';
   constructor(private http: HttpClient) {}
 
-  getStates(countryId: number) {
-    return this.http.get<State[]>(`${this.baseUrl}/country/${countryId}`);
+  getStates(countryName: string) {
+    return this.http.get<State[]>(`${this.baseUrl}/country/${countryName}`);
   }
   getCountries() {
     return this.http.get<Country[]>(`${this.baseUrl}/countries`);
