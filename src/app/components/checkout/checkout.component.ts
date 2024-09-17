@@ -14,11 +14,12 @@ import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { State } from '../../common/state';
 import { Country } from '../../common/country';
 import { FormService } from '../../services/form.service';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, NgFor, NgIf, CurrencyPipe],
+  imports: [NgbPopover, ReactiveFormsModule, FormsModule, NgFor, NgIf, CurrencyPipe],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
 })
@@ -49,6 +50,7 @@ export class CheckoutComponent {
     this.updateTotals();
   }
   onSubmit() {
+    if(this.theForm.valid || this.totalQuantity > 0) {
     this.purchase = new Purchase(
       this.theForm.value.customer,
       { totalPrice: this.totalPrice, totalQuantity: this.totalQuantity },
@@ -61,6 +63,7 @@ export class CheckoutComponent {
       .subscribe((trackingNumber) => {
         this.trackingNumber = trackingNumber;
       });
+    }
   }
 
   createForm() {

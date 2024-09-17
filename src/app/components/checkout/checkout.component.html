@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="input-space">
-                                <input formControlName="firstName" type="text" placeholder="First Name">
+                                <input formControlName="firstName" type="text" placeholder="First Name*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('customer.firstName')?.invalid && theForm.get('customer.firstName')?.touched">
                                     Please enter a valid first name.
@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="input-space">
-                                <input formControlName="lastName" type="text" placeholder="Last Name">
+                                <input formControlName="lastName" type="text" placeholder="Last Name*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('customer.lastName')?.invalid && theForm.get('customer.lastName')?.touched">
                                     Please enter a valid last name.
@@ -28,7 +28,7 @@
                         <div class="clearfix"></div>
                         <div class="col-md-6">
                             <div class="input-space">
-                                <input formControlName="email" type="text" placeholder="Email Address">
+                                <input formControlName="email" type="text" placeholder="Email*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('customer.email')?.invalid && theForm.get('customer.email')?.touched">
                                     Please enter a valid email address.
@@ -45,13 +45,19 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="country" (change)="refreshStates('shippingAddress')">
-                                    <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+                                    <option value="">Select your country*</option>
+                                    <option *ngFor="let country of countries" [value]="country.name">{{country.name}}
+                                    </option>
                                 </select>
+                                <span class="help-block ms-3"
+                                *ngIf="theForm.get('shippingAddress.country')?.value == '' && theForm.get('shippingAddress.country')?.touched ">
+                                Please select a valid state.
+                            </span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-space">
-                                <input formControlName="street" type="text" placeholder="Street">
+                                <input formControlName="street" type="text" placeholder="Street*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('shippingAddress.street')?.invalid && theForm.get('shippingAddress.street')?.touched">
                                     Please enter a valid street.
@@ -60,7 +66,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="input-space">
-                                <input formControlName="city" type="text" placeholder="City" required>
+                                <input formControlName="city" type="text" placeholder="City*" required>
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('shippingAddress.city')?.invalid && theForm.get('shippingAddress.city')?.touched">
                                     Please enter a valid city.
@@ -71,8 +77,14 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option *ngFor="let state of shippingStates" [ngValue]="state.name">{{state.name}}</option>
+                                    <option value="">Select your state*</option>
+                                    <option *ngFor="let state of shippingStates" [ngValue]="state.name">{{state.name}}
+                                    </option>
                                 </select>
+                                <span class="help-block ms-3"
+                                *ngIf="theForm.get('shippingAddress.state')?.value == '' && theForm.get('shippingAddress.state')?.touched ">
+                                Please select a valid state.
+                            </span>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -100,14 +112,19 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="country" (change)="refreshStates('billingAddress')">
-                                    <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+                                    <option value="">Select your country*</option>
+                                    <option *ngFor="let country of countries" [value]="country.name">{{country.name}}
+                                    </option>
                                 </select>
-                                
+                                <span class="help-block ms-3"
+                                *ngIf="theForm.get('billingAddress.country')?.value == '' && theForm.get('billingAddress.country')?.touched">
+                                Please select your country
+                                </span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-space">
-                                <input formControlName="street" type="text" placeholder="Street">
+                                <input formControlName="street" type="text" placeholder="Street*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('billingAddress.street')?.invalid && theForm.get('billingAddress.street')?.touched">
                                     Please enter a valid street.
@@ -116,7 +133,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="input-space">
-                                <input formControlName="city" type="text" placeholder="City" required>
+                                <input formControlName="city" type="text" placeholder="City*" required>
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('billingAddress.city')?.invalid && theForm.get('billingAddress.city')?.touched">
                                     Please enter a valid city.
@@ -127,8 +144,13 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="state">
+                                    <option value="">Select your state*</option>
                                     <option *ngFor="let state of billingStates">{{state.name}}</option>
                                 </select>
+                                <span class="help-block ms-3"
+                                    *ngIf="theForm.get('billingAddress.state')?.value == '' && theForm.get('billingAddress.state')?.touched ">
+                                    Please select a valid state.
+                                </span>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -149,7 +171,8 @@
                         <div class="col-md-12">
                             <div class="input-space">
                                 <select formControlName="creditCardType">
-                                    <option value="Visa" selected>Visa</option>
+                                    <option value="">Select a card type*</option>
+                                    <option value="Visa">Visa</option>
                                     <option value="MasterCard">MasterCard</option>
                                     <option value="American Express">American Express</option>
                                     <option value="Discover">Discover</option>
@@ -157,11 +180,15 @@
                                     <option value="Diners Club">Diners Club</option>
                                     <option value="UnionPay">UnionPay</option>
                                 </select>
+                                <span class="help-block ms-3"
+                                    *ngIf="theForm.get('creditCard.creditCardType')?.value == '' && theForm.get('creditCard.creditCardType')?.touched">
+                                    Please select credit card type
+                                </span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="input-space">
-                                <input formControlName="creditCardName" type="text" placeholder="Name on card">
+                                <input formControlName="creditCardName" type="text" placeholder="Name on card*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('creditCard.creditCardName')?.invalid && theForm.get('creditCard.creditCardName')?.touched">
                                     Please enter a valid credit card name.
@@ -171,7 +198,7 @@
                         <div class="clearfix"></div>
                         <div class="col-md-8">
                             <div class="input-space">
-                                <input formControlName="creditCardNumber" type="text" placeholder="Card number">
+                                <input formControlName="creditCardNumber" type="text" placeholder="Card number*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('creditCard.creditCardNumber')?.invalid && theForm.get('creditCard.creditCardNumber')?.touched">
                                     Please enter a valid credit card number.
@@ -180,7 +207,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="input-space">
-                                <input formControlName="creditCardCCV" type="text" placeholder="CVV2 number">
+                                <input formControlName="creditCardCCV" type="text" placeholder="CVV2 number*">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('creditCard.creditCardCCV')?.invalid && theForm.get('creditCard.creditCardCCV')?.touched">
                                     Please enter a valid CVV2 number.
@@ -214,7 +241,14 @@
                     <B>Total Price: {{totalPrice | currency : 'USD'}}</B>
                 </div>
                 <div class="text-center">
-                    <button [disabled]="!theForm.valid" type="submit" class="au-btn-submit p-2 px-4">Purchase</button>
+                    <!-- <button [disabled]="!theForm.valid" type="submit" class="au-btn-submit p-2 px-4">Purchase</button> -->
+                    <ng-template #popContent>
+                        {{theForm.valid ? 'Order placed successfully' : 'Please fill form with valid data.'}}
+                    </ng-template>
+                    <button type="submit" type="button" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                        [ngbPopover]="popContent">
+                        Purchase
+                    </button>
                 </div>
             </form>
         </div>
