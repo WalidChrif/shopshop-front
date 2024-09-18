@@ -26,7 +26,8 @@
                                     <button class="border px-2" [disabled]="cartItem.unitsInStock <= 0"
                                         (click)="addToCart(cartItem)">+</button>
                                 </div>
-                                <div class="col"><span class="close border p-2"> &#10005;</span>&nbsp;{{cartItem.unitPrice}}</div>
+                                <div class="col"><span class="close border p-2">
+                                        &#10005;</span>&nbsp;{{cartItem.unitPrice}}</div>
                             </div>
                         </div>
                         <div *ngIf="cartItems.length <= 0">
@@ -61,7 +62,16 @@
                             <div class="col">TOTAL PRICE</div>
                             <div class="col text-right">{{totalPrice | currency : 'USD'}}</div>
                         </div>
-                        <button [disabled]="this.cartItems.length <= 0"  routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button>
+                        <!-- <button [disabled]="this.cartItems.length <= 0"  routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button> -->
+                        <ng-template #popContent>
+                            Add items to your cart.
+                        </ng-template>
+                        <button *ngIf="totalQuantity > 0" class="au-btn-submit p-2 px-4"
+                            [routerLink]="['/checkout']">Checkout</button>
+                        <button *ngIf="totalQuantity <= 0" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                            [ngbPopover]="popContent">
+                            Checkout
+                        </button>
                     </div>
                 </div>
 

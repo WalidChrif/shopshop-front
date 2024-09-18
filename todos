@@ -1,1 +1,5 @@
-add form group to checkout html
+add ngrx state to handle user login state
+config users and manage content based on roles 
+guest customer seller content 
+add receipt component
+<!-- add admin content to handle user management -->

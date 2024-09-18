@@ -15,6 +15,7 @@ import { State } from '../../common/state';
 import { Country } from '../../common/country';
 import { FormService } from '../../services/form.service';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -39,7 +40,8 @@ export class CheckoutComponent {
   constructor(
     private formService: FormService,
     private cartService: CartService,
-    private checkoutService: CheckoutService
+    private checkoutService: CheckoutService,
+    private router : Router
   ) {}
 
   ngOnInit() {
@@ -62,6 +64,8 @@ export class CheckoutComponent {
       .placeOrder(this.purchase)
       .subscribe((trackingNumber) => {
         this.trackingNumber = trackingNumber;
+        this.router.navigate(['/order-confirmation', this.trackingNumber]);
+        
       });
     }
   }

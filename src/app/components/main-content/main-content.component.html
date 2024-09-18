@@ -2,34 +2,33 @@
 <div class="main-content">
 	<div class="section-content section-content-p30">
 		<div class="container-fluid">
-			<div class="row">
-				<div *ngIf="products?.length == 0 && !loading" class="alert alert-warning" role="alert">
-					No products found. Please select a product category.
-				</div>
-				<div *ngIf="products?.length == 0 && loading" class="alert alert-info" role="alert">
-					loading products.
-				</div>
-				<div *ngFor="let product of products" class="col-md-3">
-					<div class="product-box">
-						<a [routerLink]="['/product-detail',product.sku]">
-							<img [src]="product.imageUrl" class="img-responsive">
-						</a>
-						<a style="display: block;" [routerLink]="['/product-detail',product.sku]">
-							<h1>{{product.name}}</h1>
-						</a>
-						<!-- <h2>{{product.description}} </h2> -->
-						<div class="price">{{product.unitPrice | currency :'USD'}}</div>
-						<button (click)="addToCart(product)" class="btn btn-info">Add to cart</button>
-					</div>
-				</div>
-
+			<div *ngIf=" loading" class="lds-dual-ring element"></div>
+			<div *ngIf="!loading && products?.length == 0 " class="alert alert-warning" role="alert">
+				No products found. Please select a product category.
 			</div>
-			<div class="footer-pagination" style="padding-bottom: 30px;">
+			<div class="row ">
+				<ng-container *ngIf="!loading">
+					<div *ngFor="let product of products" class="col-md-3">
+						<div class="product-box">
+							<a [routerLink]="['/product-detail',product.sku]">
+								<img [src]="product.imageUrl" class="img-responsive">
+							</a>
+							<a style="display: block;" [routerLink]="['/product-detail',product.sku]">
+								<h1>{{product.name}}</h1>
+							</a>
+							<!-- <h2>{{product.description}} </h2> -->
+							<div class="price">{{product.unitPrice | currency :'USD'}}</div>
+							<button (click)="addToCart(product)" class="btn btn-info">Add to cart</button>
+						</div>
+					</div>
+				</ng-container>
+			</div>
+			<div *ngIf="!loading" class="footer-pagination" style="padding-bottom: 30px;">
 				<div class="row">
-					<div class="col-md-7">
+					<div class="col-md-6">
 
 					</div>
-					<div class="col-md-5 box items">
+					<div class="col-md-6 box items">
 						<div class="row ">
 
 							<div class="col-md-8" style="padding-left:35%">

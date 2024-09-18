@@ -141,7 +141,7 @@ a:hover {
 
 .main-content {
     padding-top: 116px;
-    min-height:100vh
+    min-height: 100vh
 }
 
 aside.menu-sidebar.d-none.d-lg-block.clr {
@@ -280,7 +280,7 @@ input.au-input.au-input-xl {
     border-radius: 30px;
     border: 1px solid #0da8e4;
     float: left;
-    margin-top: 7px;
+    margin-top: 9px;
     padding-left: 17px
 }
 
@@ -584,6 +584,7 @@ input.au-input.au-input-xl {
     margin-left: 5px;
 } */
 .product-box {
+    padding-left: 34px;
     margin-bottom: 60px
 }
 
@@ -1156,8 +1157,9 @@ footer ul li {
     }
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #126180 !important;
-    border:  #126180 !important;;
+    border: #126180 !important;
+    ;
     color: white !important;
 }

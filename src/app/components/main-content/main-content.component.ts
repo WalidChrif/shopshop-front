@@ -11,19 +11,11 @@ import { CartItem } from '../../common/cart-item';
 @Component({
   selector: 'app-main-content',
   standalone: true,
-  imports: [
-    RouterLink,
-    FormsModule,
-    NgFor,
-    NgIf,
-    CurrencyPipe,
-    NgbPagination,
-  ],
+  imports: [RouterLink, FormsModule, NgFor, NgIf, CurrencyPipe, NgbPagination],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.css',
 })
 export class MainContentComponent {
-
   products: Product[] = [];
   categoryId = 1;
   previousCategoryId = 1;
@@ -34,25 +26,25 @@ export class MainContentComponent {
   totalPages!: number;
   loading: boolean = false;
   searchMode = false;
-  homePage = false
+  homePage = false;
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private cartService : CartService
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    
-    this.initializeProducts();
+    this.loading = true;
     this.route.paramMap.subscribe((params) => {
       this.params = params;
       if (params.has('id')) this.handleCategoryProducts(this.params);
-      else if(params.has('name')) this.handleSearchProducts(this.params);
+      else if (params.has('name')) this.handleSearchProducts(this.params);
     });
   }
 
   handleCategoryProducts(params: ParamMap) {
+    this.loading = true;
     this.searchMode = false;
     this.categoryId = +params.get('id')!;
     if (this.previousCategoryId !== this.categoryId) {
@@ -70,6 +62,7 @@ export class MainContentComponent {
       });
   }
   handleSearchProducts(params: ParamMap) {
+    this.loading = true;
     const searchParam = params.get('name')?.trim();
     if (!searchParam) {
       return;
@@ -80,14 +73,14 @@ export class MainContentComponent {
       .subscribe((response) => {
         this.handleData(response);
       });
-      // this.searchMode = false;
   }
   handleData(response: Page<Product>) {
-    this.products = response.content;
-    this.totalPages = response.totalPages;
-    this.totalElements = response.totalElements;
-    this.pageNumber = response.number + 1;
-    this.pageSize = response.size;
+      this.products = response.content;
+      this.totalPages = response.totalPages;
+      this.totalElements = response.totalElements;
+      this.pageNumber = response.number + 1;
+      this.pageSize = response.size;
+      this.loading = false;
   }
 
   updatePage() {
@@ -95,19 +88,8 @@ export class MainContentComponent {
     else this.handleSearchProducts(this.params);
   }
   addToCart(product: Product) {
-  const cartItem = new CartItem(product);
+    const cartItem = new CartItem(product);
     this.cartService.addToCart(cartItem);
-    }
-
-  initializeProducts() {
-    this.productService
-      .getProductsByCategory(
-        this.categoryId,
-        this.pageNumber - 1,
-        this.pageSize
-      )
-      .subscribe((response) => {
-        this.handleData(response);
-      });
   }
+
 }

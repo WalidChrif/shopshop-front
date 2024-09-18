@@ -3,11 +3,12 @@ import { CartItem } from '../../common/cart-item';
 import { CartService } from '../../services/cart.service';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [RouterLink, NgIf, NgFor, CurrencyPipe],
+  imports: [RouterLink, NgbPopover, NgIf, NgFor, CurrencyPipe],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css',
 })

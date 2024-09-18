@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoryMenuComponent } from '../category-menu/category-menu.component';
-import { SearchNavbarComponent } from '../search-navbar/search-navbar.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { Product } from '../../common/product';
 import { CurrencyPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
@@ -15,7 +15,7 @@ import { CartItem } from '../../common/cart-item';
     RouterLink,
     CurrencyPipe,
     CategoryMenuComponent,
-    SearchNavbarComponent,
+    NavbarComponent,
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',

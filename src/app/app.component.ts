@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CategoryMenuComponent } from './components/category-menu/category-menu.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SearchNavbarComponent } from './components/search-navbar/search-navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { SearchNavbarComponent } from './components/search-navbar/search-navbar.
   imports: [
     RouterOutlet,
     MainContentComponent,
-    SearchNavbarComponent,
+    NavbarComponent,
     CategoryMenuComponent,
     FooterComponent,
   ],

@@ -106,7 +106,7 @@
                 </div>
                 <!--Biiling Address Address-->
                 <!-- <div class="form-area" formGroupName="billingAddress" *ngIf="!sameAddress"> -->
-                <div class="form-area" formGroupName="billingAddress">
+                <div *ngIf="!sameAddress" class="form-area" formGroupName="billingAddress">
                     <h3>Billing Address</h3>
                     <div class="row">
                         <div class="col-md-12">
@@ -243,9 +243,16 @@
                 <div class="text-center">
                     <!-- <button [disabled]="!theForm.valid" type="submit" class="au-btn-submit p-2 px-4">Purchase</button> -->
                     <ng-template #popContent>
-                        {{theForm.valid ? 'Order placed successfully' : 'Please fill form with valid data.'}}
+                        {{theForm.invalid && totalQuantity <= 0 ?  'Please add items to your cart and fill form with valid data.' : ''}}
+                        {{totalQuantity <= 0 && theForm.valid ? 'Please add items to your cart.' : ''}}
+                        {{totalQuantity > 0 && theForm.invalid ? 'Please fill form with valid data.' :  ''}}
+                        {{theForm.valid && totalQuantity > 0 ? 'Order placed successfuly' : ''}}
                     </ng-template>
-                    <button type="submit" type="button" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                    <button *ngIf="theForm.invalid || totalQuantity <= 0" type="button" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                        [ngbPopover]="popContent">
+                        Purchase
+                    </button>
+                    <button *ngIf="theForm.valid && totalQuantity > 0" type="submit" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
                         [ngbPopover]="popContent">
                         Purchase
                     </button>
