@@ -1,0 +1,40 @@
+<!-- MAIN CONTENT -->
+
+<!-- Form Group -->
+<div class="wrapper register ">
+    <!-- <a href="index.html"><span class="icon-close"><i class="fa fa-close-outline"></i></span></a> -->
+
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+        <div class="input-box">
+            <!-- <span class="icon"><i class='bx bx-user'></i></span> -->
+            <input formControlName="username" type="text">
+            <label>Username/Email</label>
+            <span class="help-block ms-3"
+            *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            Please enter a valid username.
+        </span>
+        </div>
+        <div class="input-box">
+            <!-- <span class="icon"><i class="fa fa-lock"></i></span> -->
+            <input formControlName="password" type="password" required>
+            <label>Password</label>
+            <span class="help-block ms-3"
+            *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            Please enter a valid password.
+        </span>
+        </div>
+        <div class="remember-forgot">
+            <label>
+                <input formControlName="rememberMe" type="checkbox">Remember me</label>
+        </div>
+        <button  [disabled]="loginForm.invalid" type="submit" class="btn">Login</button>
+        <div class="login-register">
+            <p>Not registered yet?
+                <a [routerLink]="['/auth','signup']" routerLinkActive="router-link-active"  class="register-link">
+                    <button class="btn">Register</button>
+                </a>
+            </p>
+        </div>
+    </form>
+</div>
