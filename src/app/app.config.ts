@@ -6,10 +6,12 @@ import {
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { KeycloakService } from './services/keycloak.service';
 import { tokenInterceptor } from './interceptors/token.interceptor';
 import { provideStore } from '@ngrx/store';
+import { authReducer } from './store/auth.reducer';
+import { reducers } from './store';
 
 export function initializeKeycloak(keycloakService: KeycloakService) {
   return () => keycloakService.init();
@@ -27,6 +29,6 @@ export const appConfig: ApplicationConfig = {
         multi: true,
         deps: [KeycloakService],
     },
-    provideStore()
+      provideStore(reducers),
 ],
 };

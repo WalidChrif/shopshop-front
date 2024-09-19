@@ -4,11 +4,13 @@ import { CategoryMenuComponent } from './components/category-menu/category-menu.
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TestStoreComponent } from './components/test-store/test-store.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    TestStoreComponent,
     RouterOutlet,
     MainContentComponent,
     NavbarComponent,

@@ -3,14 +3,13 @@ import { Profile } from './../common/profile';
 
 export const LOGIN = 'LOGIN' 
 export const LOGOUT = 'LOGOUT' 
+export type allActions = login | logout;
 
 export class login implements Action{
-    type = LOGIN;
+    readonly type = LOGIN;
     constructor(public payload : Profile){}
 }
 export class logout implements Action{
-    type = LOGOUT;
+    readonly type = LOGOUT;
     constructor(){}
 }
-
-export type allActions = login | logout;

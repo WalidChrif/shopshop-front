@@ -1,14 +1,16 @@
 import { KeycloakService } from './../../services/keycloak.service';
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { CurrencyPipe, NgIf } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { Profile } from '../../common/profile';
+import { AppState } from '../../store';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cart-status',
   standalone: true,
-  imports: [RouterLink, NgIf, CurrencyPipe],
+  imports: [RouterLink, NgIf, CurrencyPipe, AsyncPipe],
   templateUrl: './cart-status.component.html',
   styleUrl: './cart-status.component.css',
 })
@@ -16,16 +18,23 @@ export class CartStatusComponent {
   totalPrice = 0.0;
   totalQuantity = 0;
   profile: Profile | undefined;
+  profile$: Profile | undefined;
 
   constructor(
-    private router: Router,
     private cartService: CartService,
-    private keycloakService: KeycloakService
+    private keycloakService: KeycloakService,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
-    this.keycloakService.profileSubject.subscribe((profile) => {
-      this.profile = profile;
+    // this.keycloakService.profileSubject.subscribe((profile) => {
+    //   this.profile = profile;
+    // });
+    // this.store.select('authReducer').subscribe((data) => {
+    //   this.profile$ = data.profile;
+    // });
+    this.store.select('newAuthReducer').subscribe((data) => {
+      this.profile$ = data.profile;
     });
     this.cartService.totalPrice.subscribe(
       (totalPrice) => (this.totalPrice = totalPrice)
@@ -36,10 +45,8 @@ export class CartStatusComponent {
   }
   login() {
     this.keycloakService.login();
-    // this.router.navigate(['auth','login']);
   }
   logout() {
     this.keycloakService.logout();
-    // this.router.navigate(['auth','signup']);
   }
 }
