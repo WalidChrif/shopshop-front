@@ -16,6 +16,8 @@ import { Country } from '../../common/country';
 import { FormService } from '../../services/form.service';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store';
 
 @Component({
   selector: 'app-checkout',
@@ -36,12 +38,14 @@ export class CheckoutComponent {
   billingStates: State[] = [];
   purchase!: Purchase;
   trackingNumber!: string;
+  authenticated = false;
 
   constructor(
     private formService: FormService,
     private cartService: CartService,
     private checkoutService: CheckoutService,
-    private router : Router
+    private router : Router,
+    private store : Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -68,6 +72,9 @@ export class CheckoutComponent {
         
       });
     }
+    this.store.select('newAuthReducer').subscribe((auth) => {
+      this.authenticated = !!auth.profile;
+    });    
   }
 
   createForm() {

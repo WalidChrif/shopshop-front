@@ -9,6 +9,7 @@ import { Profile } from '../common/profile';
 import { environment } from '../../../environment';
 import * as authActions from '../store/auth.actions';
 import * as newAuthActions from '../store/new-auth.actions';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ export class KeycloakService {
    private auth ;
 
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private router : Router, private store: Store<AppState>) {}
 
   async init() {
     const authentification = await this.keycloak.init({
@@ -64,7 +65,6 @@ export class KeycloakService {
     // this.profileSubject.next(undefined);
     // this.store.dispatch(new authActions.logout());
     this.store.dispatch(newAuthActions.logout());
-    this.keycloak.logout();
-
+    this.keycloak.logout({redirectUri: 'http://localhost:4200'});
   }
 }

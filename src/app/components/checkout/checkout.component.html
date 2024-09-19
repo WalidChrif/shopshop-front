@@ -243,16 +243,18 @@
                 <div class="text-center">
                     <!-- <button [disabled]="!theForm.valid" type="submit" class="au-btn-submit p-2 px-4">Purchase</button> -->
                     <ng-template #popContent>
-                        {{theForm.invalid && totalQuantity <= 0 ?  'Please add items to your cart and fill form with valid data.' : ''}}
-                        {{totalQuantity <= 0 && theForm.valid ? 'Please add items to your cart.' : ''}}
-                        {{totalQuantity > 0 && theForm.invalid ? 'Please fill form with valid data.' :  ''}}
-                        {{theForm.valid && totalQuantity > 0 ? 'Order placed successfuly' : ''}}
+                        {{totalQuantity > 0 || authenticated ? 'Please fill form with valid data.' : ''}}
+                        {{totalQuantity > 0 || theForm.valid  ? 'Please login to place order.' : ''}}
+                        {{authenticated || theForm.valid  ? 'Please add items to your cart.' : ''}}
+                        {{!authenticated && !theForm.valid && totalQuantity <= 0 ? 'Please add items to your cart.' : ''}}
+                        
+                        {{theForm.valid && totalQuantity > 0 && authenticated ? 'Order placed successfuly' : ''}}
                     </ng-template>
-                    <button *ngIf="theForm.invalid || totalQuantity <= 0" type="button" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                    <button *ngIf="theForm.invalid || totalQuantity <= 0 || !authenticated" type="button" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
                         [ngbPopover]="popContent">
                         Purchase
                     </button>
-                    <button *ngIf="theForm.valid && totalQuantity > 0" type="submit" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                    <button *ngIf="theForm.valid && totalQuantity > 0 && authenticated" type="submit" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
                         [ngbPopover]="popContent">
                         Purchase
                     </button>

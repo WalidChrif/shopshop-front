@@ -4,6 +4,8 @@ import { CartService } from '../../services/cart.service';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,8 +18,10 @@ export class ShoppingCartComponent {
   cartItems: CartItem[] = [];
   totalPrice = 0.0;
   totalQuantity: number = 0;
+  authenticated = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,
+    private store : Store<AppState>) {}
 
   ngOnInit() {
     this.cartItems = this.cartService.cartProducts;
@@ -27,6 +31,9 @@ export class ShoppingCartComponent {
     this.cartService.totalQuantity.subscribe((totalQuantity) => {
       this.totalQuantity = totalQuantity;
     });
+    this.store.select('newAuthReducer').subscribe((auth) => {
+      this.authenticated = !!auth.profile;
+    });    
   }
   addToCart(cartItem: CartItem) {
     this.cartService.addToCart(cartItem);
