@@ -27,12 +27,6 @@ export class CartStatusComponent {
   ) {}
 
   ngOnInit() {
-    // this.keycloakService.profileSubject.subscribe((profile) => {
-    //   this.profile = profile;
-    // });
-    // this.store.select('authReducer').subscribe((data) => {
-    //   this.profile$ = data.profile;
-    // });
     this.store.select('newAuthReducer').subscribe((data) => {
       this.profile$ = data.profile;
     });

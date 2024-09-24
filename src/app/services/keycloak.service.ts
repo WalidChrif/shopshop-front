@@ -1,27 +1,20 @@
-import { AbstractControl, FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import Keycloak from 'keycloak-js';
-import { BehaviorSubject } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../store';
 import { Profile } from '../common/profile';
 import { environment } from '../../../environment';
-import * as authActions from '../store/auth.actions';
 import * as newAuthActions from '../store/new-auth.actions';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class KeycloakService {
-  private _keycloak: Keycloak | undefined;
-  private _profile: Profile | undefined;
-  private profileSubject = new BehaviorSubject<Profile | undefined>(undefined);
-   private auth ;
+  private _keycloak: Keycloak;
+  private _profile: Profile;
 
-
-  constructor(private router : Router, private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {}
 
   async init() {
     const authentification = await this.keycloak.init({
@@ -31,14 +24,8 @@ export class KeycloakService {
     });
     if (authentification) {
       this._profile = (await this.keycloak.loadUserProfile()) as Profile;
-      // this.profileSubject.next(this._profile);
-      // this.store.dispatch(new authActions.login(this.profile));
       this.store.dispatch(newAuthActions.login(this.profile));
-      console.log('this.auth :::: ', this.auth);
-      
     } else {
-      // this.profileSubject.next(undefined);
-      // this.store.dispatch(new authActions.logout());
       this.store.dispatch(newAuthActions.logout());
     }
   }
@@ -62,9 +49,7 @@ export class KeycloakService {
   }
 
   logout() {
-    // this.profileSubject.next(undefined);
-    // this.store.dispatch(new authActions.logout());
     this.store.dispatch(newAuthActions.logout());
-    this.keycloak.logout({redirectUri: 'http://localhost:4200'});
+    this.keycloak.logout({ redirectUri: 'http://localhost:4200' });
   }
 }
