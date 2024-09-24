@@ -1,20 +1,20 @@
-import { Profile } from './../common/profile';
+import { User } from '../common/user';
 import * as authActions from './auth.actions';
 
 export interface AuthState {
-  profile : Profile;
+  user : User;
 }
 
 const initialState: AuthState = {
-  profile : null,
+  user : null,
 };
 
 export function authReducer(state = initialState, action: authActions.allActions) {
   switch (action.type) {
     case authActions.LOGIN:
-      return {...state, profile: action['payload']};
+      return {...state, user: action['payload']};
     case authActions.LOGOUT:
-      return { profile: null };
+      return { user: null };
     default:
       return state;
   }

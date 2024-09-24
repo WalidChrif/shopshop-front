@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store"
-import { Profile } from './../common/profile';
+import { User } from '../common/user';
 
 export const LOGIN = 'LOGIN' 
 export const LOGOUT = 'LOGOUT' 
@@ -7,7 +7,7 @@ export type allActions = login | logout;
 
 export class login implements Action{
     readonly type = LOGIN;
-    constructor(public payload : Profile){}
+    constructor(public payload : User){}
 }
 export class logout implements Action{
     readonly type = LOGOUT;

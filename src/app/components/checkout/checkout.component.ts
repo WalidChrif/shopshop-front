@@ -1,4 +1,3 @@
-import { Order } from './../../common/order';
 import { Purchase } from '../../common/purchase';
 import { CheckoutService } from './../../services/checkout.service';
 import { Component } from '@angular/core';
@@ -16,8 +15,6 @@ import { Country } from '../../common/country';
 import { FormService } from '../../services/form.service';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../store';
 
 @Component({
   selector: 'app-checkout',
@@ -29,6 +26,7 @@ import { AppState } from '../../store';
 export class CheckoutComponent {
   theForm!: FormGroup;
   totalPrice!: number;
+  itemsPrice!: number;
   totalQuantity!: number;
   sameAddress = false;
   years: number[] = [];
@@ -38,14 +36,14 @@ export class CheckoutComponent {
   billingStates: State[] = [];
   purchase!: Purchase;
   trackingNumber!: string;
-  authenticated = false;
+  shippingCost = 4.99;
 
   constructor(
     private formService: FormService,
     private cartService: CartService,
     private checkoutService: CheckoutService,
     private router : Router,
-    private store : Store<AppState>
+
   ) {}
 
   ngOnInit() {
@@ -54,9 +52,9 @@ export class CheckoutComponent {
     this.getYears();
     this.refreshMonths();
     this.updateTotals();
+    this.shippingCost = this.cartService.shippingCost;
   }
   onSubmit() {
-    if(this.theForm.valid || this.totalQuantity > 0) {
     this.purchase = new Purchase(
       this.theForm.value.customer,
       { totalPrice: this.totalPrice, totalQuantity: this.totalQuantity },
@@ -68,13 +66,9 @@ export class CheckoutComponent {
       .placeOrder(this.purchase)
       .subscribe((trackingNumber) => {
         this.trackingNumber = trackingNumber;
-        this.router.navigate(['/order-confirmation', this.trackingNumber]);
-        
+        // this.router.navigate(['/order-confirmation', this.trackingNumber]);
       });
-    }
-    this.store.select('newAuthReducer').subscribe((auth) => {
-      this.authenticated = !!auth.profile;
-    });    
+   
   }
 
   createForm() {
@@ -187,11 +181,8 @@ export class CheckoutComponent {
     this.months = months;
   }
   updateTotals() {
-    this.cartService.totalPrice.subscribe((totalPrice) => {
-      this.totalPrice = totalPrice;
-    });
-    this.cartService.totalQuantity.subscribe((totalQuantity) => {
-      this.totalQuantity = totalQuantity;
-    });
+    this.totalPrice = this.cartService.totalPrice.value;
+    this.itemsPrice = this.cartService.itemsPrice.value;
+    this.totalQuantity = this.cartService.totalQuantity.value;
   }
 }

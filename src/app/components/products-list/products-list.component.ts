@@ -5,17 +5,17 @@ import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { Page } from '../../common/page';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../common/cart-item';
 @Component({
   selector: 'app-main-content',
   standalone: true,
   imports: [RouterLink, FormsModule, NgFor, NgIf, CurrencyPipe, NgbPagination],
-  templateUrl: './main-content.component.html',
-  styleUrl: './main-content.component.css',
+  templateUrl: './products-list.component.html',
+  styleUrl: './products-list.component.css',
 })
-export class MainContentComponent {
+export class ProductsListComponent {
   products: Product[] = [];
   categoryId = 1;
   previousCategoryId = 1;

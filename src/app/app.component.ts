@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CategoryMenuComponent } from './components/category-menu/category-menu.component';
-import { MainContentComponent } from './components/main-content/main-content.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TestStoreComponent } from './components/test-store/test-store.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    TestStoreComponent,
     RouterOutlet,
-    MainContentComponent,
+    ProductsListComponent,
     NavbarComponent,
     CategoryMenuComponent,
     FooterComponent,
@@ -21,5 +19,5 @@ import { TestStoreComponent } from './components/test-store/test-store.component
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'shopshop-front';
+  title = 'ShopShop';
 }

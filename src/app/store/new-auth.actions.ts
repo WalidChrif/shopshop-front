@@ -1,10 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { Profile } from '../common/profile';
+import { User } from '../common/user';
 
 // Define login action with payload
 export const login = createAction(
   '[Auth] Login',
-  props<Profile>()
+  props<User>()
 );
 
 // Define logout action with no payload

@@ -6,12 +6,20 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-
   cartProducts: CartItem[] = [];
   totalPrice = new BehaviorSubject<number>(0);
+  itemsPrice = new BehaviorSubject<number>(0);
   totalQuantity = new BehaviorSubject<number>(0);
+  shippingCost = +4.99;
+  storage: Storage = sessionStorage;
 
-  constructor() {}
+  constructor() {
+    this.storage.getItem('cartItems') &&
+      (this.cartProducts = JSON.parse(
+        this.storage.getItem('cartItems') || '{}'
+      )) &&
+      this.updateCartTotals();
+  }
 
   addToCart(cartItem: CartItem) {
     const existingItem = this.cartProducts.find(
@@ -20,9 +28,7 @@ export class CartService {
     if (existingItem) {
       existingItem.quantity++;
       existingItem.unitsInStock--;
-      
-    }
-    else {
+    } else {
       this.cartProducts.push(cartItem);
       cartItem.unitsInStock--;
     }
@@ -31,17 +37,22 @@ export class CartService {
   removeFromCart(cartItem: CartItem) {
     cartItem.quantity--;
     cartItem.unitsInStock++;
-
+    this.updateCartTotals();
   }
-  updateCartTotals() {
+  updateCartTotals(shippingCost = this.shippingCost) {
+    this.shippingCost = +shippingCost;
     let totalPriceValue = this.cartProducts.reduce(
       (accumulator, product) =>
         accumulator + product.unitPrice * product.quantity,
       0
     );
-    let totalItemsValue = this.cartProducts.reduce((accumulator, product) => accumulator + product.quantity, 0);
-    this.totalPrice.next(totalPriceValue);
+    let totalItemsValue = this.cartProducts.reduce(
+      (accumulator, product) => accumulator + product.quantity,
+      0
+    );
+    this.itemsPrice.next(totalPriceValue);
+    this.totalPrice.next(totalPriceValue+ +shippingCost);
     this.totalQuantity.next(totalItemsValue);
+    this.storage.setItem('cartItems', JSON.stringify(this.cartProducts));
   }
-
 }

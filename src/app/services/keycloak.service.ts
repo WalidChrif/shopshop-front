@@ -3,7 +3,7 @@ import Keycloak from 'keycloak-js';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../store';
-import { Profile } from '../common/profile';
+import { User } from '../common/user';
 import { environment } from '../../../environment';
 import * as newAuthActions from '../store/new-auth.actions';
 
@@ -12,7 +12,8 @@ import * as newAuthActions from '../store/new-auth.actions';
 })
 export class KeycloakService {
   private _keycloak: Keycloak;
-  private _profile: Profile;
+  private _user: User;
+  storage : Storage = sessionStorage;
 
   constructor(private store: Store<AppState>) {}
 
@@ -23,8 +24,8 @@ export class KeycloakService {
       checkLoginIframe: false,
     });
     if (authentification) {
-      this._profile = (await this.keycloak.loadUserProfile()) as Profile;
-      this.store.dispatch(newAuthActions.login(this.profile));
+      this._user = (await this.keycloak.loadUserProfile()) as User;
+      this.store.dispatch(newAuthActions.login(this.user));
     } else {
       this.store.dispatch(newAuthActions.logout());
     }
@@ -40,8 +41,8 @@ export class KeycloakService {
     return this._keycloak;
   }
 
-  get profile() {
-    return this._profile;
+  get user() {
+    return this._user;
   }
 
   login() {
@@ -50,6 +51,7 @@ export class KeycloakService {
 
   logout() {
     this.store.dispatch(newAuthActions.logout());
+    this.storage.clear();
     this.keycloak.logout({ redirectUri: 'http://localhost:4200' });
   }
 }

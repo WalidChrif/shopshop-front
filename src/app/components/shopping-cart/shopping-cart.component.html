@@ -47,28 +47,29 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col" style="padding-left:0;">ITEMS {{totalQuantity}}</div>
-                            <div class="col text-right">{{totalPrice | currency : 'USD'}}</div>
+                            <div class="col" style="padding-left:0;"> {{totalQuantity}} {{totalQuantity > 1 ? ' Items' : 'Item' }}</div>
+                            <div class="col text-right">{{itemsPrice | currency : 'USD'}}</div>
                         </div>
                         <form>
                             <p>SHIPPING</p>
-                            <select>
-                                <option class="text-muted">Standard-Delivery- {{5 | currency :'USD'}}</option>
+                            <select [(ngModel)]="shippingCost" [ngModelOptions]="{standalone: true}" (change)="updateCart()">
+                                <option class="text-muted" value="4.99">Standard-Delivery- {{'4.99' | currency :'USD'}}</option>
+                                <option class="text-muted" value="14.99">Express-Delivery- {{'14.99' | currency :'USD'}}</option>
                             </select>
                             <p>GIVE CODE</p>
                             <input id="code" placeholder="Enter your code">
                         </form>
                         <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                             <div class="col">TOTAL PRICE</div>
-                            <div class="col text-right">{{totalPrice | currency : 'USD'}}</div>
+                            <div class="col text-right">{{(totalPrice) | currency : 'USD'}}</div>
                         </div>
                         <!-- <button [disabled]="this.cartItems.length <= 0"  routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button> -->
                         <ng-template #popContent>
-                            {{totalQuantity <=0 ? "Add items to your cart." : "Please login to checkout."}}
+                            {{totalQuantity <=0 ? "Add items to your cart." : ""}}
                         </ng-template>
-                        <button *ngIf="totalQuantity > 0 && authenticated" class="au-btn-submit p-2 px-4"
+                        <button *ngIf="totalQuantity > 0" class="au-btn-submit p-2 px-4"
                             [routerLink]="['/checkout']">Checkout</button>
-                        <button *ngIf="totalQuantity <= 0 || !authenticated" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                        <button *ngIf="totalQuantity <= 0" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
                             [ngbPopover]="popContent">
                             Checkout
                         </button>

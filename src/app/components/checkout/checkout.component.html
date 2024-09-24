@@ -50,9 +50,9 @@
                                     </option>
                                 </select>
                                 <span class="help-block ms-3"
-                                *ngIf="theForm.get('shippingAddress.country')?.value == '' && theForm.get('shippingAddress.country')?.touched ">
-                                Please select a valid state.
-                            </span>
+                                    *ngIf="theForm.get('shippingAddress.country')?.value == '' && theForm.get('shippingAddress.country')?.touched ">
+                                    Please select a valid state.
+                                </span>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -82,9 +82,9 @@
                                     </option>
                                 </select>
                                 <span class="help-block ms-3"
-                                *ngIf="theForm.get('shippingAddress.state')?.value == '' && theForm.get('shippingAddress.state')?.touched ">
-                                Please select a valid state.
-                            </span>
+                                    *ngIf="theForm.get('shippingAddress.state')?.value == '' && theForm.get('shippingAddress.state')?.touched ">
+                                    Please select a valid state.
+                                </span>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -117,8 +117,8 @@
                                     </option>
                                 </select>
                                 <span class="help-block ms-3"
-                                *ngIf="theForm.get('billingAddress.country')?.value == '' && theForm.get('billingAddress.country')?.touched">
-                                Please select your country
+                                    *ngIf="theForm.get('billingAddress.country')?.value == '' && theForm.get('billingAddress.country')?.touched">
+                                    Please select your country
                                 </span>
                             </div>
                         </div>
@@ -236,26 +236,24 @@
 
                 <div class="form-area">
                     <h3>Review Your Order</h3>
-                    <b>Total Quantity: {{totalQuantity}}</b>
-                    <h4>Shipping: FREE</h4>
-                    <B>Total Price: {{totalPrice | currency : 'USD'}}</B>
+                    <p>Items Quantity: {{totalQuantity}}</p>
+                    <p>Items Price: {{itemsPrice}}</p>
+                    <p>Shipping: {{shippingCost.toFixed(2)}}</p>
+                    <br>
+                    <h4>Total Price: {{totalPrice | currency : 'USD'}}</h4>
                 </div>
                 <div class="text-center">
                     <!-- <button [disabled]="!theForm.valid" type="submit" class="au-btn-submit p-2 px-4">Purchase</button> -->
                     <ng-template #popContent>
-                        {{totalQuantity > 0 || authenticated ? 'Please fill form with valid data.' : ''}}
-                        {{totalQuantity > 0 || theForm.valid  ? 'Please login to place order.' : ''}}
-                        {{authenticated || theForm.valid  ? 'Please add items to your cart.' : ''}}
-                        {{!authenticated && !theForm.valid && totalQuantity <= 0 ? 'Please add items to your cart.' : ''}}
-                        
-                        {{theForm.valid && totalQuantity > 0 && authenticated ? 'Order placed successfuly' : ''}}
+                        {{totalQuantity > 0 ? 'Please fill form with valid data.' : 'Please add items to your cart.'}}
+                        {{theForm.valid && totalQuantity> 0 ? 'Order placed successfuly' : ''}}
                     </ng-template>
-                    <button *ngIf="theForm.invalid || totalQuantity <= 0 || !authenticated" type="button" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
-                        [ngbPopover]="popContent">
+                    <button *ngIf="theForm.invalid || totalQuantity <= 0" type="button"
+                        class="au-btn-submit p-2 px-4" [autoClose]="'outside'" [ngbPopover]="popContent">
                         Purchase
                     </button>
-                    <button *ngIf="theForm.valid && totalQuantity > 0 && authenticated" type="submit" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
-                        [ngbPopover]="popContent">
+                    <button *ngIf="theForm.valid && totalQuantity > 0" type="submit"
+                        class="au-btn-submit p-2 px-4" [autoClose]="'outside'" [ngbPopover]="popContent">
                         Purchase
                     </button>
                 </div>
