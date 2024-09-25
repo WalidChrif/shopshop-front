@@ -236,7 +236,7 @@
 
                 <div class="form-area">
                     <h3>Review Your Order</h3>
-                    <p>Items Quantity: {{totalQuantity}}</p>
+                    <p>Items Quantity: {{totalItems}}</p>
                     <p>Items Price: {{itemsPrice}}</p>
                     <p>Shipping: {{shippingCost.toFixed(2)}}</p>
                     <br>
@@ -245,14 +245,15 @@
                 <div class="text-center">
                     <!-- <button [disabled]="!theForm.valid" type="submit" class="au-btn-submit p-2 px-4">Purchase</button> -->
                     <ng-template #popContent>
-                        {{totalQuantity > 0 ? 'Please fill form with valid data.' : 'Please add items to your cart.'}}
-                        {{theForm.valid && totalQuantity> 0 ? 'Order placed successfuly' : ''}}
+                        {{totalItems <= 0 && theForm.valid ? 'Please add items to your cart.' : ''}}
+                        {{totalItems > 0 && theForm.invalid ? 'Please fill form with valid data.': '' }}
+                        {{theForm.valid && totalItems> 0 ? 'Order placed successfuly' : ''}}
                     </ng-template>
-                    <button *ngIf="theForm.invalid || totalQuantity <= 0" type="button"
+                    <button *ngIf="theForm.invalid || totalItems <= 0" type="button"
                         class="au-btn-submit p-2 px-4" [autoClose]="'outside'" [ngbPopover]="popContent">
                         Purchase
                     </button>
-                    <button *ngIf="theForm.valid && totalQuantity > 0" type="submit"
+                    <button *ngIf="theForm.valid && totalItems > 0" type="submit"
                         class="au-btn-submit p-2 px-4" [autoClose]="'outside'" [ngbPopover]="popContent">
                         Purchase
                     </button>

@@ -3,11 +3,14 @@
         Sign In
     </button>
     <button *ngIf="user$" class="au-btn-submit p-2 px-3 ">Welcome {{user$.firstName }}</button>
+    <button *ngIf="user$" [routerLink]="['/orders']" [queryParams]="{email : user$.email}" class="au-btn-submit p-2 signup mx-2 " type="button">
+        My Orders
+    </button>
     <button *ngIf="user$" class="au-btn-submit p-2 signup mx-2 " type="button" (click)="logout()">
         Logout
     </button>
     <a [routerLink]="['/shopping-cart']">
-        <div class="total mb-2">{{itemsPrice | currency :'USD'}} <span>{{totalQuantity}}</span> </div>
+        <div class="total mb-2">{{itemsPrice | currency :'USD'}} <span>{{totalItems}}</span> </div>
         <a [routerLink]="['/shopping-cart']" routerLinkActive="router-link-active">
             <i style="color: white;" class="fa fa-shopping-cart " aria-hidden="true"></i>
         </a>

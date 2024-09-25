@@ -14,12 +14,18 @@ import { State } from '../../common/state';
 import { Country } from '../../common/country';
 import { FormService } from '../../services/form.service';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [NgbPopover, ReactiveFormsModule, FormsModule, NgFor, NgIf, CurrencyPipe],
+  imports: [
+    NgbPopover,
+    ReactiveFormsModule,
+    FormsModule,
+    NgFor,
+    NgIf,
+    CurrencyPipe,
+  ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
 })
@@ -27,7 +33,7 @@ export class CheckoutComponent {
   theForm!: FormGroup;
   totalPrice!: number;
   itemsPrice!: number;
-  totalQuantity!: number;
+  totalItems!: number;
   sameAddress = false;
   years: number[] = [];
   months: string[] = [];
@@ -42,8 +48,6 @@ export class CheckoutComponent {
     private formService: FormService,
     private cartService: CartService,
     private checkoutService: CheckoutService,
-    private router : Router,
-
   ) {}
 
   ngOnInit() {
@@ -57,7 +61,8 @@ export class CheckoutComponent {
   onSubmit() {
     this.purchase = new Purchase(
       this.theForm.value.customer,
-      { totalPrice: this.totalPrice, totalQuantity: this.totalQuantity },
+      this.totalPrice,
+      this.totalItems,
       this.theForm.value.shippingAddress,
       this.theForm.value.billingAddress,
       this.cartService.cartProducts
@@ -68,7 +73,6 @@ export class CheckoutComponent {
         this.trackingNumber = trackingNumber;
         // this.router.navigate(['/order-confirmation', this.trackingNumber]);
       });
-   
   }
 
   createForm() {
@@ -183,6 +187,6 @@ export class CheckoutComponent {
   updateTotals() {
     this.totalPrice = this.cartService.totalPrice.value;
     this.itemsPrice = this.cartService.itemsPrice.value;
-    this.totalQuantity = this.cartService.totalQuantity.value;
+    this.totalItems = this.cartService.totalItems.value;
   }
 }

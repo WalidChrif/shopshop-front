@@ -9,7 +9,7 @@ export class CartService {
   cartProducts: CartItem[] = [];
   totalPrice = new BehaviorSubject<number>(0);
   itemsPrice = new BehaviorSubject<number>(0);
-  totalQuantity = new BehaviorSubject<number>(0);
+  totalItems = new BehaviorSubject<number>(0);
   shippingCost = +4.99;
   storage: Storage = sessionStorage;
 
@@ -52,7 +52,7 @@ export class CartService {
     );
     this.itemsPrice.next(totalPriceValue);
     this.totalPrice.next(totalPriceValue+ +shippingCost);
-    this.totalQuantity.next(totalItemsValue);
+    this.totalItems.next(totalItemsValue);
     this.storage.setItem('cartItems', JSON.stringify(this.cartProducts));
   }
 }

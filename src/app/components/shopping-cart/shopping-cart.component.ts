@@ -17,7 +17,7 @@ export class ShoppingCartComponent {
   cartItems: CartItem[] = [];
   totalPrice = 0.0;
   itemsPrice = 0.0;
-  totalQuantity: number = 0;
+  totalItems = 0;
   shippingCost = 4.99;
 
   constructor(private cartService: CartService) {}
@@ -33,8 +33,8 @@ export class ShoppingCartComponent {
     this.cartService.itemsPrice.subscribe((itemsPrice) => {
       this.itemsPrice = itemsPrice;
     });
-    this.cartService.totalQuantity.subscribe((totalQuantity) => {
-      this.totalQuantity = totalQuantity;
+    this.cartService.totalItems.subscribe((totalItems) => {
+      this.totalItems = totalItems;
     });
   }
   addToCart(cartItem: CartItem) {

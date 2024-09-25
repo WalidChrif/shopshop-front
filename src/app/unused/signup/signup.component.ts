@@ -28,7 +28,7 @@ export class SignupComponent {
     });
   }
 signUp() {
-  this.authService.register(this.signUpForm.value);
+  // this.authService.register(this.signUpForm.value);
 }
 
 }

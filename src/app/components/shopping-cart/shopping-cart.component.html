@@ -9,7 +9,7 @@
                                 <div class="col">
                                     <h4><b>Shopping Cart</b></h4>
                                 </div>
-                                <div class="col align-self-center text-right text-muted">{{totalQuantity}} items</div>
+                                <div class="col align-self-center text-right text-muted">{{totalItems}} items</div>
                             </div>
                         </div>
                         <div class="row border-top border-bottom" *ngIf="cartItems.length > 0">
@@ -47,7 +47,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col" style="padding-left:0;"> {{totalQuantity}} {{totalQuantity > 1 ? ' Items' : 'Item' }}</div>
+                            <div class="col" style="padding-left:0;"> {{totalItems}} {{totalItems > 1 ? ' Items' : 'Item' }}</div>
                             <div class="col text-right">{{itemsPrice | currency : 'USD'}}</div>
                         </div>
                         <form>
@@ -65,11 +65,11 @@
                         </div>
                         <!-- <button [disabled]="this.cartItems.length <= 0"  routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button> -->
                         <ng-template #popContent>
-                            {{totalQuantity <=0 ? "Add items to your cart." : ""}}
+                            {{totalItems <=0 ? "Add items to your cart." : ""}}
                         </ng-template>
-                        <button *ngIf="totalQuantity > 0" class="au-btn-submit p-2 px-4"
+                        <button *ngIf="totalItems > 0" class="au-btn-submit p-2 px-4"
                             [routerLink]="['/checkout']">Checkout</button>
-                        <button *ngIf="totalQuantity <= 0" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
+                        <button *ngIf="totalItems <= 0" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
                             [ngbPopover]="popContent">
                             Checkout
                         </button>

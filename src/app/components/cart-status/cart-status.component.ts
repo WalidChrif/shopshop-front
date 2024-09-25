@@ -16,7 +16,7 @@ import { Store } from '@ngrx/store';
 })
 export class CartStatusComponent {
   itemsPrice = 0.0;
-  totalQuantity = 0;
+  totalItems = 0;
   user: User | undefined;
   user$: User | undefined;
 
@@ -33,8 +33,8 @@ export class CartStatusComponent {
     this.cartService.itemsPrice.subscribe((itemsPrice) => {
       this.itemsPrice = itemsPrice;
     });
-    this.cartService.totalQuantity.subscribe((totalQuantity) => {
-      this.totalQuantity = totalQuantity;
+    this.cartService.totalItems.subscribe((totalItems) => {
+      this.totalItems = totalItems;
     });
   }
   login() {
