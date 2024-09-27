@@ -7,9 +7,9 @@
                         <div class="title">
                             <div class="row">
                                 <div class="col">
-                                    <h4><b>Shopping Cart</b></h4>
+                                    <h4><b>{{"Shopping Cart" | translate}}</b></h4>
                                 </div>
-                                <div class="col align-self-center text-right text-muted">{{totalItems}} items</div>
+                                <div class="col align-self-center text-right text-muted">{{totalItems}} {{'items' | translate}}</div>
                             </div>
                         </div>
                         <div class="row border-top border-bottom" *ngIf="cartItems.length > 0">
@@ -17,7 +17,7 @@
                                 <div class="col-2"><img class="img-fluid" [src]="cartItem.imageUrl"></div>
                                 <div class="col">
                                     <div class="row text-muted">{{cartItem.name}}</div>
-                                    <div class="row">{{cartItem.unitsInStock}} units in stock</div>
+                                    <div class="row">{{cartItem.unitsInStock}} {{'units in stock' | translate}}</div>
                                 </div>
                                 <div class="col">
                                     <button class="border px-2" [disabled]="cartItem.quantity == 0"
@@ -32,46 +32,46 @@
                         </div>
                         <div *ngIf="cartItems.length <= 0">
                             <div class="alert alert-info" role="alert">
-                                No items in cart.
+                                {{'No items in cart' | translate}}
                             </div>
                         </div>
                         <div class="back-to-shop"><a [routerLink]="['/home']"
-                                routerLinkActive="router-link-active">&leftarrow; &nbsp;<span class="text-muted">Back to
-                                    shop</span>
+                                routerLinkActive="router-link-active">&leftarrow; &nbsp;<span class="text-muted">
+                                    {{'Back to shopping' | translate}}</span>
                             </a>
                         </div>
                     </div>
                     <div class="col-md-4 summary">
                         <div>
-                            <h5><b>Summary</b></h5>
+                            <h5><b>{{'Summary' | translate}}</b></h5>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col" style="padding-left:0;"> {{totalItems}} {{totalItems > 1 ? ' Items' : 'Item' }}</div>
-                            <div class="col text-right">{{itemsPrice | currency : 'USD'}}</div>
+                            <div class="col text-right">{{'currency' | translate}}{{itemsPrice}}</div>
                         </div>
                         <form>
-                            <p>SHIPPING</p>
+                            <p>{{'SHIPPING' | translate}}</p>
                             <select [(ngModel)]="shippingCost" [ngModelOptions]="{standalone: true}" (change)="updateCart()">
-                                <option class="text-muted" value="4.99">Standard-Delivery- {{'4.99' | currency :'USD'}}</option>
-                                <option class="text-muted" value="14.99">Express-Delivery- {{'14.99' | currency :'USD'}}</option>
+                                <option class="text-muted" value="4.99">{{'Standard Delivery' | translate}}- {{'currency' | translate}}4.99</option>
+                                <option class="text-muted" value="14.99">{{'Express Delivery' | translate}}- {{'currency' | translate}}14.99</option>
                             </select>
-                            <p>GIVE CODE</p>
-                            <input id="code" placeholder="Enter your code">
+                            <p>{{'GIVE CODE' | translate}}</p>
+                            <input id="code" placeholder="{{'Enter your code' | translate}}">
                         </form>
                         <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                            <div class="col">TOTAL PRICE</div>
-                            <div class="col text-right">{{(totalPrice) | currency : 'USD'}}</div>
+                            <div class="col-md-8">{{'TOTAL PRICE' | translate}}</div>
+                            <div class="col text-right">{{'currency' | translate}}{{(totalPrice)}}</div>
                         </div>
                         <!-- <button [disabled]="this.cartItems.length <= 0"  routerLink="/checkout" class="au-btn-submit p-2 px-4">Checkout</button> -->
                         <ng-template #popContent>
-                            {{totalItems <=0 ? "Add items to your cart." : ""}}
+                            {{totalItems <=0 ? ('Add items to your cart' | translate) : ""}}
                         </ng-template>
                         <button *ngIf="totalItems > 0" class="au-btn-submit p-2 px-4"
-                            [routerLink]="['/checkout']">Checkout</button>
+                            [routerLink]="['/checkout']">{{'Checkout' | translate}}</button>
                         <button *ngIf="totalItems <= 0" class="au-btn-submit p-2 px-4" [autoClose]="'outside'"
                             [ngbPopover]="popContent">
-                            Checkout
+                            {{'Checkout' | translate}}
                         </button>
                     </div>
                 </div>

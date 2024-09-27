@@ -8,11 +8,12 @@ import { NewAuthState } from '../../store/new-auth.reducer';
 import { CurrencyPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { Order } from '../../common/order';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, DatePipe, NgIf, NgFor],
+  imports: [RouterLink, CurrencyPipe, DatePipe, NgIf, NgFor, TranslateModule],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css'
 })

@@ -7,6 +7,7 @@ import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../common/cart-item';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,6 +17,7 @@ import { CartItem } from '../../common/cart-item';
     CurrencyPipe,
     CategoryMenuComponent,
     NavbarComponent,
+    TranslateModule
   ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',

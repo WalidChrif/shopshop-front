@@ -8,10 +8,11 @@ import { Page } from '../../common/page';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../common/cart-item';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-main-content',
   standalone: true,
-  imports: [RouterLink, FormsModule, NgFor, NgIf, CurrencyPipe, NgbPagination],
+  imports: [RouterLink, FormsModule, NgFor, NgIf, CurrencyPipe, NgbPagination, TranslateModule],
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.css',
 })

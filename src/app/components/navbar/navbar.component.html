@@ -5,10 +5,10 @@
             <div class="header-wrap">
                 <form class="form-header">
                     <input class="au-input au-input-xl" type="text" name="search"
-                        placeholder="Enter product name" #productName (keyup)="searchOnKeyup(productName.value)">
+                        placeholder="{{'Enter product name' | translate}}" #productName (keyup)="searchOnKeyup(productName.value)">
                     <button class="au-btn-submit" type="button" (click)="searchOnClick(productName.value)"
                     [disabled]="productName.value.trim().length === 0" >
-                        Search
+                        {{'Search' | translate}}
                     </button>
 
                 </form>

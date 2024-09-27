@@ -8,14 +8,14 @@
                 </div>
                 <div class="col-md-6 pt-20">
                     <h3>{{product?.name}}</h3>
-                    <div class="price">{{product?.unitPrice | currency : 'USD'}}</div>
-                    <button type="button" (click)="addToCart(product!)" class="btn btn-info me-2">Add to cart </button>
-                    <a routerLink="/shopping-cart" class="primary-btn">Proceed To Checkout</a>
+                    <div class="price">{{'currency' | translate}}{{product?.unitPrice}}</div>
+                    <button type="button" (click)="addToCart(product!)" class="btn btn-info me-2">{{'Add to cart' | translate}}</button>
+                    <a routerLink="/shopping-cart" class="primary-btn">{{'Proceed To Checkout' | translate}}</a>
                     <hr>
-                    <h4>Product Description</h4>
+                    <h4>{{'Product Description' | translate}}</h4>
                     <p>{{product?.description}}</p>
-                    <a [routerLink]="['/home']" class="primary-btn mt-3" routerLinkActive="router-link-active">Back to
-                        Product List</a>
+                    <a [routerLink]="['/home']" class="primary-btn mt-3" routerLinkActive="router-link-active">
+                        {{'Back to Product List' | translate}}</a>
                 </div>
             </div>
         </div>

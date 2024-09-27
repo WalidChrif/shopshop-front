@@ -6,11 +6,12 @@ import { Router, RouterLink } from '@angular/router';
 import { User } from '../../common/user';
 import { AppState } from '../../store';
 import { Store } from '@ngrx/store';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart-status',
   standalone: true,
-  imports: [RouterLink, NgIf, CurrencyPipe, AsyncPipe],
+  imports: [RouterLink, TranslateModule, NgIf, CurrencyPipe, AsyncPipe],
   templateUrl: './cart-status.component.html',
   styleUrl: './cart-status.component.css',
 })
@@ -19,11 +20,13 @@ export class CartStatusComponent {
   totalItems = 0;
   user: User | undefined;
   user$: User | undefined;
+  currentCurrency : string;
 
   constructor(
     private cartService: CartService,
     private keycloakService: KeycloakService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -42,5 +45,10 @@ export class CartStatusComponent {
   }
   logout() {
     this.keycloakService.logout();
+  }
+  switchLanguage(event: any) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.translate.use(selectedValue);
+    this.currentCurrency = this.translate.instant('CURRENCY_FORMAT');
   }
 }

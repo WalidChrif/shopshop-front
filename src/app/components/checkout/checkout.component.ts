@@ -18,6 +18,7 @@ import { CartService } from '../../services/cart.service';
 import { FormService } from '../../services/form.service';
 import { AppState } from '../../store';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-checkout',
@@ -29,6 +30,7 @@ import { Router } from '@angular/router';
     NgFor,
     NgIf,
     CurrencyPipe,
+    TranslateModule
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',

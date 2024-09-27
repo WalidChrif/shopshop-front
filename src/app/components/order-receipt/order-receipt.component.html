@@ -5,10 +5,10 @@
                 <div *ngIf="order" class="card">
                     <div class="card-body">
                         <div class="invoice-title">
-                            <h4 class="float-end font-size-15">Invoice #DS0204 <span
-                                    class="badge bg-success font-size-12 ms-2">Paid</span></h4>
+                            <h4 class="float-end font-size-15">{{'Invoice' | translate}} #DS0204 <span
+                                    class="badge bg-success font-size-12 ms-2">{{'Paid' | translate}}</span></h4>
                             <div class="mb-4">
-                                <h2 class="mb-1 text-muted">ShopShop.com</h2>
+                                <h2 class="mb-1 text-muted">ShopShop</h2>
                             </div>
                             <!-- <div class="text-muted">
                                 <p class="mb-1">3184 Spruce Drive Pittsburgh, PA 15201</p>
@@ -20,26 +20,26 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="text-muted">
-                                    <h5 class="font-size-16 mb-3">Billed To:</h5>
+                                    <h5 class="font-size-16 mb-3">{{'Billed To' | translate}}:</h5>
                                     <h5 class="font-size-15 mb-2">{{user?.firstName + ' ' + user?.lastName}}</h5>
                                     <p class="mb-1">{{order.shippingAddress.street +', '+ order.shippingAddress.city+'
                                         , ' + order.shippingAddress.country}} </p>
-                                    <p>+212 </p>
+                                    <p>{{'phonePrefix' | translate}} </p>
                                 </div>
                             </div>
                             <!-- end col -->
                             <div class="col-sm-6">
                                 <div class="text-muted text-sm-end">
                                     <div>
-                                        <h5 class="font-size-15 mb-1">Invoice No:</h5>
+                                        <h5 class="font-size-15 mb-1">{{'Invoice' | translate}} No:</h5>
                                         <p>#DZ0112</p>
                                     </div>
                                     <div class="mt-4">
-                                        <h5 class="font-size-15 mb-1">Order Tracking Number:</h5>
+                                        <h5 class="font-size-15 mb-1">{{'Order Tracking Number' | translate}}:</h5>
                                         <p>{{order.trackingNumber}}</p>
                                     </div>
                                     <div class="mt-4">
-                                        <h5 class="font-size-15 mb-1">Invoice :</h5>
+                                        <h5 class="font-size-15 mb-1">{{'Invoice Date' | translate}} :</h5>
                                         <p>{{order.dateCreated | date : 'short'}}</p>
                                     </div>
                                 </div>
@@ -49,17 +49,17 @@
                         <!-- end row -->
 
                         <div class="py-2">
-                            <h5 class="font-size-15">Order Summary</h5>
+                            <h5 class="font-size-15">{{'Order Summary' | translate}}</h5>
 
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap table-centered mb-0">
                                     <thead>
                                         <tr>
                                             <th style="width: 70px;">No.</th>
-                                            <th>Item</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th class="text-end" style="width: 120px;">Total</th>
+                                            <th>{{'Item' | translate}}</th>
+                                            <th>{{'Price' | translate}}</th>
+                                            <th>{{'Quantity'| translate}}</th>
+                                            <th class="text-end" style="width: 120px;">{{'Total' | translate}}</th>
                                         </tr>
                                     </thead><!-- end thead -->
                                     <tbody>
@@ -71,28 +71,27 @@
                                                     <p class="text-muted mb-0">{{item.sku}}</p>
                                                 </div>
                                             </td>
-                                            <td>{{item.unitPrice | currency : 'USD'}}</td>
+                                            <td>{{'currency' | translate}}{{item.unitPrice}}</td>
                                             <td>{{item.quantity}}</td>
-                                            <td class="text-end">{{item.unitPrice* item.quantity| currency : 'USD'}}
+                                            <td class="text-end">{{'currency' | translate}}{{item.unitPrice* item.quantity}}
                                             </td>
                                         </tr>
                                         <!-- end tr -->
                                         <tr>
-                                            <th scope="row" colspan="4" class="text-end">Sub Total</th>
-                                            <td class=" border-0 text-end">{{order.totalPrice - order.shippingCost|
-                                                currency: 'USD'}}</td>
+                                            <th scope="row" colspan="4" class="text-end">{{'Sub Total' | translate}}</th>
+                                            <td class=" border-0 text-end">{{'currency' | translate}}{{order.totalPrice - order.shippingCost}}</td>
                                         </tr>
                                         <!-- end tr -->
                                         <tr>
                                             <th scope="row" colspan="4" class="border-0 text-end">
-                                                Discount :</th>
-                                            <td class="border-0 text-end">{{0 | currency :'USD'}}</td>
+                                                {{'Discount' | translate}} :</th>
+                                            <td class="border-0 text-end">{{'currency' | translate}}0</td>
                                         </tr>
                                         <!-- end tr -->
                                         <tr>
                                             <th scope="row" colspan="4" class="border-0 text-end">
-                                                Shipping Charge :</th>
-                                            <td class="border-0 text-end">{{order.shippingCost | currency: 'USD'}}</td>
+                                                {{'Shipping Charge' | translate}} :</th>
+                                            <td class="border-0 text-end">{{'currency' | translate}}{{order.shippingCost}}</td>
                                         </tr>
                                         <!-- end tr -->
                                         <!-- <tr>
@@ -102,9 +101,9 @@
                                         </tr> -->
                                         <!-- end tr -->
                                         <tr>
-                                            <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                            <th scope="row" colspan="4" class="border-0 text-end">{{'Total' | translate}}</th>
                                             <td class="border-0 text-end">
-                                                <h4 class="m-0 fw-semibold">{{order.totalPrice | currency: 'USD'}}</h4>
+                                                <h4 class="m-0 fw-semibold">{{'currency' | translate}}{{order.totalPrice}}</h4>
                                             </td>
                                         </tr>
                                         <!-- end tr -->
@@ -115,7 +114,7 @@
                                 <div class="float-end">
                                     <a href="javascript:window.print()" class="btn btn-success me-1"><i
                                             class="fa fa-print"></i></a>
-                                    <a class="btn btn-primary w-md">Send</a>
+                                    <a class="btn btn-primary w-md">{{'Send' | translate}}</a>
                                 </div>
                             </div>
                         </div>

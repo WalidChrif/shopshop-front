@@ -1,0 +1,9 @@
+{
+  "welcomeMessage": "Welcome to My Application",
+  "description": "This is an example of internalization in Angular.",
+  
+  "currency": "$",
+  "currency_format": "USD",
+
+  "phonePrefix" : "+1"
+}

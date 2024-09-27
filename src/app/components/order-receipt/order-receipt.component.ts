@@ -7,11 +7,12 @@ import { CurrencyPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store';
 import { User } from '../../common/user';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-receipt',
   standalone: true,
-  imports: [NgFor, NgIf, DatePipe, CurrencyPipe],
+  imports: [NgFor, NgIf, DatePipe, CurrencyPipe, TranslateModule],
   templateUrl: './order-receipt.component.html',
   styleUrl: './order-receipt.component.css',
 })

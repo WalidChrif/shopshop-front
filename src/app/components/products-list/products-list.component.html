@@ -4,7 +4,7 @@
 		<div class="container-fluid">
 			<div *ngIf=" loading" class="lds-dual-ring element"></div>
 			<div *ngIf="!loading && products?.length == 0 " class="alert alert-warning" role="alert">
-				No products found. Please select a product category.
+				{{'No products found. Please select a product category.' | translate}}
 			</div>
 			<div class="row ">
 				<ng-container *ngIf="!loading">
@@ -17,8 +17,8 @@
 								<h1>{{product.name}}</h1>
 							</a>
 							<!-- <h2>{{product.description}} </h2> -->
-							<div class="price">{{product.unitPrice | currency :'USD'}}</div>
-							<button (click)="addToCart(product)" class="btn btn-info">Add to cart</button>
+							<div class="price">{{'currency' | translate}}{{product.unitPrice}}</div>
+							<button (click)="addToCart(product)" class="btn btn-info">{{'Add to cart' | translate}}</button>
 						</div>
 					</div>
 				</ng-container>
@@ -37,7 +37,7 @@
 								</ngb-pagination>
 							</div>
 							<div class="col-md-4  ">
-								<span class="mr-2">Page size</span>
+								<span class="mr-2">{{'Page size' | translate}}</span>
 								<select (click)="updatePage()" name="pageSize" [(ngModel)]="pageSize">
 									<option value="5" selected="true">5</option>
 									<option value="10">10</option>

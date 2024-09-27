@@ -6,8 +6,6 @@ import { HomeComponent } from './components/home/home.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
-import { LoginComponent } from './unused/login/login.component';
-import { SignupComponent } from './unused/signup/signup.component';
 import { OrderReceiptComponent } from './components/order-receipt/order-receipt.component';
 
 export const routes: Routes = [

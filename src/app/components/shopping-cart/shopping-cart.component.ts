@@ -5,11 +5,12 @@ import { RouterLink } from '@angular/router';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
-  imports: [RouterLink, FormsModule, NgbPopover, NgIf, NgFor, CurrencyPipe],
+  imports: [RouterLink, FormsModule, NgbPopover, NgIf, NgFor, CurrencyPipe, TranslateModule],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css',
 })

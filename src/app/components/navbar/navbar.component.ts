@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartStatusComponent } from '../cart-status/cart-status.component';
-import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
+import { CartStatusComponent } from '../cart-status/cart-status.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [NgIf, CartStatusComponent],
+  imports: [NgIf, CartStatusComponent, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -16,8 +16,7 @@ export class NavbarComponent {
   authenticated: boolean = false
 
   constructor(private route: ActivatedRoute
-    , private router: Router
-    ,private authService: AuthService) {}
+    , private router: Router) {}
 
     register() {
       this.router.navigate(['auth', 'register']);
