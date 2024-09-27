@@ -7,6 +7,7 @@ export class Order{
     customer: Customer;
     totalPrice: number;
     totalItems: number;
+    shippingCost : number;
     shippingAddress: Address;
     dateCreated: Date;
     orderItems: CartItem[];
@@ -16,6 +17,7 @@ export class Order{
       customer: Customer,
       totalPrice: number,
       totalItems: number,
+      shippingCost: number,
       shippingAddress: Address,
       dateCreated: Date,
       orderItems: CartItem[]
@@ -24,6 +26,7 @@ export class Order{
       this.customer = customer;
       this.totalPrice = totalPrice;
       this.totalItems = totalItems;
+      this.shippingCost = shippingCost;
       this.shippingAddress = shippingAddress;
       this.dateCreated = dateCreated;
       this.orderItems = orderItems;

@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CheckoutService {
-  baseUrl = 'http://localhost:8000/api/v1/checkout/purchase';
+  baseUrl = 'https://localhost:8443/api/v1/checkout/purchase';
 
   constructor(private http : HttpClient) { }
 
   placeOrder(purchase : Purchase){
-    return this.http.post<string>(`${this.baseUrl}`,purchase);
+    return this.http.post<{trackingNumber : string}>(`${this.baseUrl}`,purchase);
   }
 }

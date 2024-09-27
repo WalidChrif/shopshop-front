@@ -7,7 +7,7 @@ import { Country } from '../common/country';
   providedIn: 'root',
 })
 export class FormService {
-  baseUrl = 'http://localhost:8000/api/v1/states';
+  baseUrl = 'https://localhost:8443/api/v1/states';
   constructor(private http: HttpClient) {}
 
   getStates(countryName: string) {

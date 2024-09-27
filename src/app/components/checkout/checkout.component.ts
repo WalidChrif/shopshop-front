@@ -1,6 +1,5 @@
-import { Purchase } from '../../common/purchase';
-import { CheckoutService } from './../../services/checkout.service';
 import { Component } from '@angular/core';
+import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
   FormGroup,
@@ -8,12 +7,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CartService } from '../../services/cart.service';
-import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { Purchase } from '../../common/purchase';
 import { State } from '../../common/state';
 import { Country } from '../../common/country';
+import { User } from '../../common/user';
+import { CheckoutService } from './../../services/checkout.service';
+import { CartService } from '../../services/cart.service';
 import { FormService } from '../../services/form.service';
-import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { AppState } from '../../store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -41,16 +45,22 @@ export class CheckoutComponent {
   shippingStates: State[] = [];
   billingStates: State[] = [];
   purchase!: Purchase;
-  trackingNumber!: string;
+  trackingNumber: string;
   shippingCost = 4.99;
+  user: User;
 
   constructor(
     private formService: FormService,
     private cartService: CartService,
     private checkoutService: CheckoutService,
+    private store: Store<AppState>,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    this.store
+      .select('newAuthReducer')
+      .subscribe((authState) => (this.user = authState.user));
     this.createForm();
     this.getCountries();
     this.getYears();
@@ -58,35 +68,37 @@ export class CheckoutComponent {
     this.updateTotals();
     this.shippingCost = this.cartService.shippingCost;
   }
-  onSubmit() {
+  onSubmit() {   
     this.purchase = new Purchase(
       this.theForm.value.customer,
       this.totalPrice,
       this.totalItems,
+      this.cartService.shippingCost,
       this.theForm.value.shippingAddress,
       this.theForm.value.billingAddress,
       this.cartService.cartProducts
     );
     this.checkoutService
       .placeOrder(this.purchase)
-      .subscribe((trackingNumber) => {
-        this.trackingNumber = trackingNumber;
-        // this.router.navigate(['/order-confirmation', this.trackingNumber]);
+      .subscribe((response) => {
+        this.trackingNumber = response.trackingNumber;
+        this.cartService.clearCart();
+        this.router.navigate(['/order-receipt', this.trackingNumber]);
       });
   }
 
   createForm() {
     this.theForm = new FormGroup({
       customer: new FormGroup({
-        firstName: new FormControl('', [
+        firstName: new FormControl(this.user?.firstName, [
           Validators.required,
           Validators.pattern('[a-zA-Z]{4,20}'),
         ]),
-        lastName: new FormControl('', [
+        lastName: new FormControl(this.user?.lastName, [
           Validators.required,
           Validators.pattern('[a-zA-Z]{4,20}'),
         ]),
-        email: new FormControl('', [
+        email: new FormControl(this.user?.email, [
           Validators.required,
           Validators.email,
           Validators.maxLength(30),

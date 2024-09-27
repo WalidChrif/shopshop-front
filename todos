@@ -1,4 +1,3 @@
+fix navbar on small size
 config users and manage content based on roles 
-guest customer seller content 
-add receipt component
 <!-- add admin content to handle user management -->

@@ -9,7 +9,7 @@ import { Category } from '../common/category';
 })
 export class ProductService {
 
-  baseUrl : string = 'http://localhost:8000/api/v1/products';
+  baseUrl : string = 'https://localhost:8443/api/v1/products';
   orderBy = "unitPrice";
 
   constructor(private http : HttpClient) { }

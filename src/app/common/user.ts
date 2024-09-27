@@ -4,4 +4,10 @@ export interface User {
     lastName: string;
     email: string;
     emailVerified: boolean;
+    // attributes?: {
+    //     [key: string]: string;
+    // };
+    attributes: {
+        [key: string]: string;
+    };
 }

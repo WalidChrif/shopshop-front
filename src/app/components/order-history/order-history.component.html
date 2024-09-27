@@ -5,8 +5,8 @@
         <h3 class="alert alert-info" role="alert">
             No orders yet!
             <br>
-            <a [routerLink]="['/home']" routerLinkActive="router-link-active" >
-            Discover our products😊</a>
+            <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+                Discover our products😊</a>
         </h3>
     </div>
     <div *ngIf="orders.length > 0">
@@ -22,19 +22,22 @@
                     <th style="white-space: nowrap;" scope="col">Total Items</th>
                     <th scope="col">Shipping Address</th>
                     <th scope="col">Order Date</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody style="text-align: left;">
                 <tr class="" *ngFor="let order of orders">
                     <td scope="row">{{user.firstName + '' + user.lastName}}</td>
                     <td>{{order.trackingNumber}}</td>
-                    <td>{{order.totalPrice}}</td>
+                    <td>{{order.totalPrice | currency : 'USD'}}</td>
                     <td>{{order.totalItems}}</td>
                     <td>
-                <tr>{{order.shippingAddress.street}}, {{order.shippingAddress.city}},
-                    {{order.shippingAddress.state}}, {{order.shippingAddress.country}}</tr>
-                </td>
-                <td>{{order.dateCreated | date : 'short'}}</td>
+                        {{order.shippingAddress.street}},
+                        {{order.shippingAddress.city}},{{order.shippingAddress.country}}
+                    </td>
+                    <td>{{order.dateCreated | date : 'short'}}</td>
+                    <td><a [routerLink]="['/order-receipt',order.trackingNumber]" class="au-btn-submit p-1 mx-1"
+                            style="text-align: center;">Details</a></td>
                 </tr>
             </tbody>
         </table>

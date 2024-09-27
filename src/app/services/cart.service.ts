@@ -20,6 +20,11 @@ export class CartService {
       )) &&
       this.updateCartTotals();
   }
+  clearCart() {
+    this.storage.clear();
+    this.cartProducts = [];
+    this.updateCartTotals();
+  }
 
   addToCart(cartItem: CartItem) {
     const existingItem = this.cartProducts.find(
@@ -51,7 +56,7 @@ export class CartService {
       0
     );
     this.itemsPrice.next(totalPriceValue);
-    this.totalPrice.next(totalPriceValue+ +shippingCost);
+    this.totalPrice.next(totalPriceValue + +shippingCost);
     this.totalItems.next(totalItemsValue);
     this.storage.setItem('cartItems', JSON.stringify(this.cartProducts));
   }

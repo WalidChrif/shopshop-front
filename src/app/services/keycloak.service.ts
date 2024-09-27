@@ -13,7 +13,7 @@ import * as newAuthActions from '../store/new-auth.actions';
 export class KeycloakService {
   private _keycloak: Keycloak;
   private _user: User;
-  storage : Storage = sessionStorage;
+  storage: Storage = sessionStorage;
 
   constructor(private store: Store<AppState>) {}
 
@@ -52,6 +52,6 @@ export class KeycloakService {
   logout() {
     this.store.dispatch(newAuthActions.logout());
     this.storage.clear();
-    this.keycloak.logout({ redirectUri: 'http://localhost:4200' });
+    this.keycloak.logout({ redirectUri: 'https://localhost:4200' });
   }
 }
