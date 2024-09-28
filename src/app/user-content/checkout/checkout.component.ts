@@ -13,7 +13,7 @@ import { Purchase } from '../../common/purchase';
 import { State } from '../../common/state';
 import { Country } from '../../common/country';
 import { User } from '../../common/user';
-import { CheckoutService } from './../../services/checkout.service';
+import { CheckoutService } from '../../services/checkout.service';
 import { CartService } from '../../services/cart.service';
 import { FormService } from '../../services/form.service';
 import { AppState } from '../../store';

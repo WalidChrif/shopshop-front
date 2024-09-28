@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { ProductsListComponent } from './components/products-list/products-list.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HomeComponent } from './components/home/home.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { OrderHistoryComponent } from './components/order-history/order-history.component';
-import { OrderReceiptComponent } from './components/order-receipt/order-receipt.component';
+import { ProductsListComponent } from './user-content/products-list/products-list.component';
+import { ProductDetailComponent } from './user-content/product-detail/product-detail.component';
+import { PageNotFoundComponent } from './user-content/page-not-found/page-not-found.component';
+import { HomeComponent } from './user-content/home/home.component';
+import { ShoppingCartComponent } from './user-content/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './user-content/checkout/checkout.component';
+import { OrderHistoryComponent } from './user-content/order-history/order-history.component';
+import { OrderReceiptComponent } from './user-content/order-receipt/order-receipt.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'ShopShop' },

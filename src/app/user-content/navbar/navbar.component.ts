@@ -1,4 +1,3 @@
-import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';

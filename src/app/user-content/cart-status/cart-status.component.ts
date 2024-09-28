@@ -1,4 +1,3 @@
-import { KeycloakService } from './../../services/keycloak.service';
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { AsyncPipe, CurrencyPipe, NgIf } from '@angular/common';
@@ -16,10 +15,7 @@ export class CartStatusComponent {
   itemsPrice = 0.0;
   totalItems = 0;
 
-  currentCurrency : string;
-
-  constructor(
-    private cartService: CartService  ) {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit() {
     this.cartService.itemsPrice.subscribe((itemsPrice) => {
@@ -29,5 +25,4 @@ export class CartStatusComponent {
       this.totalItems = totalItems;
     });
   }
-
 }

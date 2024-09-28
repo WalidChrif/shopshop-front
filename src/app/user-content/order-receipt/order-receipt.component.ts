@@ -1,4 +1,4 @@
-import { NewAuthState } from './../../store/new-auth.reducer';
+import { NewAuthState } from '../../store/new-auth.reducer';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Order } from '../../common/order';
