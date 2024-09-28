@@ -47,7 +47,7 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <div class="col" style="padding-left:0;"> {{totalItems}} {{totalItems > 1 ? ' Items' : 'Item' }}</div>
+                            <div class="col" style="padding-left:0;"> {{totalItems}} {{totalItems > 1 ?  ('Items' | translate) : ('Item'|translate) }}</div>
                             <div class="col text-right">{{'currency' | translate}}{{itemsPrice}}</div>
                         </div>
                         <form>

@@ -140,7 +140,7 @@ a:hover {
 }
 
 .main-content {
-    padding-top: 116px;
+    padding-top: 20px;
     min-height: 100vh
 }
 
@@ -280,7 +280,7 @@ input.au-input.au-input-xl {
     border-radius: 30px;
     border: 1px solid #0da8e4;
     float: left;
-    margin-top: 9px;
+    /* margin-top: 9px; */
     padding-left: 17px
 }
 
@@ -1032,6 +1032,25 @@ footer ul li {
 }
 
 
+@media (max-width:1023px) {
+
+}
+@media (max-width:980px) {
+    #welcome{
+        display: block;
+    }
+    .au-btn-submit{
+    font-size: 1rem;
+    }
+}
+@media (max-width:1035px) {
+    #welcome{
+        display: none;
+    }
+    .au-btn-submit{
+    font-size: 1.2rem;
+    }
+}
 @media (max-width:767px) {
     .au-input-xl {
         min-width: 150px

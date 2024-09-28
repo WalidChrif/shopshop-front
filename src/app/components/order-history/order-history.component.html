@@ -1,47 +1,47 @@
-<div class="main-content page-m">
-    <!-- <div class="section-content section-content-p30 e-spc"> -->
-    <!-- <div class="container-fluid"> -->
-    <div *ngIf="orders.length <= 0">
-        <h3 class="alert alert-info" role="alert">
-            {{'No orders yet' | translate}}!
-            <br>
-            <a [routerLink]="['/home']" routerLinkActive="router-link-active">
-                {{'Discover our products' | translate}}😊</a>
-        </h3>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf="orders.length <= 0">
+                <h3 class="alert alert-info" role="alert">
+                    {{'No orders yet' | translate}}!
+                    <br>
+                    <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+                        {{'Discover our products' | translate}}😊</a>
+                </h3>
+            </div>
+            <div *ngIf="orders.length > 0">
+                <h3 class="display-6" style="color: #0da8e4;">
+                    {{'My Orders' | translate}} :
+                </h3>
+                <table class="table table-hover table-bordered my-2" style="text-align: center;">
+                    <thead>
+                        <tr class="">
+                            <th scope="col">{{'Customer'| translate}}</th>
+                            <th scope="col">{{'Tracking Number' | translate}}</th>
+                            <th style="white-space: nowrap;" scope="col">{{'Total Price' | translate}}</th>
+                            <th style="white-space: nowrap;" scope="col">{{'Total Items' | translate}}</th>
+                            <th scope="col">{{'Shipping Address' | translate}}</th>
+                            <th scope="col">{{'Order Date' | translate}}</th>
+                            <th scope="col">{{'Actions' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: left;">
+                        <tr class="" *ngFor="let order of orders">
+                            <td scope="row">{{user.firstName + '' + user.lastName}}</td>
+                            <td>{{order.trackingNumber}}</td>
+                            <td>{{'currency' | translate}}{{order.totalPrice}}</td>
+                            <td>{{order.totalItems}}</td>
+                            <td>
+                                {{order.shippingAddress.street}},
+                                {{order.shippingAddress.city}},{{order.shippingAddress.country}}
+                            </td>
+                            <td>{{order.dateCreated | date : 'short'}}</td>
+                            <td><a [routerLink]="['/order-receipt',order.trackingNumber]" class="au-btn-submit p-1 mx-1"
+                                    style="text-align: center;">{{'Details' | translate}}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div *ngIf="orders.length > 0">
-        <h3 class="display-6" style="color: #0da8e4;">
-            {{'My Orders' | translate}} :
-        </h3>
-        <table class="table table-hover table-bordered my-2" style="text-align: center;">
-            <thead>
-                <tr class="">
-                    <th scope="col">{{'Customer'| translate}}</th>
-                    <th scope="col">{{'Tracking Number' | translate}}</th>
-                    <th style="white-space: nowrap;" scope="col">{{'Total Price' | translate}}</th>
-                    <th style="white-space: nowrap;" scope="col">{{'Total Items' | translate}}</th>
-                    <th scope="col">{{'Shipping Address' | translate}}</th>
-                    <th scope="col">{{'Order Date' | translate}}</th>
-                    <th scope="col">{{'Actions' | translate}}</th>
-                </tr>
-            </thead>
-            <tbody style="text-align: left;">
-                <tr class="" *ngFor="let order of orders">
-                    <td scope="row">{{user.firstName + '' + user.lastName}}</td>
-                    <td>{{order.trackingNumber}}</td>
-                    <td>{{'currency' | translate}}{{order.totalPrice}}</td>
-                    <td>{{order.totalItems}}</td>
-                    <td>
-                        {{order.shippingAddress.street}},
-                        {{order.shippingAddress.city}},{{order.shippingAddress.country}}
-                    </td>
-                    <td>{{order.dateCreated | date : 'short'}}</td>
-                    <td><a [routerLink]="['/order-receipt',order.trackingNumber]" class="au-btn-submit p-1 mx-1"
-                            style="text-align: center;">{{'Details' | translate}}</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- </div> -->
-    <!-- </div> -->
 </div>

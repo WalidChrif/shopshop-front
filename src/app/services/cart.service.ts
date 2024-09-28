@@ -55,8 +55,8 @@ export class CartService {
       (accumulator, product) => accumulator + product.quantity,
       0
     );
-    this.itemsPrice.next(totalPriceValue);
-    this.totalPrice.next(totalPriceValue + +shippingCost);
+    this.itemsPrice.next(+totalPriceValue.toFixed(2));
+    this.totalPrice.next(+(totalPriceValue + +shippingCost).toFixed(2));
     this.totalItems.next(totalItemsValue);
     this.storage.setItem('cartItems', JSON.stringify(this.cartProducts));
   }

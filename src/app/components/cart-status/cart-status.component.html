@@ -1,23 +1,5 @@
-<div class="cart-area d-n me-2">
-    <button *ngIf="!user$" class="au-btn-submit  mx-2 p-2" type="button" (click)="login()">
-        {{'Sign In'| translate}}
-    </button>
-    <button *ngIf="user$" class="au-btn-submit p-2 px-3 ">{{'Welcome' | translate}} {{user$.firstName }}</button>
-    <button *ngIf="user$" [routerLink]="['/orders']" [queryParams]="{email : user$.email}"
-        class="au-btn-submit p-2 signup mx-2 " type="button">
-        {{'My Orders' | translate}}
-    </button>
-    <button *ngIf="user$" class="au-btn-submit p-2 signup mx-2 " type="button" (click)="logout()">
-        {{'Logout' | translate}}
-    </button>
+<div class="cart-area d-n ">
     <a [routerLink]="['/shopping-cart']">
-        <div class="total mb-2">{{itemsPrice}} <span>{{totalItems}}</span> </div>
-        <a [routerLink]="['/shopping-cart']" routerLinkActive="router-link-active">
-            <i style="color: white;" class="fa fa-shopping-cart " aria-hidden="true"></i>
-        </a>
+        <div class="total">{{'currency' | translate}}{{itemsPrice}} <span>{{totalItems}}</span> </div>
     </a>
-    <select (change)="switchLanguage($event)">
-        <option value="en">English</option>
-        <option [value]="'es'">Spanish</option>
-    </select>
 </div>

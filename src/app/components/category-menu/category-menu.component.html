@@ -8,9 +8,13 @@
     <div class="menu-sidebar-content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar-list">
-                <li *ngFor="let category of categories">
+                <!-- <li *ngFor="let category of categories">
                     <a [routerLink]="['/products/category/',category.id]">{{category.name}}</a>
-                </li>
+                </li> -->
+                <li><a [routerLink]="['/products/category/',1]">{{'Books'| translate}}</a></li>
+                <li><a [routerLink]="['/products/category/',2]">{{'Coffee Mugs'| translate}}</a></li>
+                <li><a [routerLink]="['/products/category/',3]">{{'Mouse Pads'| translate}}</a></li>
+                <li><a [routerLink]="['/products/category/',4]">{{'Luggage Tags'| translate}}</a></li>
             </ul>
         </nav>
     </div>

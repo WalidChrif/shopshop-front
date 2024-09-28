@@ -66,6 +66,7 @@ export class ProductsListComponent {
     this.loading = true;
     const searchParam = params.get('name')?.trim();
     if (!searchParam) {
+      this.loading = false;
       return;
     }
     this.searchMode = true;
