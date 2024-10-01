@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CartItem } from '../../common/cart-item';
-import { CartService } from '../../services/cart.service';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartItem } from '../../../common/cart-item';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-shopping-cart',

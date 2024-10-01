@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { CartStatusComponent } from '../cart-status/cart-status.component';
-import { UserInfoComponent } from '../user-info/user-info.component';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { UserInfoComponent } from '../user-info/user-info.component';
+import { CartStatusComponent } from '../cart-status/cart-status.component';
+
 
 @Component({
   selector: 'app-navbar',
@@ -23,12 +24,12 @@ export class NavbarComponent {
   itemsPrice = 0.0;
   totalItems = 0;
   lang: string = 'es';
-  storage: Storage = localStorage;
+  storage: Storage = sessionStorage;
 
   constructor(private router: Router, private translate: TranslateService) {}
 
-  ngOnInit() {
-    this.translate.use(this.storage.getItem('lang') || 'es');
+  ngOnInit() {    
+    this.translate.use(this.storage.getItem('lang') || 'en');
   }
   searchProduct(productName: string) {
     if (productName.trim().length > 0) {

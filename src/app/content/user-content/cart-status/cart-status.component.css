@@ -1,0 +1,19 @@
+.signup{
+    background-color: #fff;
+    border-color: #3690df;
+    color: #1f598b;
+}
+.signup:hover{
+    background-color: #1f598b;
+    color: #fff;
+}
+.collapse{
+    justify-content: right;
+}
+#navbarSupportedContent{
+    justify-content: right;
+}   
+
+.collapse.navbar-collapse.right{
+    justify-content: right;
+}

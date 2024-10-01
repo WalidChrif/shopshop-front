@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { KeycloakService } from '../../services/keycloak.service';
-import { AppState } from '../../store';
 import { Store } from '@ngrx/store';
-import { User } from '../../common/user';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { KeycloakService } from '../../../services/keycloak.service';
+import { User } from '../../../common/user';
+import { AppState } from '../../../store';
 
 @Component({
   selector: 'app-user-info',
@@ -15,6 +15,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './user-info.component.css'
 })
 export class UserInfoComponent {
+
   user$: User | undefined;
 
   constructor ( private keycloakService: KeycloakService,
@@ -26,6 +27,9 @@ ngOnInit() {
     this.user$ = data.user;
   });  
 }
+manageAccount() {
+  this.keycloakService.keycloak.accountManagement();
+  }
 login() {
   this.keycloakService.login();
 }

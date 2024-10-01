@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Category } from '../../common/category';
 import { NgFor } from '@angular/common';
-import { ProductService } from '../../services/product.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ProductService } from '../../../services/product.service';
+import { Category } from '../../../common/category';
+
 
 @Component({
   selector: 'app-category-menu',

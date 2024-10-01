@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CartService } from '../../services/cart.service';
 import { AsyncPipe, CurrencyPipe, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-cart-status',

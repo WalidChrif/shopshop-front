@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,19 +7,18 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { Purchase } from '../../common/purchase';
-import { State } from '../../common/state';
-import { Country } from '../../common/country';
-import { User } from '../../common/user';
-import { CheckoutService } from '../../services/checkout.service';
-import { CartService } from '../../services/cart.service';
-import { FormService } from '../../services/form.service';
-import { AppState } from '../../store';
-import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { Country } from '../../../common/country';
+import { Purchase } from '../../../common/purchase';
+import { State } from '../../../common/state';
+import { User } from '../../../common/user';
+import { CartService } from '../../../services/cart.service';
+import { CheckoutService } from '../../../services/checkout.service';
+import { FormService } from '../../../services/form.service';
+import { AppState } from '../../../store';
 @Component({
   selector: 'app-checkout',
   standalone: true,
@@ -30,7 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NgFor,
     NgIf,
     CurrencyPipe,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css',
@@ -70,7 +69,7 @@ export class CheckoutComponent {
     this.updateTotals();
     this.shippingCost = this.cartService.shippingCost;
   }
-  onSubmit() {   
+  onSubmit() {
     this.purchase = new Purchase(
       this.theForm.value.customer,
       this.totalPrice,
@@ -80,13 +79,11 @@ export class CheckoutComponent {
       this.theForm.value.billingAddress,
       this.cartService.cartProducts
     );
-    this.checkoutService
-      .placeOrder(this.purchase)
-      .subscribe((response) => {
-        this.trackingNumber = response.trackingNumber;
-        this.cartService.clearCart();
-        this.router.navigate(['/order-receipt', this.trackingNumber]);
-      });
+    this.checkoutService.placeOrder(this.purchase).subscribe((response) => {
+      this.trackingNumber = response.trackingNumber;
+      this.cartService.clearCart();
+      this.router.navigate(['/order-receipt', this.trackingNumber]);
+    });
   }
 
   createForm() {

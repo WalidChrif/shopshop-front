@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { CategoryMenuComponent } from '../category-menu/category-menu.component';
-import { NavbarComponent } from '../navbar/navbar.component';
-import { Product } from '../../common/product';
 import { CurrencyPipe } from '@angular/common';
-import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CartService } from '../../services/cart.service';
-import { CartItem } from '../../common/cart-item';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CategoryMenuComponent } from '../category-menu/category-menu.component';
+import { Product } from '../../../common/product';
+import { ProductService } from '../../../services/product.service';
+import { CartService } from '../../../services/cart.service';
+import { CartItem } from '../../../common/cart-item';
 
 @Component({
   selector: 'app-product-detail',

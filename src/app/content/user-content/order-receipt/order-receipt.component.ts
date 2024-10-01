@@ -1,13 +1,14 @@
-import { NewAuthState } from '../../store/new-auth.reducer';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Order } from '../../common/order';
-import { OrderService } from '../../services/order.service';
 import { CurrencyPipe, DatePipe, NgFor, NgIf } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store';
-import { User } from '../../common/user';
 import { TranslateModule } from '@ngx-translate/core';
+import { AppState } from '../../../store';
+import { OrderService } from '../../../services/order.service';
+import { NewAuthState } from '../../../store/new-auth.reducer';
+import { Order } from '../../../common/order';
+import { User } from '../../../common/user';
+
 
 @Component({
   selector: 'app-order-receipt',

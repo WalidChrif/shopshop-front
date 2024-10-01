@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { Product } from '../../common/product';
-import { ProductService } from '../../services/product.service';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
-import { Page } from '../../common/page';
 import { FormsModule } from '@angular/forms';
-import { CartService } from '../../services/cart.service';
-import { CartItem } from '../../common/cart-item';
 import { TranslateModule } from '@ngx-translate/core';
+import { ProductService } from '../../../services/product.service';
+import { CartService } from '../../../services/cart.service';
+import { CartItem } from '../../../common/cart-item';
+import { Product } from '../../../common/product';
+import { Page } from '../../../common/page';
+
+
 @Component({
   selector: 'app-main-content',
   standalone: true,

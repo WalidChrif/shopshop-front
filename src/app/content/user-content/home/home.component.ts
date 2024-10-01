@@ -1,9 +1,10 @@
-import { JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../common/product';
+import { JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductService } from '../../../services/product.service';
+import { Product } from '../../../common/product';
+
 
 @Component({
   selector: 'app-home',
