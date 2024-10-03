@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { User } from './../../../common/user';
 import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { UserInfoComponent } from '../user-info/user-info.component';
 import { CartStatusComponent } from '../cart-status/cart-status.component';
-
+import { UserInfoComponent } from '../user-info/user-info.component';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../store';
 
 @Component({
   selector: 'app-navbar',
@@ -21,14 +22,22 @@ import { CartStatusComponent } from '../cart-status/cart-status.component';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
+  user: User;
   itemsPrice = 0.0;
   totalItems = 0;
   lang: string = 'es';
   storage: Storage = sessionStorage;
 
-  constructor(private router: Router, private translate: TranslateService) {}
+  constructor(
+    private router: Router,
+    private translate: TranslateService,
+    private store: Store<AppState>
+  ) {}
 
-  ngOnInit() {    
+  ngOnInit() {
+    this.store.select('newAuthReducer').subscribe((res) => {
+      this.user = res.user;
+    });
     this.translate.use(this.storage.getItem('lang') || 'en');
   }
   searchProduct(productName: string) {

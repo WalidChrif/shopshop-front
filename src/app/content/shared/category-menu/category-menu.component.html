@@ -1,20 +1,22 @@
 <!-- MENU SIDEBAR-->
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a [routerLink]="['/home']">
+        <a [routerLink]="[user?.userType == 'Admin' ? '/admin' : '/home']">
             <img src="assets/images/logo.png" alt="ShopShop" class="img-responsive">
         </a>
     </div>
     <div class="menu-sidebar-content js-scrollbar1">
         <nav class="navbar-sidebar">
-            <ul class="list-unstyled navbar-list">
-                <!-- <li *ngFor="let category of categories">
-                    <a [routerLink]="['/products/category/',category.id]">{{category.name}}</a>
-                </li> -->
+            <ul *ngIf="!user || user?.userType == 'Customer'" class="list-unstyled navbar-list">
                 <li><a [routerLink]="['/products/category/',1]">{{'Books'| translate}}</a></li>
                 <li><a [routerLink]="['/products/category/',2]">{{'Coffee Mugs'| translate}}</a></li>
                 <li><a [routerLink]="['/products/category/',3]">{{'Mouse Pads'| translate}}</a></li>
                 <li><a [routerLink]="['/products/category/',4]">{{'Luggage Tags'| translate}}</a></li>
+            </ul>
+            <ul *ngIf="user?.userType == 'Admin'" class="list-unstyled navbar-list">
+                <li><a [routerLink]="['/admin/orders']">{{'Orders'| translate}}</a></li>
+                <li><a [routerLink]="['/admin/products']">{{'Products'| translate}}</a></li>
+                <li><a [routerLink]="['/admin/customers']">{{'Customers'| translate}}</a></li>
             </ul>
         </nav>
     </div>

@@ -1,0 +1,36 @@
+<ul class="navbar-nav me-auto mb-lg-0">
+    <li class="nav-item ">
+        <button class="nav-link" aria-current="page" *ngIf="!user" class=" btn au-btn-submit p-2" type="button"
+            (click)="login()">
+            {{'Sign In'| translate}}
+        </button>
+    </li>
+    <li class="nav-item ">
+        <button class="nav-link" aria-current="page" *ngIf="!user" class=" btn au-btn-submit  p-2" type="button"
+            (click)="signUp()">
+            {{'Sign Up'| translate}}
+        </button>
+    </li>
+    <li id="welcome" class="nav-item ">
+        <button class="nav-link" *ngIf="user" class="btn au-btn-submit" (click)="manageAccount()">
+            <!-- {{'Welcome' | translate}} -->
+            {{user.firstName }}</button>
+    </li>
+    <li class="nav-item">
+        <button *ngIf="user?.userType == 'Customer'" [routerLink]="['/orders']" [queryParams]="{email : user.email}"
+            class="btn au-btn-submit mx-2" type="button">
+            {{'Orders' | translate}}
+        </button>
+    </li>
+    <li class="nav-item">
+        <button *ngIf="user?.userType == 'Admin'" (click)="addProduct()"
+            class="btn au-btn-submit mx-2" type="button">
+            {{'Add Product' | translate}}
+        </button>
+    </li>
+    <li class="nav-item">
+        <button *ngIf="user" class="btn au-btn-submit  " type="button" (click)="logout()">
+            {{'Logout' | translate}}
+        </button>
+    </li>
+</ul>

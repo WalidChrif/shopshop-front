@@ -1,0 +1,23 @@
+.container,
+.container-fluid {
+    height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    color: #0da8e4;
+}
+
+th, thead {
+    justify-content: center;
+    align-items: center;
+}
+
+td {
+    padding: 0 20px;
+}

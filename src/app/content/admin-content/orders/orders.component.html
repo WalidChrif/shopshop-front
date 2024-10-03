@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf="orders.length <= 0">
+                <h3 class="alert alert-info" role="alert">
+                    {{'No orders yet' | translate}}!
+                    <br>
+                    <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+                        {{'Make sales' | translate}}😊</a>
+                </h3>
+            </div>
+            <div *ngIf="orders.length > 0">
+                <!-- <h3 class="display-6" style="color: #0da8e4;">
+                    {{'Orders' | translate}} :
+                </h3> -->
+                <table class="table table-hover table-bordered my-2" style="text-align: center;">
+                    <thead>
+                        <tr class="">
+                            <th scope="col">{{'Tracking Number' | translate}}</th>
+                            <th scope="col">{{'Total Price' | translate}}</th>
+                            <th scope="col">{{'Total Items' | translate}}</th>
+                            <th scope="col">{{'Items' | translate}}</th>
+                            <th scope="col">{{'Shipping Address' | translate}}</th>
+                            <th scope="col">{{'Order Date' | translate}}</th>
+                            <th scope="col">{{'Actions' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="" *ngFor="let order of orders">
+                            <td>{{order.trackingNumber}}</td>
+                            <td>{{'currency' | translate}}{{order.totalPrice}}</td>
+                            <td>{{order.totalItems}}</td>
+                            <td>
+                        <tr>
+                            <td *ngFor="let item of order.orderItems">
+                                <img class="img" [src]="item.imageUrl" [alt]="item.name">
+                            </td>
+                        </tr>
+                        </td>
+                        <td>
+                            {{order.shippingAddress.street}},
+                            {{order.shippingAddress.city}},{{order.shippingAddress.country}}
+                        </td>
+                        <td>{{order.dateCreated | date : 'short'}}</td>
+                        <td class="actions">
+                            <a [routerLink]="['update',order.trackingNumber]" class="btn-update p-1 mx-1">{{'Update'
+                                | translate}}</a>
+                            <a [routerLink]="['delete',order.trackingNumber]" class="btn-delete p-1 mx-1">{{'Delete'
+                                | translate}}</a>
+
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row p-5">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+                        [rotate]="true" (pageChange)="getOrders()">
+                    </ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

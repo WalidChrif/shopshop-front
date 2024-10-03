@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CategoryMenuComponent } from './content/shared/category-menu/category-menu.component';
+import { NavbarComponent } from './content/shared/navbar/navbar.component';
+import { FooterComponent } from './content/shared/footer/footer.component';
 import { ProductsListComponent } from './content/user-content/products-list/products-list.component';
-import { NavbarComponent } from './content/user-content/navbar/navbar.component';
-import { FooterComponent } from './content/user-content/footer/footer.component';
-import { CategoryMenuComponent } from './content/user-content/category-menu/category-menu.component';
-
 
 @Component({
   selector: 'app-root',

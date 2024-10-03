@@ -12,10 +12,14 @@
   "Mouse Pads": "Alfombrillas de ratón",
   "Luggage Tags": "Etiquetas de equipaje",
   "Sign In": "Iniciar sesión",
+  "Sign Up": "Regístrate",
   "Logout": "Cerrar sesión",
   "Orders": "Pedidos",
   "Welcome": "Bienvenido",
   "Enter product name": "Introduzca el nombre del producto",
+  "Add Product": "Añadir producto",
+  "Products": "Productos",
+  "Customers": "Clientes",
 
   "cart": "carrito",
   "Items": "Artículos",
@@ -126,14 +130,10 @@
   "Credit Card": "Tarjeta de crédito",
   "Select a card type": "Selecciona un tipo de tarjeta",
   "Please select credit card type": "Por favor, selecciona un tipo de tarjeta de crédito",
-  "Street" : "Calle",
-  "Card number" : "Número de tarjeta",
-  "CVV number" : "Número de CVV",
-  "Expiration date" : "Fecha de vencimiento",
-  
-
-
-
+  "Street": "Calle",
+  "Card number": "Número de tarjeta",
+  "CVV number": "Número de CVV",
+  "Expiration date": "Fecha de vencimiento",
 
   "receipt": "recibo",
   "Invoice": "Factura",
@@ -150,5 +150,22 @@
   "Send": "Enviar",
   "Discount": "Descuento",
 
-  "Page Not Found": "Página no encontrada"
+  "Page Not Found": "Página no encontrada",
+
+  "admin home": "inicio de administrador",
+  "Admin Dashboard": "Panel de administración",
+  "Admin": "Administrador",
+  "Order Id": "ID de pedido",
+  "Customer Id": "ID de cliente",
+  "Customer Name": "Nombre del cliente",
+  "Customer Email": "Correo electrónico del cliente",
+  "Product Name": "Nombre del producto",
+  "Product ID": "ID de producto",
+  "Product Price": "Precio del producto",
+  "Recently Added Orders": "Pedidos añadidos recientemente",
+  "Recently Added Products": "Productos añadidos recientemente",
+  "New customers": "Nuevos clientes",
+  "Make sales": "Hacer ventas",
+  "Attract customers": "Atraer clientes",
+  "No customers yet": "Aún no hay clientes"
 }

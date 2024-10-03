@@ -28,7 +28,7 @@ export class OrderHistoryComponent {
   ngOnInit(): void {
     this.store.select('newAuthReducer').pipe(exhaustMap((response : NewAuthState) => {
       this.user = response.user;
-      return this.orderService.getOrders(response.user.email);
+      return this.orderService.getOrdersForUser(response.user.email);
     })).subscribe((orders : Order[]) => {
       this.orders = orders;
     });

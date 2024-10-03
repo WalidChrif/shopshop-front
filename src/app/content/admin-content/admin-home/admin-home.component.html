@@ -1,1 +1,88 @@
-<h1 class="diplay-1">Welcome to admin dashboard</h1>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card" style="width: 18rem; margin: 14px 0;">
+                        <div class="card-body">
+                            <h5 class="card-title">Best Selling Product</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card" style="width: 18rem; margin: 14px 0;">
+                        <div class="card-body">
+                            <h5 class="card-title">This Week's Profit</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3>{{'Recently Added Orders' | translate}}</h3>
+                <table class="table table-hover table-bordered my-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">{{'Tracking Number' | translate}}</th>
+                            <th scope="col">{{'Total Items' | translate}}</th>
+                            <th scope="col">{{'Total Price' | translate}}</th>
+                            <th scope="col">{{'Date' | translate}}</th>
+                            <th scope="col">{{'Shipping Address' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let order of orders">
+                        <td>{{order.trackingNumber}}</td>
+                        <td>{{order.totalItems}}</td>
+                        <td>{{order.totalPrice}}</td>
+                        <td>{{order.dateCreated | date : 'short'}}</td>
+                        <td>{{order.shippingAddress.city}},{{order.shippingAddress.country}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>{{'Recently Added Products' | translate}}</h3>
+                    <table class="table table-hover table-bordered my-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{'Product SKU' | translate}}</th>
+                                <th scope="col">{{'Product Name' | translate}}</th>
+                                <th scope="col">{{'Product Price' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let product of products">
+                            <td>{{product.sku}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.unitPrice}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h3>{{'New customers' | translate}}</h3>
+                    <table class="table table-hover table-bordered my-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{'Customer Name' | translate}}</th>
+                                <th scope="col">{{'Customer Email' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let customer of customers">
+                            <td>{{customer.firstName}} {{customer.lastName}}</td>
+                            <td>{{customer.email}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>

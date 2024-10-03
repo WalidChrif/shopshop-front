@@ -1,0 +1,49 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf="products.length <= 0">
+                <h3 class="alert alert-info" role="alert">
+                    {{'No products yet' | translate}}!
+                </h3>
+            </div>
+            <div *ngIf="products.length > 0">
+                <table class="table table-hover table-bordered my-2" style="text-align: center;">
+                    <thead>
+                        <tr class="">
+                            <th scope="col">{{'Product' | translate}}</th>
+                            <th scope="col">{{'Name' | translate}}</th>
+                            <th scope="col">{{'Price' | translate}}</th>
+                            <th scope="col">{{'In Stock' | translate}}</th>
+                            <th scope="col">{{'Date Added' | translate}}</th>
+                            <th scope="col">{{'Actions' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="" *ngFor="let product of products">
+                            <td><img [src]="product.imageUrl" [alt]="product.name"></td>
+                            <td>{{product.name}}</td>
+                            <td>{{'currency' | translate}}{{product.unitPrice}}</td>
+                            <td>{{product.unitsInStock}}</td>
+                            <td>{{product.dateCreated | date : 'short'}}</td>
+                            <td>
+                                <a [routerLink]="['update',product.sku]" class="btn-update p-1 mx-1">{{'Update'
+                                    | translate}}</a>
+                                <a [routerLink]="['delete',product.sku]" class="btn-delete p-1 mx-1">{{'Delete'
+                                    | translate}}</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row p-5 pagination">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+                        [rotate]="true" (pageChange)="getProducts()">
+                    </ngb-pagination>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

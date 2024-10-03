@@ -13,11 +13,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent" style="justify-content: space-around;">
-        <app-user-info></app-user-info>
+            <app-user-info></app-user-info>
         </div>
-        <!-- <div class="cart"> -->
-        <app-cart-status></app-cart-status>
-        <!-- </div> -->
+        <div *ngIf="!user || user?.userType=='Customer'">
+            <app-cart-status></app-cart-status>
+        </div>
         <button (click)="switchLanguage('en')"><img src="../../../assets/images/flags/united-kingdom.png"
                 class="flag en" alt="EN"></button>
         <button (click)="switchLanguage('es')"><img src="../../../assets/images/flags/spain.png" class="flag es"

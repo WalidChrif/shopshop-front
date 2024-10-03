@@ -10,21 +10,19 @@ button {
     color: white;
 
 }
+
 .main-content {
     padding-top: 16px;
     min-height: 100vh;
 }
-.flag{
+
+.flag {
     width: 28px;
     margin: 0 3px;
 }
-
-
-
 
 @media (max-width:1100px) {
     .search {
         display: none;
     }
 }
-
