@@ -1,23 +1,68 @@
-.container,
-.container-fluid {
-    height: 100vh;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-p {
+h6 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #0da8e4;
 }
 
-th, thead {
-    justify-content: center;
-    align-items: center;
+
+ul {
+    list-style-type: none;
 }
 
-td {
-    padding: 0 20px;
+ul li p {
+    display: inline;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #dfeff5;
+}
+
+ul,
+ol,
+li {
+    padding: 0 10px;
+    /* padding-right: 0; */
+}
+
+.no-pad {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.best-seller {
+    width: 250px;
+    height: 190px;
+}
+
+.card-title {
+    color: #205b8d;
+}
+
+img {
+    width: 50px;
+    height: 35px;
+}
+
+.more-details {
+    cursor: pointer;
+    text-anchor: middle;
+    padding: 4px 8px;
+    background-color: #f8f8f8;
+    color: #0da8e4;
+    border-radius: 20px;
+}
+
+.more-details:hover {
+    background-color: #0da8e4;
+    color: #f8f8f8;
+}
+
+thead tr th {
+    /* background-color: #0da8e4; */
+    color: #0da8e4;
+    font-size: 0.9rem;
+
 }

@@ -8,4 +8,5 @@ export interface Product {
     unitsInStock: number;
     dateCreated: Date;
     lastUpdate: Date;
+    sales: number;
 }

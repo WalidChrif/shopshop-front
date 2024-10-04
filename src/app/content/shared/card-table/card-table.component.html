@@ -1,0 +1,52 @@
+<div class="card widget-card border-light shadow-sm px-0 pb-4 mb-3">
+    <div class="card-header py-3 ps-5 d-flex  align-items-center justify-content-between">
+        <h5 class="m-0 font-weight-bold ">{{'Recent Orders'| translate}}</h5>
+        <div class="dropdown no-arrow">
+            <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-header">Dropdown Header:</div>
+                <a class="dropdown-item" href="#">Orders</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <!-- <h5 class="card-title widget-card-title mb-4">Monthly Transactions</h5> -->
+        <div class="table-responsive">
+            <table class="table bsb-table-xl text-nowrap align-middle m-0 ">
+                <thead>
+                    <tr>
+                        <th>Tracking number</th>
+                        <th>Total Price</th>
+                        <th>Date Added</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of array">
+                        <td>
+                            <!-- <h6 class="mb-1">#HO3210</h6> -->
+                            <span class="text-secondary fs-7">{{order?.trackingNumber}}</span>
+                        </td>
+                        <td>
+                            <span
+                                class="text-secondary fs-7">{{'currency'|translate}}{{order?.totalPrice}}</span>
+                        </td>
+                        <td>
+                            <span class="text-secondary fs-7">{{order?.dateCreated | date :
+                                'short'}}</span>
+                        </td>
+                        <td>
+                            <span class="badge rounded-pill bg-success">{{'Paid'|translate}}</span>
+                        </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

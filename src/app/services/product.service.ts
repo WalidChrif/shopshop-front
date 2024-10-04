@@ -8,10 +8,14 @@ import { Product } from '../common/product';
   providedIn: 'root',
 })
 export class ProductService {
-  baseUrl: string = 'https://localhost:8443/api/v1/products';
+  baseUrl: string = 'http://localhost:8000/api/v1/products';
   orderBy = 'unitPrice';
 
   constructor(private http: HttpClient) {}
+
+  getBestSeller() {
+    return this.http.get<Product>(`${this.baseUrl}/best-seller`);
+  }
 
   getProducts(page: number = 0, size: number = 10) {
     return this.http.get<Page<Product>>(

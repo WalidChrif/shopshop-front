@@ -22,6 +22,7 @@ export class ProductsComponent {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
+    console.log(this.products.length);
     this.getProducts();
   }
   getProducts() {

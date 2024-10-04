@@ -7,7 +7,7 @@ import { Page } from '../common/page';
   providedIn: 'root',
 })
 export class CustomerService {
-  baseUrl = 'https://localhost:8443/api/v1/customers';
+  baseUrl = 'http://localhost:8000/api/v1/customers';
 
   constructor(private http: HttpClient) {}
 

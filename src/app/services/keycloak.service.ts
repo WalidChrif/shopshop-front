@@ -1,13 +1,13 @@
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import Keycloak from 'keycloak-js';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import Keycloak from 'keycloak-js';
 
-import { AppState } from '../store';
-import { User } from '../common/user';
-import { environment } from '../../../environment';
-import * as newAuthActions from '../store/new-auth.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from '../../../environment';
+import { User } from '../common/user';
+import { AppState } from '../store';
+import * as newAuthActions from '../store/new-auth.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -68,6 +68,6 @@ export class KeycloakService {
     this.store.dispatch(newAuthActions.logout());
     this.storage.clear();
     this.translate.use('en');
-    this.keycloak.logout({ redirectUri: 'https://localhost:4200' });
+    this.keycloak.logout({ redirectUri: 'http://localhost:4200' });
   }
 }

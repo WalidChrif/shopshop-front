@@ -35,7 +35,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row p-5 pagination">
+            <div *ngIf="products.length >= 10" class="row p-5">
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
                     <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
@@ -43,7 +43,6 @@
                     </ngb-pagination>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

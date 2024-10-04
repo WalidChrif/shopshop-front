@@ -1,88 +1,304 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
-        <div class="container-fluid">
+        <div class="container text-center">
+            <!-- Content Row -->
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card" style="width: 18rem; margin: 14px 0;">
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
-                            <h5 class="card-title">Best Selling Product</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Earnings (Weekly)</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{'currency'|
+                                        translate}}{{weeklyEarnings}}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa-regular fa-money-bill-1 fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card" style="width: 18rem; margin: 14px 0;">
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
-                            <h5 class="card-title">This Week's Profit</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Earnings (Monthly)</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{'currency'|
+                                        translate}}{{monthlyEarnings}}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Goal
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                {{sales*100/50}}%</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="progress progress-sm mr-2">
+                                                <div class="progress-bar bg-info" role="progressbar"
+                                                    [ngStyle]="{width: sales*100/50 + '%'}" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto ">
+                                    <i class="fa-solid fa-coins fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pending Requests Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Pending Requests</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Content Row -->
             <div class="row">
-                <h3>{{'Recently Added Orders' | translate}}</h3>
-                <table class="table table-hover table-bordered my-2">
-                    <thead>
-                        <tr>
-                            <th scope="col">{{'Tracking Number' | translate}}</th>
-                            <th scope="col">{{'Total Items' | translate}}</th>
-                            <th scope="col">{{'Total Price' | translate}}</th>
-                            <th scope="col">{{'Date' | translate}}</th>
-                            <th scope="col">{{'Shipping Address' | translate}}</th>
-                        </tr>
-                    </thead>
-                    <tr *ngFor="let order of orders">
-                        <td>{{order.trackingNumber}}</td>
-                        <td>{{order.totalItems}}</td>
-                        <td>{{order.totalPrice}}</td>
-                        <td>{{order.dateCreated | date : 'short'}}</td>
-                        <td>{{order.shippingAddress.city}},{{order.shippingAddress.country}}
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>{{'Recently Added Products' | translate}}</h3>
-                    <table class="table table-hover table-bordered my-2">
-                        <thead>
-                            <tr>
-                                <th scope="col">{{'Product SKU' | translate}}</th>
-                                <th scope="col">{{'Product Name' | translate}}</th>
-                                <th scope="col">{{'Product Price' | translate}}</th>
-                            </tr>
-                        </thead>
-                        <tr *ngFor="let product of products">
-                            <td>{{product.sku}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{product.unitPrice}}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-6">
-                    <h3>{{'New customers' | translate}}</h3>
-                    <table class="table table-hover table-bordered my-2">
-                        <thead>
-                            <tr>
-                                <th scope="col">{{'Customer Name' | translate}}</th>
-                                <th scope="col">{{'Customer Email' | translate}}</th>
-                            </tr>
-                        </thead>
-                        <tr *ngFor="let customer of customers">
-                            <td>{{customer.firstName}} {{customer.lastName}}</td>
-                            <td>{{customer.email}}</td>
-                        </tr>
-                    </table>
-                </div>
+                <!-- Area Chart -->
 
+                <div class="col-xl-8 col-lg-7">
+                    <!-- Table 1 - Bootstrap Brain Component -->
+                    <div class="card widget-card border-light shadow-sm px-0 pb-4 mb-3">
+                        <div class="card-header py-3 ps-5 d-flex  align-items-center justify-content-between">
+                            <h5 class="m-0 font-weight-bold ">{{'Recent Orders'| translate}}</h5>
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <div class="dropdown-header">Dropdown Header:</div>
+                                    <a class="dropdown-item" href="#">Orders</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table bsb-table-xl text-nowrap align-middle m-0 ">
+                                    <thead>
+                                        <tr>
+                                            <th>Tracking number</th>
+                                            <th>Total Price</th>
+                                            <th>Date Added</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let order of orders">
+                                            <td>
+                                                <span class="text-secondary fs-7">{{order?.trackingNumber}}</span>
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="text-secondary fs-7">{{'currency'|translate}}{{order?.totalPrice}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary fs-7">{{order?.dateCreated | date :
+                                                    'short'}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge rounded-pill bg-success">{{'Paid'|translate}}</span>
+                                            </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Pie Chart -->
+                <div class="col-xl-4 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h5 class="m-0 font-weight-bold ">{{'Best Selling Product'|translate}}</h5>
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <div class="dropdown-header">Dropdown Header:</div>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div class="chart-pie">
+                                <div class="chartjs-size-monitor">
+                                    <div class="chartjs-size-monitor-expand">
+                                        <h4 class="card-title">{{bestSeller?.name}}</h4>
+                                        <img [src]="bestSeller?.imageUrl" class="card-img-top best-seller"
+                                            [alt]="bestSeller?.name">
+                                        <a href="" class="more-details">{{'More Details'|translate}}</a>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content Row -->
+            <div class="row">
+                <!-- Content Column -->
+                <div class="col-lg-6 mb-4">
+                    <!-- Project Card Example -->
+                    <div class="card shadow mb-4 ">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h5 class="m-0 ">{{'Most Popular Products'|translate}}</h5>
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <div class="dropdown-header">Dropdown Header:</div>
+                                    <a class="dropdown-item" href="#">Orders</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table bsb-table-xl text-nowrap align-middle m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Name</th>
+                                            <th>Sales</th>
+                                            <th>Stock</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let product of products">
+                                            <td>
+                                                <span class="text-secondary fs-7"><img [src]="product.imageUrl"
+                                                        alt="img">
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary fs-7">{{product?.name}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary fs-7">{{product?.sales}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge rounded-pill"
+                                                    [ngClass]="{'bg-success' : product.unitsInStock > 90, 'bg-warning': product.unitsInStock<20}">{{product?.unitsInStock}}</span>
+                                            </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <!-- Illustrations -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h5 class="m-0 font-weight-bold ">{{'Recent Customers'|translate}}</h5>
+                            <div class="dropdown no-arrow">
+                                <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                    aria-labelledby="dropdownMenuLink">
+                                    <div class="dropdown-header">Dropdown Header:</div>
+                                    <a class="dropdown-item" href="#">Orders</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table bsb-table-xl text-nowrap align-middle m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let customer of customers">
+                                            <td>
+                                                <span class="text-secondary fs-7">{{customer?.firstName}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary fs-7">{{customer?.lastName}}</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-secondary fs-7">{{customer?.email}}</span>
+                                            </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Approach -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h5 class="m-0 font-weight-bold ">Coming Soon</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>...</p>
+                            <p class="mb-0">...</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</div>

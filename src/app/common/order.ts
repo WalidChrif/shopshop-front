@@ -10,6 +10,7 @@ export class Order{
     shippingCost : number;
     shippingAddress: Address;
     dateCreated: Date;
+    status: string;
     orderItems: CartItem[];
   
     constructor(
@@ -20,6 +21,7 @@ export class Order{
       shippingCost: number,
       shippingAddress: Address,
       dateCreated: Date,
+      status : string,
       orderItems: CartItem[]
     ) {
       this.trackingNumber = trackingNumber;
@@ -29,6 +31,7 @@ export class Order{
       this.shippingCost = shippingCost;
       this.shippingAddress = shippingAddress;
       this.dateCreated = dateCreated;
+      this.status = status;
       this.orderItems = orderItems;
     }
 }

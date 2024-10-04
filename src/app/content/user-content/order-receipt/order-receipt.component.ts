@@ -42,6 +42,7 @@ export class OrderReceiptComponent {
         data.shippingCost,
         data.shippingAddress,
         data.dateCreated,
+        data.status,
         data.orderItems
       );
     });
