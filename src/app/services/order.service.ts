@@ -11,9 +11,9 @@ export class OrderService {
 
   constructor(private http: HttpClient) {}
 
-  getOrders(page: number = 0, size: number = 10) {
+  getOrders(page: number = 0, size: number = 10, orderBy: string) {
     return this.http.get<Page<Order>>(
-      `${this.baseUrl}/all?page=${page}&size=${size}`
+      `${this.baseUrl}/all?page=${page}&size=${size}&orderBy=${orderBy}`
     );
   }
   getOrdersForUser(email: string) {

@@ -19,6 +19,7 @@ export class OrdersComponent {
   page = 1;
   pageSize = 10;
   totalElements = 0;
+  orderBy = 'dateCreated,desc';
 
   constructor(private orderService: OrderService) {}
   ngOnInit() {
@@ -26,7 +27,7 @@ export class OrdersComponent {
   }
   getOrders() {
     this.orderService
-      .getOrders(this.page - 1, this.pageSize)
+      .getOrders(this.page - 1, this.pageSize, this.orderBy)
       .subscribe((response) => {
         this.orders = response.content;
         this.page = response.number + 1;

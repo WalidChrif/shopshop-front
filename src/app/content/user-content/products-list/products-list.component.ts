@@ -30,6 +30,7 @@ export class ProductsListComponent {
   loading: boolean = false;
   searchMode = false;
   homePage = false;
+  orderBy = 'name,asc'; 
 
   constructor(
     private productService: ProductService,
@@ -38,6 +39,7 @@ export class ProductsListComponent {
   ) {}
 
   ngOnInit(): void {
+    console.log(":::::::::::::: ", this.orderBy);
     this.loading = true;
     this.route.paramMap.subscribe((params) => {
       this.params = params;
@@ -58,7 +60,8 @@ export class ProductsListComponent {
       .getProductsByCategory(
         this.categoryId,
         this.page - 1,
-        this.pageSize
+        this.pageSize,
+        this.orderBy
       )
       .subscribe((response) => {
         this.handleData(response);
@@ -73,7 +76,8 @@ export class ProductsListComponent {
     }
     this.searchMode = true;
     this.productService
-      .getProductsByName(searchParam!, this.page - 1, this.pageSize)
+      .getProductsByName(searchParam!, this.page - 1, this.pageSize, this.orderBy
+      )
       .subscribe((response) => {
         this.handleData(response);
       });

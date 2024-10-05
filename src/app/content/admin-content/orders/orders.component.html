@@ -10,6 +10,19 @@
           >
         </h3>
       </div>
+      <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 items">
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="orderBy" (change)="getOrders()">
+            <option selected value="">Sort by</option>
+            <option value="totalPrice,asc">Total Price(low to high)</option>
+            <option value="totalPrice,desc">Total Price(high to low)</option>
+            <option value="dateCreated,desc">Recent</option>
+            <option value="dateCreated,asc">Oldest</option>
+            <option value="totalItems,desc">Most Items</option>
+          </select>
+        </div>
+      </div>
       <div *ngIf="orders.length > 0">
         <table
           class="table table-hover table-bordered my-2"

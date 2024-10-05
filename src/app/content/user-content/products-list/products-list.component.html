@@ -3,12 +3,22 @@
   <div class="section-content section-content-p30">
     <div class="container-fluid">
       <div *ngIf="loading" class="lds-dual-ring element"></div>
-      <div
-        *ngIf="!loading && products?.length == 0"
-        class="alert alert-warning"
-        role="alert"
-      >
+      <div *ngIf="!loading && products?.length == 0" class="alert alert-warning" role="alert">
         {{ "No products found. Please select a product category." | translate }}
+      </div>
+      <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 items">
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="orderBy" (change)="updatePage()">
+            <option selected value="">Sort by</option>
+            <option value="name,asc">A - Z</option>
+            <option value="name,desc">Z - A</option>
+            <option value="sales,desc">Most Popular</option>
+            <option value="dateCreated,desc">Recent</option>
+            <option value="unitPrice,asc">Price(low to high)</option>
+            <option value="unitPrice,desc">Price(high to low)</option>
+          </select>
+        </div>
       </div>
       <div class="row">
         <ng-container *ngIf="!loading">
@@ -17,10 +27,7 @@
               <a [routerLink]="['/product-detail', product.sku]">
                 <img [src]="product.imageUrl" class="img-responsive" />
               </a>
-              <a
-                style="display: block"
-                [routerLink]="['/product-detail', product.sku]"
-              >
+              <a style="display: block" [routerLink]="['/product-detail', product.sku]">
                 <h1>{{ product.name }}</h1>
               </a>
               <!-- <h2>{{product.description}} </h2> -->
@@ -34,32 +41,19 @@
           </div>
         </ng-container>
       </div>
-      <div
-        *ngIf="!loading"
-        class="footer-pagination"
-        style="padding-bottom: 30px"
-      >
+      <div *ngIf="!loading" class="footer-pagination" style="padding-bottom: 30px">
         <div class="row">
           <div class="col-md-6"></div>
           <div class="col-md-6 box items">
             <div class="row">
-              <div class="col-md-8" style="padding-left: 35%">
-                <ngb-pagination
-                  [(page)]="page"
-                  [collectionSize]="totalElements"
-                  [pageSize]="pageSize"
-                  (pageChange)="updatePage()"
-                  [maxSize]="5"
-                >
+              <div class="col-sm-6 col-md-7 col-lg-10" style="padding-left: 35%">
+                <ngb-pagination [(page)]="page" [collectionSize]="totalElements" [pageSize]="pageSize"
+                  (pageChange)="updatePage()" [maxSize]="5">
                 </ngb-pagination>
               </div>
-              <div class="col-md-4">
-                <span class="mr-2">{{ "Page size" | translate }}</span>
-                <select
-                  (click)="updatePage()"
-                  name="pageSize"
-                  [(ngModel)]="pageSize"
-                >
+              <div class="col-sm-6  col-md-5 col-lg-2">
+                <!-- <span class="mr-2">{{ "Page size" | translate }}</span> -->
+                <select class="form-select" (click)="updatePage()" name="pageSize" [(ngModel)]="pageSize">
                   <option value="5" selected="true">5</option>
                   <option value="10">10</option>
                   <option>20</option>

@@ -19,6 +19,7 @@ export class CustomersComponent {
   page = 1;
   pageSize = 10;
   totalElements = 0;
+  orderBy = 'firstName,asc';
 
   constructor(private customerService : CustomerService) {}
   
@@ -27,7 +28,7 @@ export class CustomersComponent {
   }
   getCustomers() {
     this.customerService
-      .getCustomers(this.page - 1, this.pageSize)
+      .getCustomers(this.page - 1, this.pageSize, this.orderBy)
       .subscribe((response) => {
         this.customers = response.content;
         this.page = response.number + 1;

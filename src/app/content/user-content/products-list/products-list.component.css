@@ -23,9 +23,9 @@ a {
   color: #0da8e4;
 }
 
-.box {
+/* .box {
   padding: 0 70px 40px 0;
-}
+} */
 
 .items * {
   color: #0da8e4;
@@ -87,4 +87,15 @@ a {
   max-height: 100dvh;
   margin: auto;
   padding-left: 30px;
+}
+
+@media screen and (max-width: 992px) {
+  .form-select{
+    width: 100px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .form-select{
+    width: 150px;
+  }
 }

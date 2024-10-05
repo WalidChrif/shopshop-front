@@ -9,7 +9,7 @@ import { Product } from './../common/product';
 })
 export class ProductService {
   baseUrl: string = 'http://localhost:8000/api/v1/products';
-  orderBy = 'unitPrice';
+  
 
   constructor(private http: HttpClient) {}
 
@@ -20,9 +20,9 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrl}/recent`);
   }
 
-  getProducts(page: number = 0, size: number = 10) {
+  getProducts(page: number = 0, size: number = 10, orderBy: string) {
     return this.http.get<Page<Product>>(
-      `${this.baseUrl}/all?page=${page}&size=${size}&orderBy=${this.orderBy}`
+      `${this.baseUrl}/all?page=${page}&size=${size}&orderBy=${orderBy}`
     );
   }
   getPopularProducts() {
@@ -32,14 +32,14 @@ export class ProductService {
     return this.http.get<Category[]>(`${this.baseUrl}/categories`);
   }
 
-  getProductsByCategory(categoryId: number, page: number, size: number) {
+  getProductsByCategory(categoryId: number, page: number, size: number, orderBy: string) {
     return this.http.get<Page<Product>>(
-      `${this.baseUrl}/category/${categoryId}?page=${page}&size=${size}&orderBy=${this.orderBy}`
+      `${this.baseUrl}/category/${categoryId}?page=${page}&size=${size}&orderBy=${orderBy}`
     );
   }
-  getProductsByName(name: string, page: number, size: number) {
+  getProductsByName(name: string, page: number, size: number, orderBy : string) {
     return this.http.get<Page<Product>>(
-      `${this.baseUrl}/search/${name}?page=${page}&size=${size}&orderBy=${this.orderBy}`
+      `${this.baseUrl}/search/${name}?page=${page}&size=${size}&orderBy=${orderBy}`
     );
   }
   getProductBySku(sku: string) {

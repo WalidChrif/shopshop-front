@@ -19,6 +19,7 @@ export class ProductsComponent {
   page = 1;
   pageSize = 10;
   totalElements = 0;
+  orderBy = 'name,asc';
 
   constructor(private productService: ProductService) {}
 
@@ -27,7 +28,7 @@ export class ProductsComponent {
   }
   getProducts() {
     this.productService
-      .getProducts(this.page - 1, this.pageSize)
+      .getProducts(this.page - 1, this.pageSize, this.orderBy)
       .subscribe((response) => {
         this.products = response.content;
         this.totalElements = response.totalElements;

@@ -11,9 +11,9 @@ export class CustomerService {
 
   constructor(private http: HttpClient) {}
 
-  getCustomers(page: number = 0, size: number = 10) {
+  getCustomers(page: number = 0, size: number = 10, orderBy : string) {
     return this.http.get<Page<Customer>>(
-      `${this.baseUrl}?page=${page}&size=${size}`
+      `${this.baseUrl}?page=${page}&size=${size}&orderBy=${orderBy}`
     );
   }
   getRecentCustomers() {
