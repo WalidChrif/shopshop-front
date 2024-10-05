@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
-import { Customer } from '../../../common/customer';
-import { CustomerService } from '../../../services/customer.service';
 import { NgFor, NgIf } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
+import { Customer } from '../../../common/customer';
+import { CustomerService } from '../../../services/customer.service';
 
 @Component({
   selector: 'app-customers-list',
   standalone: true,
-  imports: [NgbPagination, NgIf, NgFor, RouterLink, TranslateModule],
+  imports: [FormsModule, NgbPagination, NgIf, NgFor, RouterLink, TranslateModule],
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.css'
 })
@@ -17,7 +18,7 @@ export class CustomersComponent {
   customers : Customer[] = [];
   page = 1;
   pageSize = 10;
-  totalItems = 0;
+  totalElements = 0;
 
   constructor(private customerService : CustomerService) {}
   
@@ -31,7 +32,7 @@ export class CustomersComponent {
         this.customers = response.content;
         this.page = response.number + 1;
         this.pageSize = response.size;
-        this.totalItems = response.totalElements;
+        this.totalElements = response.totalElements;
       });
   }
 

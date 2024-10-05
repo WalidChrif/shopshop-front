@@ -23,7 +23,7 @@ export class ProductsListComponent {
   categoryId = 1;
   previousCategoryId = 1;
   params!: ParamMap;
-  pageNumber = 1;
+  page = 1;
   pageSize = 10;
   totalElements = 0;
   totalPages!: number;
@@ -51,13 +51,13 @@ export class ProductsListComponent {
     this.searchMode = false;
     this.categoryId = +params.get('id')!;
     if (this.previousCategoryId !== this.categoryId) {
-      this.pageNumber = 1;
+      this.page = 1;
     }
     this.previousCategoryId = this.categoryId;
     this.productService
       .getProductsByCategory(
         this.categoryId,
-        this.pageNumber - 1,
+        this.page - 1,
         this.pageSize
       )
       .subscribe((response) => {
@@ -73,7 +73,7 @@ export class ProductsListComponent {
     }
     this.searchMode = true;
     this.productService
-      .getProductsByName(searchParam!, this.pageNumber - 1, this.pageSize)
+      .getProductsByName(searchParam!, this.page - 1, this.pageSize)
       .subscribe((response) => {
         this.handleData(response);
       });
@@ -82,7 +82,7 @@ export class ProductsListComponent {
       this.products = response.content;
       this.totalPages = response.totalPages;
       this.totalElements = response.totalElements;
-      this.pageNumber = response.number + 1;
+      this.page = response.number + 1;
       this.pageSize = response.size;
       this.loading = false;
   }

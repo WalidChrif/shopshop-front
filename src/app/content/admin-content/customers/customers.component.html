@@ -32,14 +32,38 @@
                     </tbody>
                 </table>
             </div>
-            <div *ngIf="customers.length >= 10"  class="row p-5">
-                <div class="col-md-6"></div>
-                <div class="col-md-6"> <ngb-pagination [collectionSize]="totalItems"
-                        [(page)]="page" [pageSize]="pageSize" (pageChange)="getCustomers()" [maxSize]="5"
-                        [rotate]="true">
-                    </ngb-pagination>
+            <div class="footer-pagination" style="padding: 30px 0">
+                <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6 box items">
+                    <div class="row">
+                      <div class="col-md-8" style="padding-left: 20%">
+                        <ngb-pagination
+                          [(page)]="page"
+                          [collectionSize]="totalElements"
+                          [pageSize]="pageSize"
+                          (pageChange)="getCustomers()"
+                          [maxSize]="5"
+                        >
+                        </ngb-pagination>
+                      </div>
+                      <div class="col-md-4">
+                        <span class="mr-2">{{ "Page size" | translate }}</span>
+                        <select
+                          (click)="getCustomers()"
+                          name="pageSize"
+                          [(ngModel)]="pageSize"
+                        >
+                          <option value="5" selected="true">5</option>
+                          <option value="10">10</option>
+                          <option>20</option>
+                          <option>50</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
         </div>
     </div>
 </div>

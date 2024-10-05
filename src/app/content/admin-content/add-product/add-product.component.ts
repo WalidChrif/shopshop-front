@@ -1,4 +1,4 @@
-import { ProductService } from './../../../services/product.service';
+import { CanComponentDeactivate } from './../../../guards/cancel.guard';
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { ProductService } from './../../../services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -16,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
 })
-export class AddProductComponent {
+export class AddProductComponent implements CanComponentDeactivate {
   theForm: FormGroup;
   selectedImage: File;
 
@@ -55,5 +56,13 @@ export class AddProductComponent {
 
   selectImage(event) {
     this.selectedImage = event.target.files[0];
+  }
+
+  canDeactivate() {
+    if (this.theForm.dirty) {
+      return confirm('Are you sure you want to leave this page?');
+    } else {
+      return true;
+    }
   }
 }

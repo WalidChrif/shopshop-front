@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -9,7 +10,7 @@ import { OrderService } from '../../../services/order.service';
 @Component({
   selector: 'app-orders-list',
   standalone: true,
-  imports: [NgbPagination, TranslateModule, NgFor, NgIf, RouterLink, DatePipe],
+  imports: [FormsModule, NgbPagination, TranslateModule, NgFor, NgIf, RouterLink, DatePipe],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.css',
 })
@@ -17,7 +18,7 @@ export class OrdersComponent {
   orders: Order[] = [];
   page = 1;
   pageSize = 10;
-  totalItems = 0;
+  totalElements = 0;
 
   constructor(private orderService: OrderService) {}
   ngOnInit() {
@@ -30,7 +31,7 @@ export class OrdersComponent {
         this.orders = response.content;
         this.page = response.number + 1;
         this.pageSize = response.size;
-        this.totalItems = response.totalElements;
+        this.totalElements = response.totalElements;
       });
   }
 }

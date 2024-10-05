@@ -10,7 +10,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Earnings (Weekly)</div>
+                                        {{'Earnings (Weekly)'| translate}}</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{'currency'|
                                         translate}}{{weeklyEarnings}}</div>
                                 </div>
@@ -28,7 +28,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Earnings (Monthly)</div>
+                                        {{'Earnings (Monthly)'|translate}}</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{'currency'|
                                         translate}}{{monthlyEarnings}}</div>
                                 </div>
@@ -45,7 +45,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Goal
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">{{'Goal'|translate}}
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
@@ -75,7 +75,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Pending Requests</div>
+                                        {{'Pending Requests'|translate}}</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                 </div>
                                 <div class="col-auto">
@@ -102,11 +102,9 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                     aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Orders</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <!-- <div class="dropdown-header">Dropdown Header:</div> -->
+                                    <a class="dropdown-item" href="#">{{'Orders list'|translate}}</a>
+                                    <a class="dropdown-item" href="#">{{'Update Order'|translate}}</a>
                                 </div>
                             </div>
                         </div>
@@ -115,10 +113,10 @@
                                 <table class="table bsb-table-xl text-nowrap align-middle m-0 ">
                                     <thead>
                                         <tr>
-                                            <th>Tracking number</th>
-                                            <th>Total Price</th>
-                                            <th>Date Added</th>
-                                            <th>Status</th>
+                                            <th>{{'Tracking number'|translate}}</th>
+                                            <th>{{'Total Price'|translate}}</th>
+                                            <th>{{'Date Added'|translate}}</th>
+                                            <th>{{'Status'|translate}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,11 +155,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                     aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">{{'Change'|translate}}</a>
+                                    <a class="dropdown-item" href="#">{{'More details'}}</a>
                                 </div>
                             </div>
                         </div>
@@ -201,11 +196,9 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                     aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Orders</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <!-- <div class="dropdown-header">Dropdown Header</div> -->
+                                    <a class="dropdown-item" href="#">{{'Products list'|translate}}</a>
+                                    <a class="dropdown-item" href="#">{{'Add product'|translate}}</a>
                                 </div>
                             </div>
                         </div>
@@ -214,10 +207,10 @@
                                 <table class="table bsb-table-xl text-nowrap align-middle m-0">
                                     <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Name</th>
-                                            <th>Sales</th>
-                                            <th>Stock</th>
+                                            <th>{{'Product'|translate}}</th>
+                                            <th>{{'Name'|translate}}</th>
+                                            <th>{{'Sales'|translate}}</th>
+                                            <th>{{'Stock'|translate}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -255,11 +248,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                     aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Dropdown Header:</div>
-                                    <a class="dropdown-item" href="#">Orders</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">{{'Recent clients'|translate}}</a>
+                                    <a class="dropdown-item" href="#">{{'All clients'|translate}}</a>
                                 </div>
                             </div>
                         </div>
@@ -268,9 +258,9 @@
                                 <table class="table bsb-table-xl text-nowrap align-middle m-0">
                                     <thead>
                                         <tr>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Email</th>
+                                            <th>{{'First Name'|translate}}</th>
+                                            <th>{{'Last Name'|translate}}</th>
+                                            <th>{{'Email'|translate}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -292,7 +282,7 @@
                     <!-- Approach -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h5 class="m-0 font-weight-bold ">Coming Soon</h5>
+                            <h5 class="m-0 font-weight-bold ">{{'Coming Soon'|translate}}</h5>
                         </div>
                         <div class="card-body">
                             <p>...</p>

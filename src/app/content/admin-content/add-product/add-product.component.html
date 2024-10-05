@@ -13,7 +13,7 @@
                                     class="form-control">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('product.name')?.invalid && theForm.get('product.name')?.touched">
-                                    {{'Please enter a valid first name' | translate}}
+                                    {{'Please enter a valid product name' | translate}}
                                 </span>
                             </div>
                         </div>
@@ -21,14 +21,14 @@
                             <div class="m-3">
                                 <select formControlName="category" class="form-control">
                                     <option value="">{{'Select product category' | translate}}*</option>
-                                    <option value="1">Books</option>
-                                    <option value="2">Coffee Mugs</option>
-                                    <option value="3">Mouse Pads</option>
-                                    <option value="4">Luggage Tags</option>
+                                    <option value="1">{{'Books'|translate}}</option>
+                                    <option value="2">{{'Coffee Mugs'|translate}}</option>
+                                    <option value="3">{{'Mouse Pads'|translate}}</option>
+                                    <option value="4">{{'Luggage Tags'|translate}}</option>
                                 </select>
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('product.category')?.value == '' && theForm.get('product.category')?.touched ">
-                                    {{'Please select a valid category' | translate}}
+                                    {{'Please select a category' | translate}}
                                 </span>
                             </div>
 
@@ -62,7 +62,7 @@
                                     class="form-control">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('product.unitPrice')?.invalid && theForm.get('product.unitPrice')?.touched">
-                                    {{'Please enter a price' | translate}}
+                                    {{'Please add product price' | translate}}
                                 </span>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                     placeholder="{{'Units in stock' | translate}}*" class="form-control">
                                 <span class="help-block ms-3"
                                     *ngIf="theForm.get('product.unitsInStock')?.invalid && theForm.get('product.unitsInStock')?.touched">
-                                    {{'Please enter a valid stock' | translate}}
+                                    {{'Please add product stock' | translate}}
                                 </span>
                             </div>
                         </div>
