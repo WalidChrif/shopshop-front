@@ -48,16 +48,16 @@ export class AdminHomeComponent {
     this.productService.getBestSeller().subscribe((res) => {
       this.bestSeller = res;
     });
-    this.orderService.getOrders().subscribe((res) => {
-      this.orders = res.content.slice(0, 5);
+    this.orderService.getRecentOrders().subscribe((orders) => {
+      this.orders = orders;
     });
 
-    this.customerService.getCustomers().subscribe((res) => {
-      this.customers = res.content.slice(0, 5);
+    this.customerService.getRecentCustomers().subscribe((customers) => {
+      this.customers = customers;
     });
 
-    this.productService.getProducts().subscribe((res) => {
-      this.products = res.content.slice(0, 5);
+    this.productService.getPopularProducts().subscribe((products) => {
+      this.products = products;
     });
   }
 }

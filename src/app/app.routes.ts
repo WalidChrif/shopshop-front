@@ -11,6 +11,7 @@ import { ProductsListComponent } from './content/user-content/products-list/prod
 import { ShoppingCartComponent } from './content/user-content/shopping-cart/shopping-cart.component';
 import { CustomersComponent } from './content/admin-content/customers/customers.component';
 import { ProductsComponent } from './content/admin-content/products/products.component';
+import { AddProductComponent } from './content/admin-content/add-product/add-product.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'ShopShop' },
@@ -26,6 +27,11 @@ export const routes: Routes = [
     path: 'admin/customers',
     component: CustomersComponent,
     title: 'Customers List',
+  },
+  {
+    path: 'admin/add-product',
+    component: AddProductComponent,
+    title: 'Add Product',
   },
   {
     path: 'order-receipt/:tracking-number',

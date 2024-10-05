@@ -20,15 +20,15 @@
                     </thead>
                     <tbody>
                         <tr class="" *ngFor="let product of products">
-                            <td><img [src]="product.imageUrl" [alt]="product.name"></td>
-                            <td>{{product.name}}</td>
-                            <td>{{'currency' | translate}}{{product.unitPrice}}</td>
-                            <td>{{product.unitsInStock}}</td>
-                            <td>{{product.dateCreated | date : 'short'}}</td>
+                            <td><img [src]="product?.imageUrl" [alt]="product?.name"></td>
+                            <td>{{product?.name}}</td>
+                            <td>{{'currency' | translate}}{{product?.unitPrice}}</td>
+                            <td>{{product?.unitsInStock}}</td>
+                            <td>{{product?.dateCreated | date : 'short'}}</td>
                             <td>
-                                <a [routerLink]="['update',product.sku]" class="btn-update p-1 mx-1">{{'Update'
+                                <a [routerLink]="['update',product?.sku]" class="btn-update p-1 mx-1">{{'Update'
                                     | translate}}</a>
-                                <a [routerLink]="['delete',product.sku]" class="btn-delete p-1 mx-1">{{'Delete'
+                                <a [routerLink]="['delete',product?.sku]" class="btn-delete p-1 mx-1">{{'Delete'
                                     | translate}}</a>
                             </td>
                         </tr>

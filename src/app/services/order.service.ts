@@ -7,7 +7,6 @@ import { Page } from '../common/page';
   providedIn: 'root',
 })
 export class OrderService {
-
   private baseUrl = 'http://localhost:8000/api/v1/orders';
 
   constructor(private http: HttpClient) {}
@@ -23,6 +22,9 @@ export class OrderService {
         email: email,
       },
     });
+  }
+  getRecentOrders() {
+    return this.http.get<Order[]>(`${this.baseUrl}/recent`);
   }
   getOrder(trackingNumber: string) {
     return this.http.get<Order>(`${this.baseUrl}/${trackingNumber}`);

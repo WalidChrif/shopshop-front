@@ -275,22 +275,22 @@ input.au-input.au-input-xl {
 
 .total {
     background: #205b8d;
-    line-height: 43px;
+    line-height: 30px;
     color: #fff;
     border-radius: 30px;
     border: 1px solid #0da8e4;
     float: left;
-    /* margin-top: 9px; */
+    /* margin-top: 3px; */
     padding-left: 17px
 }
 
 .total span {
     display: inline-block;
     background: #fff;
-    padding: 0 13px;
+    padding: 1px 13px;
     color: #000;
     border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    /* border-bottom-right-radius: 20px; */
     margin-left: 11px
 }
 

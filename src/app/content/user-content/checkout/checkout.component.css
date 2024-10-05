@@ -12,3 +12,6 @@ div.ng-invalid.ng-touched{
     border-color: rgb(243, 144, 142);
     /* background-color: #f2dede; */
 }
+.main-content.page-m {
+    padding: 5% 7% !important;
+}

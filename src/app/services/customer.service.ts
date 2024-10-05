@@ -16,4 +16,7 @@ export class CustomerService {
       `${this.baseUrl}?page=${page}&size=${size}`
     );
   }
+  getRecentCustomers() {
+    return this.http.get<Customer[]>(`${this.baseUrl}/recent`);
+  }
 }

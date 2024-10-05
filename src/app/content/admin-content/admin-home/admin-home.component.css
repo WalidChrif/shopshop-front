@@ -62,7 +62,11 @@ img {
 
 thead tr th {
     /* background-color: #0da8e4; */
-    color: #0da8e4;
+    color: #205b8d;
     font-size: 0.9rem;
 
+}
+
+.main-content {
+    padding: 3% 5%;
 }

@@ -173,7 +173,9 @@
                                         <h4 class="card-title">{{bestSeller?.name}}</h4>
                                         <img [src]="bestSeller?.imageUrl" class="card-img-top best-seller"
                                             [alt]="bestSeller?.name">
-                                        <a href="" class="more-details">{{'More Details'|translate}}</a>
+                                        <p>
+                                            <a href="" class="more-details">{{'More Details'|translate}}</a>
+                                        </p>
                                     </div>
                                     <div class="chartjs-size-monitor-shrink">
                                         <div class=""></div>
@@ -222,7 +224,7 @@
                                         <tr *ngFor="let product of products">
                                             <td>
                                                 <span class="text-secondary fs-7"><img [src]="product.imageUrl"
-                                                        alt="img">
+                                                        [alt]="product?.name">
                                                 </span>
                                             </td>
                                             <td>

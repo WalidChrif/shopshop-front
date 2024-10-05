@@ -7,11 +7,12 @@ import { User } from '../../../common/user';
 import { KeycloakService } from '../../../services/keycloak.service';
 import { ProductService } from '../../../services/product.service';
 import { AppState } from '../../../store';
+import { FormModalComponent } from '../../admin-content/form-modal/form-modal.component';
 
 @Component({
   selector: 'app-user-info',
   standalone: true,
-  imports: [RouterLink, NgIf, TranslateModule],
+  imports: [FormModalComponent, RouterLink, NgIf, TranslateModule],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.css',
 })

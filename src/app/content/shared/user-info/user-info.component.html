@@ -1,36 +1,39 @@
 <ul class="navbar-nav me-auto mb-lg-0">
-    <li class="nav-item ">
-        <button class="nav-link" aria-current="page" *ngIf="!user" class=" btn au-btn-submit p-2" type="button"
-            (click)="login()">
+    <li *ngIf="!user" class="nav-item ">
+        <button class="nav-link" aria-current="page" class=" btn au-btn-submit p-2" type="button" (click)="login()">
             {{'Sign In'| translate}}
         </button>
     </li>
-    <li class="nav-item ">
-        <button class="nav-link" aria-current="page" *ngIf="!user" class=" btn au-btn-submit  p-2" type="button"
-            (click)="signUp()">
+    <li *ngIf="!user" class="nav-item " >
+        <button class="nav-link" aria-current="page" class=" btn au-btn-submit p-2" type="button" (click)="signUp()">
             {{'Sign Up'| translate}}
         </button>
     </li>
-    <li id="welcome" class="nav-item ">
-        <button class="nav-link" *ngIf="user" class="btn au-btn-submit" (click)="manageAccount()">
-            <!-- {{'Welcome' | translate}} -->
+    <li *ngIf="user" id="welcome" class="nav-item ">
+        <button class="nav-link" class="btn au-btn-submit" (click)="manageAccount()">
             {{user.firstName }}</button>
     </li>
-    <li class="nav-item">
-        <button *ngIf="user?.userType == 'Customer'" [routerLink]="['/orders']" [queryParams]="{email : user.email}"
-            class="btn au-btn-submit mx-2" type="button">
+    <li *ngIf="user?.userType == 'Customer'" class="nav-item">
+        <button [routerLink]="['/orders']" [queryParams]="{email : user.email}" class="btn au-btn-submit" type="button">
             {{'Orders' | translate}}
         </button>
     </li>
-    <li class="nav-item">
-        <button *ngIf="user?.userType == 'Admin'" (click)="addProduct()"
-            class="btn au-btn-submit mx-2" type="button">
+    <li *ngIf="user?.userType == 'Admin'" class="nav-item mx-2">
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn au-btn-submit" data-bs-toggle="modal" data-bs-target="#formModal">
+            Add Product
+        </button> -->
+        <button  (click)="addProduct()" class="btn au-btn-submit mx-2" type="button">
             {{'Add Product' | translate}}
         </button>
     </li>
-    <li class="nav-item">
-        <button *ngIf="user" class="btn au-btn-submit  " type="button" (click)="logout()">
+    <li *ngIf="user" class="nav-item mx-2">
+        <button class="btn au-btn-submit" type="button" (click)="logout()">
             {{'Logout' | translate}}
         </button>
     </li>
+
+
+    <!-- Modal -->
+    <app-form-modal></app-form-modal>
 </ul>

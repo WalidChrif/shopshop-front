@@ -1,0 +1,92 @@
+<!-- MAIN CONTENT-->
+<div class="main-content page-m">
+    <div class="">
+        <div class="container-fluid">
+            <!-- Form Group -->
+            <form [formGroup]="theForm" (submit)="onSubmit()">
+                <div class="form-area" formGroupName="product">
+                    <h3>{{'Product' | translate}}</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="m-3 mt-1">
+                                <input formControlName="name" type="text" placeholder="{{'Name' | translate}}*"
+                                    class="form-control">
+                                <span class="help-block ms-3"
+                                    *ngIf="theForm.get('product.name')?.invalid && theForm.get('product.name')?.touched">
+                                    {{'Please enter a valid first name' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="m-3">
+                                <select formControlName="category" class="form-control">
+                                    <option value="">{{'Select product category' | translate}}*</option>
+                                    <option value="1">Books</option>
+                                    <option value="2">Coffee Mugs</option>
+                                    <option value="3">Mouse Pads</option>
+                                    <option value="4">Luggage Tags</option>
+                                </select>
+                                <span class="help-block ms-3"
+                                    *ngIf="theForm.get('product.category')?.value == '' && theForm.get('product.category')?.touched ">
+                                    {{'Please select a valid category' | translate}}
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12">
+                            <div class="m-3">
+                                <textarea formControlName="description" type="text" rows="4" cols="70"
+                                    placeholder="{{'Description' | translate}}*" class="form-control"></textarea>
+                                <span class="help-block ms-3 p-2"
+                                    *ngIf="theForm.get('product.description')?.invalid && theForm.get('product.description')?.touched">
+                                    {{'Please enter a valid description' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="m-3">
+                                <input formControlName="image" type="file" placeholder="{{'Image' | translate}}*"
+                                    class="form-control" (change)="selectImage($event)">
+                                <span class="help-block ms-3"
+                                    *ngIf="theForm.get('product.image')?.invalid && theForm.get('product.image')?.touched">
+                                    {{'Please add image' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="m-3">
+                                <input formControlName="unitPrice" type="number" step=".01" placeholder="{{'Price' | translate}}*"
+                                    class="form-control">
+                                <span class="help-block ms-3"
+                                    *ngIf="theForm.get('product.unitPrice')?.invalid && theForm.get('product.unitPrice')?.touched">
+                                    {{'Please enter a price' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="m-3">
+                                <input formControlName="unitsInStock" type="number"
+                                    placeholder="{{'Units in stock' | translate}}*" class="form-control">
+                                <span class="help-block ms-3"
+                                    *ngIf="theForm.get('product.unitsInStock')?.invalid && theForm.get('product.unitsInStock')?.touched">
+                                    {{'Please enter a valid stock' | translate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                            <div class=" text-center">
+                                <button type="submit" class="au-btn-submit px-3 py-2">{{'Add Product' |
+                                    translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
