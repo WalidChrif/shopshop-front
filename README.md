@@ -1,27 +1,75 @@
-# ShopshopFront
+### **Angular Frontend README**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
+# ShopShop Frontend
 
-## Development server
+This is the frontend of the **ShopShop** e-commerce platform, built using Angular. It provides a responsive interface for both customers and administrators, supporting multilingual features and dynamic content.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Browse products by category.
+- Search, filter, and view product details.
+- Customer shopping cart and order management.
+- Admin dashboard for managing products, categories, and orders.
+- Multilingual support for Spanish and English.
+- State management with NgRx.
+- Responsive design using Bootstrap and PrimeNG.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technology Stack
 
-## Build
+- **Angular**: Frontend framework.
+- **NgRx**: State management.
+- **ngx-translate**: For multilingual support.
+- **PrimeNG** and **NgBootstrap**: UI component libraries.
+- **RxJS**: For handling asynchronous operations.
+- **HTML**, **CSS**, **Bootstrap**: For styling and layout.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation and Setup
 
-## Running unit tests
+### Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Node.js (version 14+)
+- Angular CLI (version 12+)
+- Keycloak (for authentication)
 
-## Running end-to-end tests
+### Steps
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/shopshop-frontend.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd shopshop-frontend
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Update `environment.ts` and `environment.prod.ts` with the backend API URL and Keycloak settings:
+   ```typescript
+   export const environment = {
+     production: false,
+     apiUrl: 'http://localhost:8080/api',
+     keycloak: {
+       url: 'http://localhost:8080/auth',
+       realm: 'your_realm',
+       clientId: 'your_client_id'
+     }
+   };
+   ```
+5. Run the Angular development server:
+   ```bash
+   ng serve
+   ```
+6. The application will be accessible at `http://localhost:4200`.
 
-## Further help
+### Keycloak Configuration
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Install and configure Keycloak.
+2. Create a realm and set up the roles `admin` and `customer`.
+3. Create a Keycloak client for the frontend with the appropriate redirect URIs.
+
+## Multilingual Setup
+
+- **ngx-translate** is used to manage translations.
+- Available languages: Spanish (es-PR) and English (en).
