@@ -1,0 +1,49 @@
+<!-- MAIN CONTENT -->
+<!-- Form Group -->
+<div class="main-content">
+    <div class="container">
+        <div class="wrapper register ">
+            <!-- <a href="index.html"><span class="icon-close"><i class="fa fa-close-outline"></i></span></a> -->
+            <h2>{{'Sign In'|translate}}</h2>
+            <form [formGroup]="loginForm" (submit)="onSubmit()">
+                <div *ngIf="userEmail" class="registered">
+                    <p>Registration successful. Please login.</p>
+                </div>
+                <div class="input-box">
+                    <input formControlName="email" type="text">
+                    <label>{{'Email'|translate}}</label>
+                    <span class="help-block ms-3"
+                        *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                        {{'Please enter a valid email'|translate}}
+                    </span>
+                </div>
+                <div class="input-box">
+                    <!-- <span class="icon"><i class="fa fa-lock"></i></span> -->
+                    <input formControlName="password" type="password" required>
+                    <label>{{'Password'|translate}}</label>
+                    <span class="help-block ms-3"
+                        *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                        {{'Please enter a valid password'|translate}}
+                    </span>
+                </div>
+                <div class="remember-forgot mt-2">
+                    <label>
+                        <input formControlName="rememberMe" type="checkbox">{{'Remember me'|translate}}</label>
+                </div>
+                <button [disabled]="loginForm.invalid" type="submit" class="btn">{{'Sign In'|translate}}</button>
+                <div class="login-register">
+                    <p>{{'Not registered yet?'|translate}}
+                        <a [routerLink]="['/signup']" routerLinkActive="router-link-active" class="register-link">
+                            <button class="btn">{{'Sign Up'|translate}}</button>
+                        </a>
+                    </p>
+                </div>
+                <div class="" style="text-align: center;">
+                    <button type="button" (click)="signinWithGoogle()" class="btn google-btn">
+                      {{'Sign In with google'|translate}}
+                    </button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>

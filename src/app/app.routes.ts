@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './content/shared/login/login.component';
 import { PageNotFoundComponent } from './content/shared/page-not-found/page-not-found.component';
+import { SignupComponent } from './content/shared/signup/signup.component';
 import { CheckoutComponent } from './content/user-content/checkout/checkout.component';
 import { HomeComponent } from './content/user-content/home/home.component';
 import { OrderHistoryComponent } from './content/user-content/order-history/order-history.component';
@@ -7,12 +9,17 @@ import { OrderReceiptComponent } from './content/user-content/order-receipt/orde
 import { ProductDetailComponent } from './content/user-content/product-detail/product-detail.component';
 import { ProductsListComponent } from './content/user-content/products-list/products-list.component';
 import { ShoppingCartComponent } from './content/user-content/shopping-cart/shopping-cart.component';
+import { AdminGuard } from './guards/admin.guard';
 import { authGuard } from './guards/auth.guard';
+import { CallbackGuard } from './guards/callback.guard';
 import { cancelGuard } from './guards/cancel.guard';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'ShopShop' },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'callback', component: HomeComponent, canActivate: [CallbackGuard] },
+  { path: 'signin', component: LoginComponent, title: 'Login' },
+  { path: 'signup', component: SignupComponent, title: 'Sign Up' },
   {
     path: 'checkout',
     component: CheckoutComponent,
@@ -53,9 +60,8 @@ export const routes: Routes = [
   // Lazy load admin module
   {
     path: 'admin',
-    loadChildren: () =>
-      import('./routes/admin.routes').then((m) => m.adminRoutes),
-    canActivate: [authGuard],
+    loadChildren: () => import('./admin.routes').then((m) => m.adminRoutes),
+    canActivate: [AdminGuard],
   },
   { path: '**', component: PageNotFoundComponent, title: 'Page Not Found' },
 ];

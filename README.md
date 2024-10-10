@@ -49,12 +49,12 @@ This is the frontend of the **ShopShop** e-commerce platform, built using Angula
    ```typescript
    export const environment = {
      production: false,
-     apiUrl: 'http://localhost:8080/api',
+     apiUrl: "http://localhost:8080/api",
      keycloak: {
-       url: 'http://localhost:8080/auth',
-       realm: 'your_realm',
-       clientId: 'your_client_id'
-     }
+       url: "http://localhost:8080/auth",
+       realm: "shopshop",
+       clientId: "shopshop-front",
+     },
    };
    ```
 5. Run the Angular development server:

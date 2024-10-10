@@ -1,13 +1,12 @@
-import { User } from './../../../common/user';
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AppState } from '../../../store';
 import { CartStatusComponent } from '../cart-status/cart-status.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../../store';
-
+import { User } from './../../../common/user';
 @Component({
   selector: 'app-navbar',
   standalone: true,

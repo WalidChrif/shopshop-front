@@ -1,24 +1,30 @@
 <ul class="navbar-nav me-auto mb-lg-0">
     <li *ngIf="!user" class="nav-item ">
-        <button class="nav-link" aria-current="page" class=" btn au-btn-submit p-2" type="button" (click)="login()">
+        <!-- <button class="nav-link" aria-current="page" class=" btn au-btn-submit p-2" type="button" (click)="login()">
             {{'Sign In'| translate}}
-        </button>
+        </button> -->
+        <a [routerLink]="['/signin']" class="nav-link" aria-current="page" class=" btn au-btn-submit p-2">
+            {{'Sign In'| translate}}
+        </a>
     </li>
     <li *ngIf="!user" class="nav-item ">
-        <button class="nav-link" aria-current="page" class=" btn au-btn-submit p-2" type="button" (click)="signUp()">
+        <!-- <button class="nav-link" aria-current="page" class=" btn au-btn-submit p-2" type="button" (click)="signUp()">
             {{'Sign Up'| translate}}
-        </button>
+        </button> -->
+        <a [routerLink]="['/signup']" class="nav-link" aria-current="page" class=" btn au-btn-submit p-2">
+            {{'Sign Up'| translate}}
+        </a>
     </li>
     <li *ngIf="user" id="welcome" class="nav-item ">
-        <button class="nav-link" class="btn au-btn-submit" (click)="manageAccount()">
+        <button class="nav-link" class="btn au-btn-submit">
             {{user.firstName }}</button>
     </li>
-    <li *ngIf="user?.userType == 'Customer'" class="nav-item">
+    <li *ngIf="user?.role == 'CUSTOMER'" class="nav-item">
         <button [routerLink]="['/orders']" [queryParams]="{email : user.email}" class="btn au-btn-submit" type="button">
             {{'Orders' | translate}}
         </button>
     </li>
-    <li *ngIf="user?.userType == 'Admin'" class="nav-item mx-2">
+    <li *ngIf="user?.role == 'ADMIN'" class="nav-item mx-2">
         <button (click)="addProduct()" class="btn au-btn-submit mx-2" type="button">
             {{'Add Product' | translate}}
         </button>

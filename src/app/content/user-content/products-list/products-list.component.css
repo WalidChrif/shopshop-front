@@ -99,3 +99,10 @@ a {
     width: 150px;
   }
 }
+
+img {
+  float: left;
+  width:  150px;
+  height: 120px;
+  object-fit: fill;
+}

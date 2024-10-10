@@ -4,9 +4,9 @@ import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { User } from '../../../common/user';
-import { KeycloakService } from '../../../services/keycloak.service';
-import { ProductService } from '../../../services/product.service';
+import { AuthService } from '../../../services/auth.service';
 import { AppState } from '../../../store';
+import * as newAuthActions from '../../../store/new-auth.actions';
 
 @Component({
   selector: 'app-user-info',
@@ -17,11 +17,11 @@ import { AppState } from '../../../store';
 })
 export class UserInfoComponent {
   user: User;
+  storage: Storage = sessionStorage;
 
   constructor(
-    private keycloakService: KeycloakService,
     private store: Store<AppState>,
-    private productService: ProductService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -30,20 +30,14 @@ export class UserInfoComponent {
       this.user = data.user;
     });
   }
-  manageAccount() {
-    this.keycloakService.keycloak.accountManagement();
-  }
-  login() {
-    this.keycloakService.login();
-  }
-  signUp() {
-    this.keycloakService.signUp();
-  }
   logout() {
-    this.keycloakService.logout();
+    // this.keycloakService.logout();
+    this.authService.logout(String(this.user.id)).subscribe();
+    this.storage.clear();
+    this.store.dispatch(newAuthActions.logout());
+    this.router.navigate(['/']);
   }
   addProduct() {
-    //add this to routes
     this.router.navigate(['/admin', 'add-product']);
   }
 }

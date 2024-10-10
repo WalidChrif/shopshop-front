@@ -1,0 +1,83 @@
+<div class="main-content">
+  <div class="container">
+    <!-- Form Group -->
+    <div class="wrapper register">
+      <!-- <a href="index.html"><span class="icon-close"><i class="fa fa-close-outline"></i></span></a> -->
+
+      <h2>{{'Registration'|translate}}</h2>
+      <form [formGroup]="signUpForm" (submit)="signUp()">
+        <div class="input-box">
+          <!-- <span class="icon"><i class='bx bx-user'></i></span> -->
+          <input formControlName="firstName" type="text" />
+          <label>{{'First Name'|translate}}</label>
+          <span class="help-block ms-3" *ngIf="
+          signUpForm.get('firstName')?.invalid &&
+          signUpForm.get('firstName')?.touched
+        ">
+            {{'Please enter a valid first name'|translate}}
+          </span>
+        </div>
+
+        <div class="input-box">
+          <!-- <span class="icon"><i class='bx bx-envelope'></i></span> -->
+          <input formControlName="lastName" type="text" />
+          <label>{{'Last Name'|translate}}</label>
+          <span class="help-block ms-3" *ngIf="
+          signUpForm.get('lastName')?.invalid &&
+          signUpForm.get('lastName')?.touched
+        ">
+            {{'Please enter a valid last name' | translate}}
+          </span>
+        </div>
+        <!-- <div class="input-box">
+      <input formControlName="username" type="text" />
+      <label>Username</label>
+      <span class="help-block ms-3" *ngIf="
+          signUpForm.get('username')?.invalid &&
+          signUpForm.get('username')?.touched
+        ">
+        Please enter a valid username.
+      </span>
+    </div> -->
+        <div class="input-box">
+          <span class="icon"><i class="bx bx-envelope"></i></span>
+          <input formControlName="email" type="email" />
+          <label>{{'Email'|translate}}</label>
+          <span class="help-block ms-3" *ngIf="
+          signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched
+        ">
+            {{'Please enter a valid email'|translate}}
+          </span>
+        </div>
+
+        <div class="input-box">
+          <span class="icon"><i class="fa fa-lock"></i></span>
+          <input formControlName="password" type="password" />
+          <label>{{'Password'|translate}}</label>
+          <span class="help-block ms-3" *ngIf="
+          signUpForm.get('password')?.invalid &&
+          signUpForm.get('password')?.touched
+        ">
+            {{'Please enter a valid password'|translate}}
+          </span>
+        </div>
+        <button [disabled]="signUpForm.invalid" type="submit" class="btn">
+          {{'Sign Up'|translate}}
+        </button>
+        <div class="login-register">
+          <p>
+            {{'Already have an account?'|translate}}
+            <a [routerLink]="['/signin']" routerLinkActive="router-link-active" class="register-link">
+              <button class="btn">{{'Sign In'|translate}}</button>
+            </a>
+          </p>
+        </div>
+        <div class="" style="text-align: center;">
+          <button type="button" (click)="signUpWithGoogle()" class="btn google-btn">
+            {{'Sign In with google'|translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,18 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import {
+  CanActivateFn,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map, take } from 'rxjs';
+import { take, map } from 'rxjs';
 import { AppState } from '../store';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const CallbackGuard: CanActivateFn = (
+  _route: ActivatedRouteSnapshot,
+  _state: RouterStateSnapshot
+) => {
   const router = inject(Router);
   const store = inject(Store<AppState>);
 
@@ -18,7 +26,11 @@ export const authGuard: CanActivateFn = (route, state) => {
       if (data.user.role === 'ADMIN') {
         router.navigate(['/admin']);
         return false;
-      } else return true;
+      }
+      else {
+        router.navigate(['/home']);
+        return false;
+      }
     })
   );
 };

@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
 import { JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from '../../../services/product.service';
+import { Store } from '@ngrx/store';
 import { Product } from '../../../common/product';
-
+import { User } from '../../../common/user';
+import { JwtService } from '../../../services/jwt.service';
+import { ProductService } from '../../../services/product.service';
+import { AppState } from '../../../store';
+import * as newAuthActions from '../../../store/new-auth.actions';
 
 @Component({
   selector: 'app-home',
@@ -15,13 +19,30 @@ import { Product } from '../../../common/product';
 })
 export class HomeComponent {
   products: Product[] = [];
+  user: User;
 
-  constructor(private productService: ProductService) {}
-
+  constructor(
+    private productService: ProductService,
+    private jwtService: JwtService,
+    private route: ActivatedRoute,
+    private store: Store<AppState>,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    const code = this.route.snapshot.queryParamMap.get('code');
+    if (code) {
+       this.jwtService.exchangeCode(code).subscribe(
+        (response) =>{
+          this.user = this.jwtService.parseToken(response);
+          this.store.dispatch(newAuthActions.login(this.user));
+          this.router.navigate(['/']);
+        }
+      )
+
+    }
     this.productService.findOneProductPerCategory().subscribe((response) => {
       this.products = response;
-    });    
+    });
   }
 }

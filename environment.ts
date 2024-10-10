@@ -3,9 +3,13 @@ export const environment = {
   serverUrl: '/api',
   keycloak: {
     // Url of the Identity Provider
-    issuer: 'http://localhost:9001',
+    server: 'http://localhost:9001',
     // Realm
     realm: 'shopshop',
-    clientId: 'shopshop',
+    clientId: 'shopshop-front',
+    redirectUri : 'http://localhost:4200/home',
+    responseType : 'code',
+    scope : 'openid email profile',
+    kcIdpHint : 'google'
   },
 };

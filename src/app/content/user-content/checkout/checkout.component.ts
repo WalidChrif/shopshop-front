@@ -56,7 +56,7 @@ export class CheckoutComponent {
     private checkoutService: CheckoutService,
     private store: Store<AppState>,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.store

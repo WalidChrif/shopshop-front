@@ -1,19 +1,19 @@
 <!-- MENU SIDEBAR-->
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a [routerLink]="[user?.userType == 'Admin' ? '/admin' : '/home']">
+        <a [routerLink]="[user?.role == 'ADMIN' ? '/admin' : '/home']">
             <img src="assets/images/logo.png" alt="ShopShop" class="img-responsive">
         </a>
     </div>
     <div class="menu-sidebar-content js-scrollbar1">
         <nav class="navbar-sidebar">
-            <ul *ngIf="!user || user?.userType == 'Customer'" class="list-unstyled navbar-list">
+            <ul *ngIf="!user || !user.role || user?.role == 'CUSTOMER'" class="list-unstyled navbar-list">
                 <li><a [routerLink]="['/products/category/',1]">{{'Books'| translate}}</a></li>
                 <li><a [routerLink]="['/products/category/',2]">{{'Coffee Mugs'| translate}}</a></li>
                 <li><a [routerLink]="['/products/category/',3]">{{'Mouse Pads'| translate}}</a></li>
                 <li><a [routerLink]="['/products/category/',4]">{{'Luggage Tags'| translate}}</a></li>
             </ul>
-            <ul *ngIf="user?.userType == 'Admin'" class="list-unstyled navbar-list">
+            <ul *ngIf="user?.role == 'ADMIN'" class="list-unstyled navbar-list">
                 <li><a [routerLink]="['/admin/orders']">{{'Orders'| translate}}</a></li>
                 <li><a [routerLink]="['/admin/products']">{{'Products'| translate}}</a></li>
                 <li><a [routerLink]="['/admin/customers']">{{'Customers'| translate}}</a></li>
