@@ -4,7 +4,7 @@ import { AdminHomeComponent } from './content/admin-content/admin-home/admin-hom
 import { CustomersComponent } from './content/admin-content/customers/customers.component';
 import { OrdersComponent } from './content/admin-content/orders/orders.component';
 import { ProductsComponent } from './content/admin-content/products/products.component';
-import { cancelGuard } from './guards/cancel.guard';
+import { CancelGuard } from './guards/cancel.guard';
 
 export const adminRoutes: Routes = [
   { path: '', component: AdminHomeComponent, title: 'Admin Home' },
@@ -15,6 +15,6 @@ export const adminRoutes: Routes = [
     path: 'add-product',
     component: AddProductComponent,
     title: 'Add Product',
-    canDeactivate: [cancelGuard],
+    canDeactivate: [CancelGuard],
   },
 ];

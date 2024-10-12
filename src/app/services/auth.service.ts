@@ -14,7 +14,7 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, login);
   }
   register(register: any) {
-    return this.http.post(`${this.baseUrl}/register`, register);
+    return this.http.post(`${this.baseUrl}/register`, register, {responseType: 'text'});
   }
   logout(userId : string) {
   return this.http.post(`${this.baseUrl}/logout`, userId, {responseType: 'text'});

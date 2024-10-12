@@ -29,7 +29,7 @@ body{
     overflow: hidden;
 }
 .wrapper h2{
-    font-size: 2em;
+    /* font-size: 2em; */
     color: #205b8d;
     text-align: center;
 
@@ -106,7 +106,7 @@ body{
     outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1em;
+    /* font-size: 1em; */
     color: #fff;
     font-weight: 500;
     padding: 10px;

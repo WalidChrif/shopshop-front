@@ -10,6 +10,20 @@
                 </h3>
             </div>
             <div *ngIf="orders.length > 0">
+                <div class="row">
+                    <div class="col-md-10"></div>
+                    <div class="col-md-2 items">
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="orderBy"
+                            (change)="getOrdersForUser()">
+                            <option selected value="">Sort by</option>
+                            <option value="totalPrice,asc">{{'Total Price(low to high)' | translate}}</option>
+                            <option value="totalPrice,desc">{{'Total Price(high to low)' | translate}}</option>
+                            <option value="dateCreated,desc">{{'Recent' | translate}}</option>
+                            <option value="dateCreated,asc">{{'Oldest' | translate}}</option>
+                            <option value="totalItems,desc">{{'Most Items' | translate}}</option>
+                        </select>
+                    </div>
+                </div>
                 <h3 class="display-6" style="color: #0da8e4;">
                     {{'My Orders' | translate}} :
                 </h3>

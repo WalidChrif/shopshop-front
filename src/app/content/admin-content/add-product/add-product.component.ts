@@ -9,17 +9,19 @@ import {
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from './../../../services/product.service';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgFor, TranslateModule],
+  imports: [ReactiveFormsModule, NgIf, NgFor, TranslateModule, NgbPopover],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css',
 })
 export class AddProductComponent implements CanComponentDeactivate {
   theForm: FormGroup;
   selectedImage: File;
+  active = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,11 +33,11 @@ export class AddProductComponent implements CanComponentDeactivate {
       product: this.formBuilder.group({
         name: ['', [Validators.required, Validators.minLength(5)]],
         category: ['', [Validators.required]],
-        description: ['', [Validators.required, Validators.minLength(15)]],
+        description: ['', [Validators.required]],
         image: ['', [Validators.required]],
         unitPrice: ['', [Validators.required]],
         unitsInStock: ['', [Validators.required]],
-        active: [true],
+        active: [this.active],
       }),
     });
   }
@@ -51,6 +53,7 @@ export class AddProductComponent implements CanComponentDeactivate {
 
     this.productService.addProduct(formData).subscribe((response) => {
       console.log(' Product added successfully', response);
+      this.theForm.reset();
     });
   }
 

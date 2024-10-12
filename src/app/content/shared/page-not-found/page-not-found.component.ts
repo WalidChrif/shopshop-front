@@ -13,6 +13,6 @@ export class PageNotFoundComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // setTimeout(() => this.router.navigate(['']), 1725);
+    setTimeout(() => this.router.navigate(['/']), 1725);
   }
 }

@@ -9,17 +9,19 @@ import { OrderService } from '../../../services/order.service';
 import { AppState } from '../../../store';
 import { NewAuthState } from '../../../store/new-auth.reducer';
 import { Store } from '@ngrx/store';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order-history',
   standalone: true,
-  imports: [RouterLink, CurrencyPipe, DatePipe, NgIf, NgFor, TranslateModule],
+  imports: [RouterLink, CurrencyPipe, DatePipe, NgIf, NgFor, TranslateModule, FormsModule],
   templateUrl: './order-history.component.html',
   styleUrl: './order-history.component.css',
 })
 export class OrderHistoryComponent {
   orders: Order[] = [];
   user: User;
+  orderBy = 'dateCreated,desc';
 
   constructor(
     private orderService: OrderService,
@@ -33,11 +35,16 @@ export class OrderHistoryComponent {
         take(1),
         switchMap((response: NewAuthState) => {
           this.user = response.user;
-          return this.orderService.getOrdersForUser(response.user.email);
+          return this.orderService.getOrdersForUser(response.user.email, this.orderBy);
         })
       )
       .subscribe((orders: Order[]) => {
         this.orders = orders;
       });
+  }
+  getOrdersForUser(){
+    this.orderService.getOrdersForUser(this.user.email, this.orderBy).subscribe((orders: Order[]) => {
+      this.orders = orders;
+    });
   }
 }

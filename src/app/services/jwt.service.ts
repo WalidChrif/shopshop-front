@@ -21,7 +21,7 @@ export class JwtService {
   }
 
   extractUserInfo(decodedPayload: any, token: any) {
-    return {
+    const newUser =  {
       id: decodedPayload.sub,
       email: decodedPayload.email,
       firstName: decodedPayload.given_name,
@@ -32,6 +32,7 @@ export class JwtService {
         ? 'ADMIN'
         : 'CUSTOMER',
     };
+    return newUser;
   }
   isTokenExpired(accessToken: string): boolean {
     const expiry = JSON.parse(atob(accessToken.split('.')[1])).exp;
@@ -42,19 +43,6 @@ export class JwtService {
       refreshToken,
     });
   }
-  // exchangeCodeForToken(code: string) {
-  //   const url = `http://${this.keycloak.server}/admin/realms/${this.keycloak.realm}/protocol/openid-connect/token`
-  //   const body = new URLSearchParams();
-  //   body.set('grant_type', 'authorization_code');
-  //   body.set('code', code);
-  //   body.set('redirect_uri', this.keycloak.redirectUri); // Your redirect URI
-  //   body.set('client_id', this.keycloak.clientId); // Your client ID
-  //   return this.http.post(url, body.toString(), {
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //     },
-  //   });
-  // }
   exchangeCode(code : string){
     return this.http.post('http://localhost:8000/api/exchange-code', code);
   }

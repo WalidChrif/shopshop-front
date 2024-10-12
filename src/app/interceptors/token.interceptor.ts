@@ -26,8 +26,11 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
       if (data.user != null) {       
         const accessToken = data.user.accessToken;
         if (jwtService.isTokenExpired(accessToken)) {
+          console.log('user ', data.user);
           return jwtService.refreshToken(data.user.refreshToken).pipe(
+            take(1),
             switchMap((newToken: any) => {
+              console.log('newToken ', newToken);
               const newUser = jwtService.parseToken(newToken.access_token);
               store.dispatch(newAuthActions.login(newUser));
               return next(

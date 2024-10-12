@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
     <div class="container-fluid">
-      <div *ngIf="products.length <= 0">
+      <div *ngIf="products?.length <= 0">
         <h3 class="alert alert-info" role="alert">
           {{ "No products yet" | translate }}!
         </h3>
@@ -9,7 +9,8 @@
       <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 items">
-          <select class="form-select" aria-label="Default select example" [(ngModel)]="orderBy" (change)="getProducts()">
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="orderBy"
+            (change)="getProducts()">
             <option selected value="">Sort by</option>
             <option value="name,asc">A - Z</option>
             <option value="name,desc">Z - A</option>
@@ -20,11 +21,8 @@
           </select>
         </div>
       </div>
-      <div *ngIf="products.length > 0">
-        <table
-          class="table table-hover table-bordered my-2"
-          style="text-align: center"
-        >
+      <div *ngIf="products?.length > 0">
+        <table class="table table-hover table-bordered my-2" style="text-align: center">
           <thead>
             <tr class="">
               <th scope="col">{{ "Product" | translate }}</th>
@@ -37,22 +35,15 @@
           </thead>
           <tbody>
             <tr class="" *ngFor="let product of products">
-              <td><img [src]="product?.imageUrl" [alt]="product?.name" /></td>
+              <td><img [src]="product.imageUrl" [alt]="product?.name" /></td>
+              <!-- <img [src]="product.imageUrl + '?t=' + getCurrentTime()" alt="Product Image"> -->
               <td>{{ product?.name }}</td>
               <td>{{ "currency" | translate }}{{ product?.unitPrice }}</td>
               <td>{{ product?.unitsInStock }}</td>
               <td>{{ product?.dateCreated | date : "short" }}</td>
               <td>
-                <a
-                  [routerLink]="['update', product?.sku]"
-                  class="btn-update p-1 mx-1"
-                  >{{ "Update" | translate }}</a
-                >
-                <a
-                  [routerLink]="['delete', product?.sku]"
-                  class="btn-delete p-1 mx-1"
-                  >{{ "Delete" | translate }}</a
-                >
+                <a [routerLink]="['update', product?.sku]" class="btn-update p-1 mx-1">{{ "Update" | translate }}</a>
+                <button (click)="deleteProduct(product.sku)" class="btn-delete p-1 mx-1">{{ "Delete" | translate}}</button>
               </td>
             </tr>
           </tbody>
@@ -64,22 +55,13 @@
           <div class="col-md-6 box items">
             <div class="row">
               <div class="col-md-8" style="padding-left: 20%">
-                <ngb-pagination
-                  [(page)]="page"
-                  [collectionSize]="totalElements"
-                  [pageSize]="pageSize"
-                  (pageChange)="getProducts()"
-                  [maxSize]="5"
-                >
+                <ngb-pagination [(page)]="page" [collectionSize]="totalElements" [pageSize]="pageSize"
+                  (pageChange)="getProducts()" [maxSize]="5">
                 </ngb-pagination>
               </div>
               <div class="col-md-4">
                 <span class="mr-2">{{ "Page size" | translate }}</span>
-                <select
-                  (click)="getProducts()"
-                  name="pageSize"
-                  [(ngModel)]="pageSize"
-                >
+                <select (click)="getProducts()" name="pageSize" [(ngModel)]="pageSize">
                   <option value="5" selected="true">5</option>
                   <option value="10">10</option>
                   <option>20</option>

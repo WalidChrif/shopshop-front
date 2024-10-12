@@ -7,6 +7,7 @@ import { User } from '../../../common/user';
 import { AuthService } from '../../../services/auth.service';
 import { AppState } from '../../../store';
 import * as newAuthActions from '../../../store/new-auth.actions';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-user-info',
@@ -22,7 +23,8 @@ export class UserInfoComponent {
   constructor(
     private store: Store<AppState>,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cartService : CartService
   ) {}
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class UserInfoComponent {
   logout() {
     // this.keycloakService.logout();
     this.authService.logout(String(this.user.id)).subscribe();
-    this.storage.clear();
+    this.cartService.clearCart();
     this.store.dispatch(newAuthActions.logout());
     this.router.navigate(['/']);
   }

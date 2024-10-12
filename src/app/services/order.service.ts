@@ -16,10 +16,13 @@ export class OrderService {
       `${this.baseUrl}/all?page=${page}&size=${size}&orderBy=${orderBy}`
     );
   }
-  getOrdersForUser(email: string) {
+  getOrdersForUser(email: string, orderBy: string) {
     return this.http.get<Order[]>(this.baseUrl, {
-      params: {
+      headers: {
         email: email,
+      },
+      params: {
+        orderBy: orderBy,
       },
     });
   }

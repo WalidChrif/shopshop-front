@@ -8,6 +8,7 @@ import { Product } from './../common/product';
   providedIn: 'root',
 })
 export class ProductService {
+
   baseUrl: string = 'http://localhost:8000/api/v1/products';
   
 
@@ -22,8 +23,7 @@ export class ProductService {
 
   getProducts(page: number = 0, size: number = 10, orderBy: string) {
     return this.http.get<Page<Product>>(
-      `${this.baseUrl}/all?page=${page}&size=${size}&orderBy=${orderBy}`
-    );
+      `${this.baseUrl}/all?page=${page}&size=${size}&orderBy=${orderBy}`);
   }
   getPopularProducts() {
     return this.http.get<Product[]>(`${this.baseUrl}/popular`);
@@ -52,6 +52,9 @@ export class ProductService {
 
   addProduct(formData: FormData) {
     return this.http.post<Product>(`${this.baseUrl}/add-product`, formData);
+  }
+  deleteProduct(sku: string) {
+    return this.http.delete(`${this.baseUrl}/delete/${sku}`);
   }
   testAddProduct() {
     return this.http.post<string>(`${this.baseUrl}/add-product`, 'Hello');

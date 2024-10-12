@@ -9,21 +9,21 @@ import { OrderReceiptComponent } from './content/user-content/order-receipt/orde
 import { ProductDetailComponent } from './content/user-content/product-detail/product-detail.component';
 import { ProductsListComponent } from './content/user-content/products-list/products-list.component';
 import { ShoppingCartComponent } from './content/user-content/shopping-cart/shopping-cart.component';
+import { CustomerGuard } from './guards/customer.guard';
 import { AdminGuard } from './guards/admin.guard';
-import { authGuard } from './guards/auth.guard';
-import { CallbackGuard } from './guards/callback.guard';
-import { cancelGuard } from './guards/cancel.guard';
+import { CancelGuard } from './guards/cancel.guard';
+import { HomeGuard } from './guards/home.guard';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent, title: 'ShopShop' },
+  { path: 'home', component: HomeComponent, title: 'ShopShop', canActivate: [HomeGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'callback', component: HomeComponent, canActivate: [CallbackGuard] },
+  { path: 'callback', component: HomeComponent, canActivate: [HomeGuard] },
   { path: 'signin', component: LoginComponent, title: 'Login' },
   { path: 'signup', component: SignupComponent, title: 'Sign Up' },
   {
     path: 'checkout',
     component: CheckoutComponent,
-    canDeactivate: [cancelGuard],
+    canDeactivate: [CancelGuard],
     title: 'Checkout',
   },
   {
@@ -55,7 +55,7 @@ export const routes: Routes = [
     path: 'orders',
     component: OrderHistoryComponent,
     title: 'Order History',
-    canActivate: [authGuard],
+    canActivate: [CustomerGuard],
   },
   // Lazy load admin module
   {

@@ -58,9 +58,9 @@ export class SignupComponent {
   signUp() {
     this.authService.register(this.signUpForm.value).subscribe((response) => {
       console.log('signup repsonse::::: ', response);
-    });
+    });    
     this.router.navigate(['/signin'], {
-      queryParams: { email: this.signUpForm.get('email') },
+      queryParams: { email: this.signUpForm.get('email').value },
     });
   }
 }

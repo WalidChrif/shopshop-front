@@ -5,7 +5,7 @@ export interface CanComponentDeactivate {
   canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;
 }
 
-export const cancelGuard: CanDeactivateFn<CanComponentDeactivate> = (
+export const CancelGuard: CanDeactivateFn<CanComponentDeactivate> = (
   component,
   currentRoute,
   currentState,

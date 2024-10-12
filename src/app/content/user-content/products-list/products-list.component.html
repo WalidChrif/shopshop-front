@@ -10,13 +10,13 @@
         <div class="col-md-10"></div>
         <div class="col-md-2 items">
           <select class="form-select" aria-label="Default select example" [(ngModel)]="orderBy" (change)="updatePage()">
-            <option selected value="">Sort by</option>
-            <option value="name,asc">A - Z</option>
-            <option value="name,desc">Z - A</option>
-            <option value="sales,desc">Most Popular</option>
-            <option value="dateCreated,desc">Recent</option>
-            <option value="unitPrice,asc">Price(low to high)</option>
-            <option value="unitPrice,desc">Price(high to low)</option>
+            <option selected value="">{{'Sort by'|translate}}</option>
+            <option value="name,asc">{{'A - Z' | translate}}</option>
+            <option value="name,desc">{{'Z - A'|translate}}</option>
+            <option value="sales,desc">{{'Most Popular' | translate}}</option>
+            <option value="dateCreated,desc">{{'Recent' | translate}}</option>
+            <option value="unitPrice,asc">{{'Price(low to high)'| translate}}</option>
+            <option value="unitPrice,desc">{{'Price(high to low)' | translate}}</option>
           </select>
         </div>
       </div>
@@ -46,14 +46,14 @@
           <div class="col-md-6"></div>
           <div class="col-md-6 box items">
             <div class="row">
-              <div class="col-sm-6 col-md-7 col-lg-10" style="padding-left: 35%">
+              <div class="col-sm-6 col-md-7 col-lg-19" style="padding-left: 35%">
                 <ngb-pagination [(page)]="page" [collectionSize]="totalElements" [pageSize]="pageSize"
                   (pageChange)="updatePage()" [maxSize]="5">
                 </ngb-pagination>
               </div>
-              <div class="col-sm-6  col-md-5 col-lg-2">
+              <div class="col-sm-6  col-md-5 col-lg-3">
                 <!-- <span class="mr-2">{{ "Page size" | translate }}</span> -->
-                <select class="form-select" (click)="updatePage()" name="pageSize" [(ngModel)]="pageSize">
+                <select class="form-select" (change)="updatePage()" name="pageSize" [(ngModel)]="pageSize">
                   <option value="5" selected="true">5</option>
                   <option value="10">10</option>
                   <option>20</option>

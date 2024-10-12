@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { map, take } from 'rxjs';
 import { AppState } from '../store';
 
-export const AdminGuard: CanActivateFn = (_route, _state) => {
+export const HomeGuard: CanActivateFn = (_route, _state) => {
   const router = inject(Router);
   const store = inject(Store<AppState>);
 
@@ -12,14 +12,9 @@ export const AdminGuard: CanActivateFn = (_route, _state) => {
     take(1),
     map((data) => {
       if (data?.user?.role === 'ADMIN') {
-        return true;
-      } else if (data?.user?.role === 'CUSTOMER') {
-        router.navigate(['/']);
+        router.navigate(['/admin']);
         return false;
-      } else {
-        router.navigate(['/signin']);
-        return false;
-      }
+      } else return true;
     })
   );
 };

@@ -6,8 +6,7 @@
           {{ "No orders yet" | translate }}!
           <br />
           <a [routerLink]="['/home']" routerLinkActive="router-link-active">
-            {{ "Make sales" | translate }}😊</a
-          >
+            {{ "Make sales" | translate }}😊</a>
         </h3>
       </div>
       <div class="row">
@@ -15,19 +14,16 @@
         <div class="col-md-2 items">
           <select class="form-select" aria-label="Default select example" [(ngModel)]="orderBy" (change)="getOrders()">
             <option selected value="">Sort by</option>
-            <option value="totalPrice,asc">Total Price(low to high)</option>
-            <option value="totalPrice,desc">Total Price(high to low)</option>
-            <option value="dateCreated,desc">Recent</option>
-            <option value="dateCreated,asc">Oldest</option>
-            <option value="totalItems,desc">Most Items</option>
+            <option value="totalPrice,asc">{{'Total Price(low to high)' | translate}}</option>
+            <option value="totalPrice,desc">{{'Total Price(high to low)' | translate}}</option>
+            <option value="dateCreated,desc">{{'Recent' | translate}}</option>
+            <option value="dateCreated,asc">{{'Oldest' | translate}}</option>
+            <option value="totalItems,desc">{{'Most Items' | translate}}</option>
           </select>
         </div>
       </div>
       <div *ngIf="orders.length > 0">
-        <table
-          class="table table-hover table-bordered my-2"
-          style="text-align: center"
-        >
+        <table class="table table-hover table-bordered my-2" style="text-align: center">
           <thead>
             <tr class="">
               <th scope="col">{{ "Tracking Number" | translate }}</th>
@@ -45,57 +41,42 @@
               <td>{{ "currency" | translate }}{{ order.totalPrice }}</td>
               <td>{{ order.totalItems }}</td>
               <td>
-                <tr>
-                  <td *ngFor="let item of order.orderItems">
-                    <img class="img" [src]="item.imageUrl" [alt]="item.name" />
-                  </td>
-                </tr>
+            <tr>
+              <td *ngFor="let item of order.orderItems">
+                <img class="img" [src]="item.imageUrl" [alt]="item.name" />
               </td>
-              <td>
-                {{ order.shippingAddress.street }},
-                {{ order.shippingAddress.city }},{{
-                  order.shippingAddress.country
-                }}
-              </td>
-              <td>{{ order.dateCreated | date : "short" }}</td>
-              <td class="actions">
-                <a
-                  [routerLink]="['update', order.trackingNumber]"
-                  class="btn-update p-1 mx-1"
-                  >{{ "Update" | translate }}</a
-                >
-                <a
-                  [routerLink]="['delete', order.trackingNumber]"
-                  class="btn-delete p-1 mx-1"
-                  >{{ "Delete" | translate }}</a
-                >
-              </td>
+            </tr>
+            </td>
+            <td>
+              {{ order.shippingAddress.street }},
+              {{ order.shippingAddress.city }},{{
+              order.shippingAddress.country
+              }}
+            </td>
+            <td>{{ order.dateCreated | date : "short" }}</td>
+            <td class="actions">
+              <a [routerLink]="['update', order.trackingNumber]" class="btn-update p-1 mx-1">{{ "Update" | translate
+                }}</a>
+              <a [routerLink]="['delete', order.trackingNumber]" class="btn-delete p-1 mx-1">{{ "Delete" | translate
+                }}</a>
+            </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="footer-pagination" style="padding: 30px 0">
+      <div *ngIf="totalElements > pageSize" class="footer-pagination" style="padding: 30px 0">
         <div class="row">
           <div class="col-md-6"></div>
           <div class="col-md-6 box items">
             <div class="row">
               <div class="col-md-8" style="padding-left: 20%">
-                <ngb-pagination
-                  [(page)]="page"
-                  [collectionSize]="totalElements"
-                  [pageSize]="pageSize"
-                  (pageChange)="getOrders()"
-                  [maxSize]="5"
-                >
+                <ngb-pagination [(page)]="page" [collectionSize]="totalElements" [pageSize]="pageSize"
+                  (pageChange)="getOrders()" [maxSize]="5">
                 </ngb-pagination>
               </div>
               <div class="col-md-4">
                 <span class="mr-2">{{ "Page size" | translate }}</span>
-                <select
-                  (click)="getOrders()"
-                  name="pageSize"
-                  [(ngModel)]="pageSize"
-                >
+                <select (change)="getOrders()" name="pageSize" [(ngModel)]="pageSize">
                   <option value="5" selected="true">5</option>
                   <option value="10">10</option>
                   <option>20</option>
