@@ -56,7 +56,7 @@ export class CheckoutComponent {
     private checkoutService: CheckoutService,
     private store: Store<AppState>,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.store
@@ -91,11 +91,11 @@ export class CheckoutComponent {
       customer: new FormGroup({
         firstName: new FormControl(this.user?.firstName, [
           Validators.required,
-          Validators.pattern('[a-zA-Z]{4,20}'),
+          Validators.pattern('[a-zA-Z]{3,20}'),
         ]),
         lastName: new FormControl(this.user?.lastName, [
           Validators.required,
-          Validators.pattern('[a-zA-Z]{4,20}'),
+          Validators.pattern('[a-zA-Z]{3,20}'),
         ]),
         email: new FormControl(this.user?.email, [
           Validators.required,

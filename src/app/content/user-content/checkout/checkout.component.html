@@ -250,7 +250,7 @@
                         {{theForm.valid && totalItems> 0 ? ('Order placed successfuly' | translate) : ''}}
                     </ng-template>
                     <button *ngIf="theForm.invalid || totalItems <= 0" type="button"
-                        class="au-btn-submit p-2 px-4" [autoClose]="'outside'" [ngbPopover]="popContent">
+                        class="au-btn-submit p-2 px-4 submit-btn" [autoClose]="'outside'" [ngbPopover]="popContent">
                         {{'Purchase' | translate}}
                     </button>
                     <button *ngIf="theForm.valid && totalItems > 0" type="submit"
